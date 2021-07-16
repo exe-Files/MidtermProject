@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Everyday should be a BuckIt Day</h1>
+	<p> ${DEBUG} </p>
 </body>
 </html>
