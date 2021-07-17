@@ -81,10 +81,10 @@ class BucketItemTest {
 	
 	@Test
 	void test_bucket_item_to_Comment_mappings() {
-		BucketItem item3 = em.find(BucketItem.class, 2);
-		assertNotNull(item3.getComments());
-		assertTrue(item3.getComments().size() > 0);
-		assertEquals("Roaring Fork Valley is full of moose", item3.getComments().get(0).getCommentText());
+		BucketItem item4 = em.find(BucketItem.class, 2);
+		assertNotNull(item4.getComments());
+		assertTrue(item4.getComments().size() > 0);
+		assertEquals("Roaring Fork Valley is full of moose", item4.getComments().get(0).getCommentText());
 	}
-
+	
 }
