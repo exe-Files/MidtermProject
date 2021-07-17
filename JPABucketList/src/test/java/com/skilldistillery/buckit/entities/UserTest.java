@@ -57,5 +57,11 @@ class UserTest {
 		assertEquals(true, user.isActive());
 		
 	}
+	
+	@Test
+	void test_user_userBucketItem_mapping() {
+		assertNotNull(user);
+		assertEquals(0, user.getUserBucketItems().size());
+	}
 
 }

@@ -1,12 +1,14 @@
 package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -30,13 +32,13 @@ public class User {
 	private boolean isActive;
 	@Column(name = "image_url")
 	private String imageUrl;
-	
+	@OneToMany(mappedBy = "user")
+	private List<UserBucketItem> userBucketItems;
 	
 	// CONSTRUCTOR
 	public User() {
 		super();
 	}
-	
 	
 	// GETTERS AND SETTERS
 	public int getId() {
@@ -126,6 +128,16 @@ public class User {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+
+	public List<UserBucketItem> getUserBucketItems() {
+		return userBucketItems;
+	}
+
+
+	public void setUserBucketItems(List<UserBucketItem> userBucketItems) {
+		this.userBucketItems = userBucketItems;
 	}
 
 
