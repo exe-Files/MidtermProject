@@ -55,12 +55,12 @@ class BucketItemTest {
 	
 	@Test
 	void test_bucket_item_to_user_mappings() {
-		assertTrue(true);
+		assertEquals("steven", item.getCreatedByUser().getUsername());
 	}
 	
 	@Test
 	void test_bucket_item_to_location_mappings() {
-		assertTrue(true);
+		assertEquals("Paris", item.getLocation().getCityArea());
 	}
 
 }
