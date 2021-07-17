@@ -32,7 +32,7 @@ class CategoryTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		category = em.find(Category.class, "1");
+		category = em.find(Category.class, 1);
 	}
 
 	@AfterEach

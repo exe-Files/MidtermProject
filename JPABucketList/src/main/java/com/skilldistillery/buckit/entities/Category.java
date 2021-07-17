@@ -16,7 +16,7 @@ public class Category {
 	private String categoryName;
 	
 	
-	public Category() { //No-arg constructor
+	public Category() { //No-Arg constructor
 		super();
 	}
 
