@@ -5,11 +5,15 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<!-- List entities here, one each for each table we need to access -->
+		<class>com.skilldistillery.buckit.entities.Category</class>
+		<class>com.skilldistillery.buckit.entities.Country</class>
+		<class>com.skilldistillery.buckit.entities.Location</class>
 		<class>com.skilldistillery.buckit.entities.User</class>
 		<class>com.skilldistillery.buckit.entities.Comment</class>
 		<class>com.skilldistillery.buckit.entities.Poll</class>
 		<class>com.skilldistillery.buckit.entities.Note</class>
 		<class>com.skilldistillery.buckit.entities.UserBucketItem</class>
+		<class>com.skilldistillery.buckit.entities.BucketItem</class>
 
 
 
