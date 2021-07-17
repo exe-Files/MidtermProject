@@ -2,7 +2,6 @@ package com.skilldistillery.buckit.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,14 +11,13 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class NoteTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Note note;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -34,28 +32,26 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		note = em.find(Note.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		user = null;
+		note = null;
 		em.close();
 	}
 
 	@Test
-	void test_user_mappings() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertEquals("adminbucketpass", user.getPassword());
-		assertNull(user.getEmail());
-		assertNull(user.getImageUrl());
-		assertNull(user.getDateCreated());
-		assertEquals("admin", user.getRole());
-		assertEquals("Admin", user.getFirstName());
-		assertEquals("Admin", user.getLastName());
-		assertEquals(true, user.isActive());
-		
+	void test_note_mappings() {
+		assertNotNull(note);
+		assertEquals("Get Tag", note.getNoteTitle());
+		assertEquals("Apply for big game tag", note.getNoteText());
+	}
+	
+	@Test
+	void test_note_to_bucketItem_mappings() {
+		assertNotNull(note);
+		assertEquals(2, note.getUserBucketItem().getId());
 	}
 
 }

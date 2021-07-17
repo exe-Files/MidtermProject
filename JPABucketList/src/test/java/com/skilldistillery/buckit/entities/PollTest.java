@@ -12,14 +12,13 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class UserTest {
+class PollTest {
 	
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Poll poll;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -34,28 +33,34 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		poll = em.find(Poll.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		user = null;
+		poll = null;
 		em.close();
 	}
 
 	@Test
-	void test_user_mappings() {
-		assertNotNull(user);
-		assertEquals("admin", user.getUsername());
-		assertEquals("adminbucketpass", user.getPassword());
-		assertNull(user.getEmail());
-		assertNull(user.getImageUrl());
-		assertNull(user.getDateCreated());
-		assertEquals("admin", user.getRole());
-		assertEquals("Admin", user.getFirstName());
-		assertEquals("Admin", user.getLastName());
-		assertEquals(true, user.isActive());
-		
+	void test_poll_mappings() {
+		assertNotNull(poll);
+		assertNull(poll.getDateCreated());
+		assertNull(poll.getDateUpdated());
+		assertNull(poll.getCostDollarSigns());
+		assertEquals("Fall", poll.getBestTimeToDo());
 	}
+	
+	@Test
+	void test_poll_to_user_mappings() {
+		assertNotNull(poll);
+		assertEquals("admin", poll.getUser().getUsername());
+	}
+	
+//	@Test
+//	void test_poll_to_bucketItem_mappings() {
+//		assertNotNull(poll);
+//		assertEquals("Hunt a Moose", poll.getBucketItem().getName());
+//	}
 
 }

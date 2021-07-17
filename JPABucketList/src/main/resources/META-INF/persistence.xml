@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
 	<persistence-unit name="JPABucketList">
-	
+
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<!-- List entities here, one each for each table we need to access -->
 		<class>com.skilldistillery.buckit.entities.Category</class>
+		<class>com.skilldistillery.buckit.entities.Comment</class>
 		<class>com.skilldistillery.buckit.entities.Country</class>
 		<class>com.skilldistillery.buckit.entities.Location</class>
 		<class>com.skilldistillery.buckit.entities.User</class>
+		<class>com.skilldistillery.buckit.entities.Poll</class>
+		<class>com.skilldistillery.buckit.entities.Note</class>
+		<class>com.skilldistillery.buckit.entities.UserBucketItem</class>
+		<class>com.skilldistillery.buckit.entities.BucketItem</class>
 		<class>com.skilldistillery.buckit.entities.Resource</class>
 
 
@@ -40,7 +45,7 @@
 			<property name="hibernate.c3p0.timeout" value="60" />
 		</properties>
 
-	
-	
+
+
 	</persistence-unit>
 </persistence>
