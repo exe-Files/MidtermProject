@@ -13,11 +13,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LocationTest {
+class CategoryTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Location location;
+	private Category category;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,27 +32,19 @@ class LocationTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		location = em.find(Location.class, 1);
+		category = em.find(Category.class, "1");
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		location = null;
+		category = null;
 		em.close();
 	}
 
 	@Test
-	void test_location_mappings() {
-		assertNotNull(location);
-		assertEquals("Paris", location.getCityArea());
-	}
-	
-	@Test
-	void test_location_country_mappings() {
-		assertNotNull(location.getCountryCode());
-		assertEquals("Europe", location.getCountryCode().getContinent());
-		
-		
+	void test_category_mappings() {
+		assertNotNull(category);
+		assertEquals("Adrenaline Rush", category.getCategoryName());
 	}
 
 }

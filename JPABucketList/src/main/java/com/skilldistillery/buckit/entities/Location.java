@@ -22,8 +22,13 @@ public class Location {
 
 	@ManyToOne // many locations to one country
 	@JoinColumn(name="country_code") //location table has the foreign key of country_code that connects it to country table
-	@Column(name = "country_code")
+//	@Column(name = "country_code")
 	private Country countryCode;
+
+	
+	public Location() { //No arg-constructor
+		super();
+	}
 
 	public int getId() {
 		return id;
@@ -49,11 +54,11 @@ public class Location {
 		this.specificLocation = specificLocation;
 	}
 
-	public String getCountryCode() {
+	public Country getCountryCode() {
 		return countryCode;
 	}
 
-	public void setCountryCode(String countryCode) {
+	public void setCountryCode(Country countryCode) {
 		this.countryCode = countryCode;
 	}
 

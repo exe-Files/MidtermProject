@@ -1,7 +1,6 @@
 package com.skilldistillery.buckit.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class LocationTest {
+class CountryTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Location location;
+	private Country country;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,27 +31,20 @@ class LocationTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		location = em.find(Location.class, 1);
+		country = em.find(Country.class, "FRA");
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		location = null;
+		country = null;
 		em.close();
 	}
 
 	@Test
-	void test_location_mappings() {
-		assertNotNull(location);
-		assertEquals("Paris", location.getCityArea());
-	}
-	
-	@Test
-	void test_location_country_mappings() {
-		assertNotNull(location.getCountryCode());
-		assertEquals("Europe", location.getCountryCode().getContinent());
-		
-		
+	void test_country_mappings() {
+		assertNotNull(country);
+		assertEquals("France, French Republic", country.getCountryName());
+		assertEquals("Europe", country.getContinent());
 	}
 
 }
