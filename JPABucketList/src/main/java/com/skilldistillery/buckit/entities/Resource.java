@@ -1,22 +1,26 @@
 package com.skilldistillery.buckit.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-@Entity
-public class Category {
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+@Entity
+public class Resource {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="category_name")
-	private String categoryName;
+	private String url;
 	
-	
-	public Category() { //No-Arg constructor
+	@ManyToOne // Many Resources to one user bucket item
+	@JoinColumn(name="user_bucket_item") 
+//	@Column(name="user_bucket_item") 
+	private UserBucketItem userBucketItem;
+
+	public Resource() { // No-Arg Constructor
 		super();
 	}
 
@@ -28,17 +32,25 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getCategoryName() {
-		return categoryName;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public UserBucketItem getUserBucketItem() {
+		return userBucketItem;
+	}
+
+	public void setUserBucketItem(UserBucketItem userBucketItem) {
+		this.userBucketItem = userBucketItem;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", categoryName=" + categoryName + "]";
+		return "Resource [id=" + id + ", url=" + url + ", userBucketItem=" + userBucketItem + "]";
 	}
 
 	@Override
@@ -57,7 +69,7 @@ public class Category {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Category other = (Category) obj;
+		Resource other = (Resource) obj;
 		if (id != other.id)
 			return false;
 		return true;
