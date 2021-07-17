@@ -1,7 +1,6 @@
 package com.skilldistillery.buckit.entities;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,11 +12,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CategoryTest {
+class ResourceTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Category category;
+	private Resource resource;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -32,20 +31,27 @@ class CategoryTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		category = em.find(Category.class, 1);
+		resource = em.find(Resource.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		category = null;
+		resource = null;
 		em.close();
 	}
 
 	@Test
-	void test_category_mappings() {
-		assertNotNull(category);
-		assertEquals("Adrenaline Rush", category.getCategoryName());
+	void test_resource_mappings() {
+		assertNotNull(resource);
+		assertEquals("https://cpw.state.co.us/moose-country", resource.getUrl());
 	}
 	
-	
+//	@Test
+//	void test_resource_country_mappings() {
+//		assertNotNull(resource.());
+//		assertEquals("Europe", resource;
+//		
+//		
+//	}
+
 }
