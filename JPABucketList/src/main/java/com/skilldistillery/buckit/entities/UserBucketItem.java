@@ -1,7 +1,6 @@
 package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,10 +30,16 @@ public class UserBucketItem {
 	private boolean isCompleted;
 	@OneToMany(mappedBy="userBucketItem")
 	private List<Note> notes;
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	@ManyToOne
+	@JoinColumn(name="bucket_item_id")
+	private BucketItem bucketItem;
 	
 	// Methods
 	public UserBucketItem() {} // No-Arg Constructor
-	
+
 	// Getters & Setters
 	public int getId() {
 		return id;
@@ -66,18 +73,12 @@ public class UserBucketItem {
 		this.targetDate = targetDate;
 	}
 
-	public boolean getIsCompleted() {
+	public boolean isCompleted() {
 		return isCompleted;
 	}
 
-	public void setIsCompleted(boolean isCompleted) {
+	public void setCompleted(boolean isCompleted) {
 		this.isCompleted = isCompleted;
-	}
-
-	@Override
-	public String toString() {
-		return "UserBucketItem [id=" + id + ", dateAdded=" + dateAdded + ", dateCompleted=" + dateCompleted
-				+ ", targetDate=" + targetDate + ", isCompleted=" + isCompleted + "]";
 	}
 
 	public List<Note> getNotes() {
@@ -87,24 +88,30 @@ public class UserBucketItem {
 	public void setNotes(List<Note> notes) {
 		this.notes = notes;
 	}
-	
-	public void addNote(Note note) {
-		if(notes == null) {
-			notes = new ArrayList<>();
-		}
-		if(!notes.contains(note)) {
-			notes.add(note);
-			if(note.getUserBucketItem() != null) {
-				note.getUserBucketItem().getNotes().remove(note);
-			}
-			note.setUserBucketItem(this);
-		}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "UserBucketItem [id=" + id + ", dateAdded=" + dateAdded + ", dateCompleted=" + dateCompleted
+				+ ", targetDate=" + targetDate + ", isCompleted=" + isCompleted + ", notes=" + notes + ", user=" + user
+				+ "]";
+	}
+
+	public BucketItem getBucketItem() {
+		return bucketItem;
+	}
+
+	public void setBucketItem(BucketItem bucketItem) {
+		this.bucketItem = bucketItem;
 	}
 	
-	public void removeNote(Note note) {
-		note.setUserBucketItem(null);
-		if(notes != null) {
-			notes.remove(note);
-		}
-	}
+	
+	
 }
