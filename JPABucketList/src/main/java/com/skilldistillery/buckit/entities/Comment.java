@@ -27,9 +27,9 @@ public class Comment {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
-//	@ManyToOne							// TODO: Test Once BucketItem entity is complete
-//	@JoinColumn(name="bucket_item_id")
-//	private BucketItem bucketItem;
+	@ManyToOne							// TODO: Test Once BucketItem entity is complete
+	@JoinColumn(name="bucket_item_id")
+	private BucketItem bucketItem;
 	
 	// Methods
 	public Comment() {} // No-arg Constructor
@@ -89,12 +89,12 @@ public class Comment {
 		this.user = user;
 	}
 
-//	public BucketItem getBucketItem() {			//TODO: Don't forget to uncomment
-//		return bucketItem;
-//	}
-//
-//	public void setBucketItem(BucketItem bucketItem) {
-//		this.bucketItem = bucketItem;
-//	}
+	public BucketItem getBucketItem() {			//TODO: Don't forget to uncomment
+		return bucketItem;
+	}
+
+	public void setBucketItem(BucketItem bucketItem) {
+		this.bucketItem = bucketItem;
+	}
 	
 }

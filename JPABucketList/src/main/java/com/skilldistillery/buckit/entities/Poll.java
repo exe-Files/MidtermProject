@@ -26,9 +26,9 @@ public class Poll {
 	private LocalDate dateCreated;
 	@Column(name="date_updated")
 	private LocalDate dateUpdated;
-//	@ManyToOne								// Test Once BucketItem is complete
-//	@JoinColumn(name="bucket_item_id") 
-//	private BucketItem bucketItem;
+	@ManyToOne								// Test Once BucketItem is complete
+	@JoinColumn(name="bucket_item_id") 
+	private BucketItem bucketItem;
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -93,13 +93,13 @@ public class Poll {
 				+ "]";
 	}
 
-//	public BucketItem getBucketItem() {							// TODO: Uncomment before testing
-//		return bucketItem;
-//	}
-//
-//	public void setBucketItem(BucketItem bucketItem) {
-//		this.bucketItem = bucketItem;
-//	}
+	public BucketItem getBucketItem() {							// TODO: Uncomment before testing
+		return bucketItem;
+	}
+
+	public void setBucketItem(BucketItem bucketItem) {
+		this.bucketItem = bucketItem;
+	}
 
 	public User getUser() {
 		return user;
