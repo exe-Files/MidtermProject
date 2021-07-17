@@ -1,5 +1,6 @@
 package com.skilldistillery.buckit.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -47,7 +48,19 @@ class UserBucketItemTest {
 		assertNotNull(userBucketItem);
 		assertNull(userBucketItem.getDateAdded());
 		assertNull(userBucketItem.getDateCompleted());
-		assertFalse(userBucketItem.getIsCompleted());
+		assertFalse(userBucketItem.isCompleted());
+	}
+	
+	@Test
+	void test_userBucketItem_to_user_mappings() {
+		assertNotNull(userBucketItem);
+		assertEquals("steven", userBucketItem.getUser().getUsername());
+	}
+	
+	@Test
+	void test_userBucketItem_to_BucketItem_mappings() {
+		assertNotNull(userBucketItem);
+		assertEquals("Climb the Eiffel Tower", userBucketItem.getBucketItem().getName());
 	}
 	
 }

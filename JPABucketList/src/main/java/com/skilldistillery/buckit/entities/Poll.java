@@ -93,7 +93,7 @@ public class Poll {
 				+ "]";
 	}
 
-	public BucketItem getBucketItem() {							// TODO: Uncomment before testing
+	public BucketItem getBucketItem() {
 		return bucketItem;
 	}
 
