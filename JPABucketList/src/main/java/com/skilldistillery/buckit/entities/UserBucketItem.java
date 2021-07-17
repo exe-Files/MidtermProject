@@ -1,6 +1,7 @@
 package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -30,6 +31,8 @@ public class UserBucketItem {
 	private boolean isCompleted;
 	@OneToMany(mappedBy="userBucketItem")
 	private List<Note> notes;
+	@OneToMany(mappedBy="userBucketItem")
+	private List<Resource> resources;
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
@@ -88,6 +91,26 @@ public class UserBucketItem {
 	public void setNotes(List<Note> notes) {
 		this.notes = notes;
 	}
+	
+	public void addNote(Note note) {
+		if(notes == null) {
+			notes = new ArrayList<>();
+		}
+		if(!notes.contains(note)) {
+			notes.add(note);
+			if(note.getUserBucketItem() != null) {
+				note.getUserBucketItem().getNotes().remove(note);
+			}
+			note.setUserBucketItem(this);
+		}
+	}
+	
+	public void removeNote(Note note) {
+		note.setUserBucketItem(null);
+		if(notes != null) {
+			notes.remove(note);
+		}
+	}
 
 	public User getUser() {
 		return user;
@@ -111,7 +134,32 @@ public class UserBucketItem {
 	public void setBucketItem(BucketItem bucketItem) {
 		this.bucketItem = bucketItem;
 	}
+
+	public List<Resource> getResources() {
+		return resources;
+	}
+
+	public void setResources(List<Resource> resources) {
+		this.resources = resources;
+	}
 	
+	public void addResource(Resource resource) {
+		if(resources == null) {
+			resources = new ArrayList<>();
+		}
+		if(!resources.contains(resource)) {
+			resources.add(resource);
+			if(resource.getUserBucketItem() != null) {
+				resource.getUserBucketItem().getResources().remove(resource);
+			}
+			resource.setUserBucketItem(this);
+		}
+	}
 	
-	
+	public void removeResource(Resource resource) {
+		resource.setUserBucketItem(null);
+		if(resources != null) {
+			resources.remove(resource);
+		}
+	}
 }
