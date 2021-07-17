@@ -2,6 +2,7 @@ package com.skilldistillery.buckit.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class UserTest {
@@ -46,6 +48,14 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
 		assertEquals("adminbucketpass", user.getPassword());
+		assertNull(user.getEmail());
+		assertNull(user.getImageUrl());
+		assertNull(user.getDateCreated());
+		assertEquals("admin", user.getRole());
+		assertEquals("Admin", user.getFirstName());
+		assertEquals("Admin", user.getLastName());
+		assertEquals(true, user.isActive());
+		
 	}
 
 }
