@@ -6,6 +6,10 @@
 
 		<!-- List entities here, one each for each table we need to access -->
 		<class>com.skilldistillery.buckit.entities.User</class>
+		<class>com.skilldistillery.buckit.entities.Comment</class>
+		<class>com.skilldistillery.buckit.entities.Poll</class>
+		<class>com.skilldistillery.buckit.entities.Note</class>
+		<class>com.skilldistillery.buckit.entities.UserBucketItem</class>
 
 
 
