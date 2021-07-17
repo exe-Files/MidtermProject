@@ -1,6 +1,7 @@
 package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -138,6 +139,25 @@ public class User {
 
 	public void setUserBucketItems(List<UserBucketItem> userBucketItems) {
 		this.userBucketItems = userBucketItems;
+	}
+	
+	public void addUserBucketItem(UserBucketItem userBucketItem) {
+		if (userBucketItems == null) {userBucketItems = new ArrayList<>();}
+		
+		if (! userBucketItems.contains(userBucketItem)) {
+			userBucketItems.add(userBucketItem);
+			if (userBucketItem.getUser() != null) {
+				userBucketItem.getUser().getUserBucketItems().remove(userBucketItem);
+			}
+			userBucketItem.setUser(this);
+		}
+	}
+
+	public void removeUserBucketItem(UserBucketItem userBucketItem) {
+		userBucketItem.setUser(null);
+		if (userBucketItems != null && userBucketItems.contains(userBucketItem)) {
+			userBucketItems.remove(userBucketItem);
+		}
 	}
 
 
