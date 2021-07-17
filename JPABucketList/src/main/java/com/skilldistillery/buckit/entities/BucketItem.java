@@ -1,6 +1,7 @@
 package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -51,16 +52,16 @@ public class BucketItem {
 
 	@ManyToMany
 	@JoinTable(name = "bucket_item_has_category", 
-				joinColumns = @JoinColumn(name = "bucket_item_id"), 
-				inverseJoinColumns = @JoinColumn(name = "category_id"))
+			   joinColumns = @JoinColumn(name = "bucket_item_id"), 
+			   inverseJoinColumns = @JoinColumn(name = "category_id"))
 	List<Category> categories;
-	
-	@OneToMany (mappedBy="bucketItem")
+
+	@OneToMany(mappedBy = "bucketItem")
 	List<Poll> polls;
-	
-	@OneToMany (mappedBy="bucketItem")
+
+	@OneToMany(mappedBy = "bucketItem")
 	List<Comment> comments;
-	
+
 	// CONSTRUCTOR
 	public BucketItem() {
 		super();
@@ -169,6 +170,23 @@ public class BucketItem {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public void addCategory(Category category) {
+		if (categories == null) {
+			categories = new ArrayList<Category>();
+		}
+		if (!categories.contains(category)) {
+			categories.add(category);
+			category.addBucketItem(this);
+		}
+	}
+
+	public void removeCategory(Category category) {
+		if (categories != null && categories.contains(category)) {
+			categories.remove(category);
+			category.removeBucketItem(this);
+		}
 	}
 
 	// TO STRING
