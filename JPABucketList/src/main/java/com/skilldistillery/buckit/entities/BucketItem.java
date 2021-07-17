@@ -188,6 +188,38 @@ public class BucketItem {
 			category.removeBucketItem(this);
 		}
 	}
+	public void addPoll(Poll poll) {
+		if (polls == null) {
+			polls = new ArrayList<>();
+		}
+		if (!polls.contains(poll)) {
+			polls.add(poll);
+			poll.setBucketItem(this);
+		}
+	}
+	
+	public void removePoll(Poll poll) {
+		poll.setBucketItem(null);
+		if (polls != null && polls.contains(poll)) {
+			polls.remove(poll);
+		}
+	}
+	public void addComment(Comment comment) {
+		if (comments == null) {
+			comments = new ArrayList<>();
+		}
+		if (!comments.contains(comment)) {
+			comments.add(comment);
+			comment.setBucketItem(this);
+		}
+	}
+	
+	public void removeComment(Comment comment) {
+		comment.setBucketItem(null);
+		if (comments != null && comments.contains(comment)) {
+			comments.remove(comment);
+		}
+	}
 
 	// TO STRING
 	@Override
