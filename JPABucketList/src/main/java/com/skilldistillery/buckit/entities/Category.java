@@ -19,7 +19,7 @@ public class Category {
 	@Column(name="category_name")
 	private String categoryName;
 	
-	@ManyToMany(mappedBy = "bucketItem")
+	@ManyToMany(mappedBy = "categories")
 	private List<BucketItem> bucketItems;
 	
 	public Category() { //No-Arg constructor
