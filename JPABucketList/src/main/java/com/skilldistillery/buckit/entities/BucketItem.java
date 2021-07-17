@@ -1,6 +1,7 @@
 package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,150 +9,167 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="bucket_item")
+@Table(name = "bucket_item")
 public class BucketItem {
-	
+
 	@Id
-	@GeneratedValue (strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
 	private String description;
-	
-	@Column (name="date_created")
+
+	@Column(name = "date_created")
 	private LocalDateTime dateCreated;
-	
-	@Column (name="date_updated")
+
+	@Column(name = "date_updated")
 	private LocalDateTime dateUpdated;
-	
-	@Column (name="is_public_at_creation")
+
+	@Column(name = "is_public_at_creation")
 	private Boolean isPublicAtCreation;
-	
-	@Column (name="is_active")
+
+	@Column(name = "is_active")
 	private Boolean isActive;
-	
-	@Column (name="image_url")
+
+	@Column(name = "image_url")
 	private String imageUrl;
-	
+
 	@ManyToOne
-	@JoinColumn (name="location_id")
+	@JoinColumn(name = "location_id")
 	private Location location;
-	
+
 	@ManyToOne
-	@JoinColumn (name="created_by_user")
+	@JoinColumn(name = "created_by_user")
 	private User createdByUser;
 
+	@ManyToMany
+	@JoinTable(name = "bucket_item_has_category", 
+				joinColumns = @JoinColumn(name = "bucket_item_id"), 
+				inverseJoinColumns = @JoinColumn(name = "category_id"))
+	List<Category> categories;
+	
+	@OneToMany (mappedBy="bucketItem")
+	List<Poll> polls;
+	
+	@OneToMany (mappedBy="bucketItem")
+	List<Comment> comments;
 	
 	// CONSTRUCTOR
 	public BucketItem() {
 		super();
 	}
 
-
 	// GETTERS AND SETTERS
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	public LocalDateTime getDateCreated() {
 		return dateCreated;
 	}
 
-
 	public void setDateCreated(LocalDateTime dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-
 
 	public LocalDateTime getDateUpdated() {
 		return dateUpdated;
 	}
 
-
 	public void setDateUpdated(LocalDateTime dateUpdated) {
 		this.dateUpdated = dateUpdated;
 	}
-
 
 	public Boolean getIsPublicAtCreation() {
 		return isPublicAtCreation;
 	}
 
-
 	public void setIsPublicAtCreation(Boolean isPublicAtCreation) {
 		this.isPublicAtCreation = isPublicAtCreation;
 	}
-
 
 	public Boolean getIsActive() {
 		return isActive;
 	}
 
-
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-
 
 	public String getImageUrl() {
 		return imageUrl;
 	}
 
-
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
 	}
-
 
 	public Location getLocation() {
 		return location;
 	}
 
-
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-
 
 	public User getCreatedByUser() {
 		return createdByUser;
 	}
 
-
 	public void setCreatedByUser(User createdByUser) {
 		this.createdByUser = createdByUser;
 	}
 
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
+	public List<Poll> getPolls() {
+		return polls;
+	}
+
+	public void setPolls(List<Poll> polls) {
+		this.polls = polls;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
 
 	// TO STRING
 	@Override
@@ -161,8 +179,6 @@ public class BucketItem {
 				+ ", isActive=" + isActive + ", imageUrl=" + imageUrl + ", createdByUser=" + createdByUser + "]";
 	}
 
-
-	
 	// HASHCODE AND EQUALS
 	@Override
 	public int hashCode() {
@@ -171,7 +187,6 @@ public class BucketItem {
 		result = prime * result + id;
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -186,8 +201,5 @@ public class BucketItem {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
+
 }
