@@ -63,5 +63,15 @@ class UserTest {
 		assertNotNull(user);
 		assertEquals(0, user.getUserBucketItems().size());
 	}
+	@Test
+	void test_user_userPoll_mapping() {
+		assertNotNull(user);
+		assertEquals(1, user.getUserPolls().size());
+	}
+	@Test
+	void test_user_userComment_mapping() {
+		assertNotNull(user);
+		assertEquals(1, user.getUserComments().size());
+	}
 
 }
