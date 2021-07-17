@@ -51,9 +51,7 @@ public class BucketItem {
 	private User createdByUser;
 
 	@ManyToMany
-	@JoinTable(name = "bucket_item_has_category", 
-			   joinColumns = @JoinColumn(name = "bucket_item_id"), 
-			   inverseJoinColumns = @JoinColumn(name = "category_id"))
+	@JoinTable(name = "bucket_item_has_category", joinColumns = @JoinColumn(name = "bucket_item_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
 	List<Category> categories;
 
 	@OneToMany(mappedBy = "bucketItem")
@@ -186,6 +184,46 @@ public class BucketItem {
 		if (categories != null && categories.contains(category)) {
 			categories.remove(category);
 			category.removeBucketItem(this);
+		}
+	}
+
+	public void addPoll(Poll poll) {
+		if (polls == null) {
+			polls = new ArrayList<>();
+		}
+		if (!polls.contains(poll)) {
+			polls.add(poll);
+			if (poll.getBucketItem() != null) {
+				poll.getBucketItem().getPolls().remove(poll);
+			}
+			poll.setBucketItem(this);
+		}
+	}
+
+	public void removePoll(Poll poll) {
+		poll.setBucketItem(null);
+		if (polls != null && polls.contains(poll)) {
+			polls.remove(poll);
+		}
+	}
+
+	public void addComment(Comment comment) {
+		if (comments == null) {
+			comments = new ArrayList<>();
+		}
+		if (!comments.contains(comment)) {
+			comments.add(comment);
+			if (comment.getBucketItem() != null) {
+				comment.getBucketItem().getComments().remove(comment);
+			}
+			comment.setBucketItem(this);
+		}
+	}
+
+	public void removeComment(Comment comment) {
+		comment.setBucketItem(null);
+		if (comments != null && comments.contains(comment)) {
+			comments.remove(comment);
 		}
 	}
 

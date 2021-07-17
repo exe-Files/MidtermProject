@@ -1,6 +1,7 @@
 package com.skilldistillery.buckit.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -86,5 +87,17 @@ class BucketItemTest {
 		assertTrue(item4.getComments().size() > 0);
 		assertEquals("Roaring Fork Valley is full of moose", item4.getComments().get(0).getCommentText());
 	}
+	
+//	@Test
+//	void test_bucket_item_to_Category_Add_Remove_mappings() {
+//		BucketItem item5 = em.find(BucketItem.class, 2);
+//		assertNotNull(item5.getCategories());
+//		Category category = new Category();
+//		category.setCategoryName("Thrilling");
+//		item5.addCategory(category);
+//		assertTrue(item5.getCategories().contains(category));
+//		item5.removeCategory(category);
+//		assertFalse(item5.getCategories().contains(category));
+//	}
 	
 }

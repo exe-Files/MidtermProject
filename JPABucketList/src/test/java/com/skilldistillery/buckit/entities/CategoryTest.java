@@ -47,5 +47,11 @@ class CategoryTest {
 		assertEquals("Adrenaline Rush", category.getCategoryName());
 	}
 	
+	@Test
+	void test_category_bucketItem_add_remove() {
+		
+	}
+	
+	
 	
 }
