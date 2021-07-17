@@ -57,10 +57,10 @@ class PollTest {
 		assertEquals("admin", poll.getUser().getUsername());
 	}
 	
-//	@Test
-//	void test_poll_to_bucketItem_mappings() {
-//		assertNotNull(poll);
-//		assertEquals("Hunt a Moose", poll.getBucketItem().getName());
-//	}
+	@Test
+	void test_poll_to_bucketItem_mappings() {
+		assertNotNull(poll);
+		assertEquals("Hunt a Moose", poll.getBucketItem().getName());
+	}
 
 }

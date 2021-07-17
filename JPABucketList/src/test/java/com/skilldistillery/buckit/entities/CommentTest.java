@@ -57,11 +57,11 @@ class CommentTest {
 		assertEquals("adminbucketpass", comment.getUser().getPassword());
 	}
 	
-//	@Test
-//	void test_comment_to_BucketItem_mappings() {
-//		assertNotNull(comment);
-//		assertEquals("Fill the freezer", comment.getBucketItem().getDescription());
-//		assertEquals("Hunt a Moose", comment.getBucketItem().getName());
-//	}
+	@Test
+	void test_comment_to_BucketItem_mappings() {
+		assertNotNull(comment);
+		assertEquals("Fill the freezer", comment.getBucketItem().getDescription());
+		assertEquals("Hunt a Moose", comment.getBucketItem().getName());
+	}
 
 }
