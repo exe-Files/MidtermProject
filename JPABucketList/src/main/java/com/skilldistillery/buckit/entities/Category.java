@@ -1,10 +1,13 @@
 package com.skilldistillery.buckit.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 @Entity
 public class Category {
 
@@ -12,9 +15,12 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	
 	@Column(name="category_name")
 	private String categoryName;
 	
+	@ManyToMany(mappedBy = "bucketItem")
+	private List<BucketItem> bucketItems;
 	
 	public Category() { //No-Arg constructor
 		super();
