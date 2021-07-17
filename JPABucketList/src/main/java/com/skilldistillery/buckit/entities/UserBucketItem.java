@@ -30,6 +30,7 @@ public class UserBucketItem {
 	private boolean isCompleted;
 	@OneToMany(mappedBy="userBucketItem")
 	private List<Note> notes;
+	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
