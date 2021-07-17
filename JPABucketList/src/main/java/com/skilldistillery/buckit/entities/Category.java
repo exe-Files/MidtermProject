@@ -1,22 +1,29 @@
 package com.skilldistillery.buckit.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 @Entity
 public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="category_name")
+
+	@Column(name = "category_name")
 	private String categoryName;
-	
-	
-	public Category() { //No-Arg constructor
+
+	@ManyToMany(mappedBy = "categories")
+	private List<BucketItem> bucketItems;
+
+	public Category() { // No-Arg constructor
 		super();
 	}
 
@@ -34,6 +41,31 @@ public class Category {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public List<BucketItem> getBucketItems() {
+		return bucketItems;
+	}
+
+	public void setBucketItems(List<BucketItem> bucketItems) {
+		this.bucketItems = bucketItems;
+	}
+
+	public void addBucketItem(BucketItem bucketItem) {
+		if (bucketItems == null) {
+			bucketItems = new ArrayList<>();
+		}
+		if (!bucketItems.contains(bucketItem)) {
+			bucketItems.add(bucketItem);
+			bucketItem.addCategory(this);
+		}
+	}
+
+	public void removeBucketItem(BucketItem bucketItem) {
+		if (bucketItems != null && bucketItems.contains(bucketItem)) {
+			bucketItems.remove(bucketItem);
+			bucketItem.removeCategory(this);
+		}
 	}
 
 	@Override
@@ -62,7 +94,5 @@ public class Category {
 			return false;
 		return true;
 	}
-	
-	
-	
+
 }
