@@ -9,6 +9,7 @@
 		<class>com.skilldistillery.buckit.entities.Country</class>
 		<class>com.skilldistillery.buckit.entities.Location</class>
 		<class>com.skilldistillery.buckit.entities.User</class>
+		<class>com.skilldistillery.buckit.entities.Resource</class>
 
 
 
