@@ -219,10 +219,31 @@ public class User {
 		}
 	}
 
-	// TO STRING
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("User [id=");
+		builder.append(id);
+		builder.append(", username=");
+		builder.append(username);
+		builder.append(", password=");
+		builder.append(password);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append(", role=");
+		builder.append(role);
+		builder.append(", firstName=");
+		builder.append(firstName);
+		builder.append(", lastName=");
+		builder.append(lastName);
+		builder.append(", dateCreated=");
+		builder.append(dateCreated);
+		builder.append(", isActive=");
+		builder.append(isActive);
+		builder.append(", imageUrl=");
+		builder.append(imageUrl);
+		builder.append("]");
+		return builder.toString();
 	}
 
 	// EQUALS & HASHCODE
