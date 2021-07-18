@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
-<title>Insert title here</title>
+<title>Edit Details</title>
 </head>
 <body>
 	<div>
@@ -49,44 +49,28 @@
 			</div>
 		</nav>
 	</div>
+
 	
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-3 offset-3">
-				<!-- Needs Fixing -->
-				<img src="#"/>
-				<!-- How to incorporate Map? -->
-			</div>
-			<br>
-			<div class="row">
-				<div class="col-12">
-					<ul class="nav nav-tabs">
-						<li class="nav-item active"><a class="nav-link active" aira-current="page" href="#">Description</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Comments</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Ratings</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Notes</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
-					</ul>
-				</div>
-				<div class="tab-content">
-					<!-- Tab Content Goes Here -->
-				</div>
-				<div class="col-4 offset-8">
-					<form action="editUserBucketItem.do" id="editUserItem">
-						<input type="hidden" value="${userBucketItem.id }">
-					</form>
-					<form action="deleteUserBucketItem.do" id="deleteUserItem">
-						<input type="hidden" value="${userBucketItem.id }">
-					</form>
-					<div class="btn-group">
-						<button type="submit" class="btn btn-sm btn-warning" form="editUserItem" value="Edit">Edit</button>
-						<button type="submit" class="btn btn-sm btn-danger" form="deleteUserItem" value="Delete">Delete</button>
-					</div>
-				</div>
+			<div class="col-8 offset-2">
+				Edit Item Details
+				<form class="form-group" id="updateUserItemDetails">
+					<label for="dateCompleted">Date Completed:</label>
+					<input class="form-control" type="date" name="dateCompleted" id="dateCompleted">
+					<label for="targetDate">Target Date:</label>
+					<input class="form-control" type="date" name="targetDate" id="targetDate">
+					<label for="isCompleted">Complete:</label>
+					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="true"> Yes
+					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="false"> No
+				</form>
 			</div>
 		</div>
+		<div class="col-2 offset-5">
+			<button type="submit" class="btn btn-sm btn-primary" form="updateUserItemDetails" value="Save Changes">Save Changes</button>
+		</div>
 	</div>
-
+	
 
 	<!-- Optional JS -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
