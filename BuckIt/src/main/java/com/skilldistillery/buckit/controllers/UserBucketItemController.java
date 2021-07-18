@@ -35,4 +35,11 @@ public class UserBucketItemController {
 		}
 		return "fail";
 	}
+	
+	@RequestMapping(path="viewUserBucketItem.do", method=RequestMethod.GET)
+	public String viewUserBucketItemDetails(int id, Model model) {
+		model.addAttribute("userBucketItem", daoUBI.findByID(id));
+		model.addAttribute("bucketItem", daoUBI.getBucketItemFromUserBucketItem(daoUBI.findByID(id)));
+		return "userBucketListItem";
+	}
 }
