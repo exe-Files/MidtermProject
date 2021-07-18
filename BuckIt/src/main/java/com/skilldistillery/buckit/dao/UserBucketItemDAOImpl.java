@@ -51,5 +51,10 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 		
 		return deleted;
 	}
+
+	@Override
+	public UserBucketItem findByID(int id) {
+		return em.find(UserBucketItem.class, id);
+	}
 	
 }
