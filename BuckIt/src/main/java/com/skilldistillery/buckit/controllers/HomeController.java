@@ -63,11 +63,6 @@ public class HomeController {
 		return "explore";
 	}
 
-	@RequestMapping(path = "register.do")
-	public String registerUser(Model model) {
-		model.addAttribute("DEBUG", userDao.findById(1));
-		return "register";
-	}
 
 	@RequestMapping(path = "logout.do")
 	public String logoutUser(HttpSession session) {
