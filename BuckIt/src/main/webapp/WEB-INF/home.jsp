@@ -16,7 +16,6 @@
 <title>BuckIt, The #1 Bucket-List</title>
 </head>
 <body class="homebg">
-
 	<div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="home.do">BuckIt List</a>
@@ -64,13 +63,11 @@
 				</form> -->
 			</div>
 		</nav>
-
 	</div>
-	<div>
+	<div class="heading">
 		<h1>Make Every Day a BuckIt Day</h1>
 	</div>
 	<div>
-
 		<%-- <p>${DEBUG}</p> --%>
 		<div class="container">
 			<div class="d-flex justify-content-center h-100">
@@ -119,7 +116,6 @@
 		</div>
 
 	</div>
-
 
 
 	<!-- Optional JavaScript -->

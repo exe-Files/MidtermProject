@@ -1,17 +1,39 @@
-.homebg {
-	background-image: url("https://source.unsplash.com/1920x1080/?thrilling");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: auto auto;
-	/* //https://source.unsplash.com/featured/?{KEYWORD},{KEYWORD}  */
-	/* https://source.unsplash.com/1600x900/?nature,water search with size */
+.navbar{
+	background-color: rgb(0, 0, 0);	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
 }
 
-h1 {text-align: center;}
+.homebg {
+	background-image:
+		url("https://source.unsplash.com/1920x1080/?adventure,thrill,life,extreme");
+	/* //https://source.unsplash.com/featured/?{KEYWORD},{KEYWORD}  */
+	/* https://source.unsplash.com/1600x900/?nature,water search with size */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: auto 1080;
+}
+
+.heading {
+	text-align: center;
+	background-color: rgb(0, 0, 0);	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+	color: white;
+	font-weight: bold;
+	border: 3px solid #f1f1f1;
+	position: relative;
+	top: 15%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+}
 
 .container {
 	height: 100%;
 	align-content: center;
+	position: relative;
 }
 
 .card {
