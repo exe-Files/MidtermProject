@@ -58,16 +58,47 @@ public class HomeController {
 		}
 	}
 
+	@RequestMapping(path = "navi.do")
+	public String navigationBar(HttpSession session, Model model, String userSelect) {
+		if (userSelect.equals("home")) {
+			return "home";
+		} else if (userSelect.equalsIgnoreCase("explore")) {
+			return "explore";
+		} else if (userSelect.equalsIgnoreCase("userBucket")) {
+			if (session.getAttribute("loggedInUser") != null) {
+				return "userBucketView";
+			} else {
+				String result = "You must login to access your private bucket list";
+				return "home";
+			}
+		} else if (userSelect.equalsIgnoreCase("settings")) {
+			return "settings";
+		} else {
+			return "home";
+		}
+	}
+
 	@RequestMapping(path = "explore.do")
 	public String explorePage(HttpSession session, Model model) {
 		return "explore";
 	}
 
+	@RequestMapping(path = "userBucket.do")
+	public String userBucketList(HttpSession session) {
+		session.removeAttribute("loggedInUser");
+		return "userBucket";
+	}
 
 	@RequestMapping(path = "logout.do")
 	public String logoutUser(HttpSession session) {
 		session.removeAttribute("loggedInUser");
 		return "home";
+	}
+
+	@RequestMapping(path = "settings.do")
+	public String settings(HttpSession session) {
+		session.removeAttribute("loggedInUser");
+		return "settings";
 	}
 
 }
