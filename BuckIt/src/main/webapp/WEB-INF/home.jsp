@@ -11,13 +11,15 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+<link href="../css/home.css" rel="stylesheet" id="bootstrap-css">
 
-<title>Hello, world!</title>
+<title>BuckIt, The #1 Bucket-List</title>
 </head>
-<body>
+<body class="homebg">
+
 	<div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="home.do">Bucket List</a>
+			<a class="navbar-brand" href="home.do">BuckIt List</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -27,38 +29,97 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Explore</a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> </a>
+					<li class="nav-item active">
+						<a class="nav-link" href="#">
+							Home <span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Explore</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">My BuckIt</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="#">Settings</a>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a> <a
-								class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Something else here</a>
-						</div></li>
-					<li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a>
+						</div>
 					</li>
 				</ul>
-				<form class="form-inline my-2 my-lg-0">
+				<!-- <form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form>
+				</form> -->
 			</div>
 		</nav>
 
 	</div>
 	<div>
-		<h1>Hello, world!</h1>
-		<h1>Everyday should be a BuckIt Day</h1>
-		<p>${DEBUG}</p>
+		<h1>Make Every Day a BuckIt Day</h1>
+	</div>
+	<div>
+
+		<%-- <p>${DEBUG}</p> --%>
+		<div class="container">
+			<div class="d-flex justify-content-center h-100">
+				<div class="card">
+					<div class="card-header">
+						<h3>Sign In</h3>
+					</div>
+					<div class="card-body">
+						<form action="login.do" method="POST">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-user"></i></span>
+								</div>
+								<input name="username" type="text" class="form-control"
+									placeholder="username">
+
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-key"></i></span>
+								</div>
+								<input name="password" type="password" class="form-control"
+									placeholder="password">
+							</div>
+							<div class="row align-items-center remember">
+								<input type="checkbox">
+								Remember Me
+							</div>
+							<div class="form-group">
+								<input type="submit" value="Login"
+									class="btn float-right login_btn">
+							</div>
+						</form>
+					</div>
+					<div class="card-footer">
+						<div class="d-flex justify-content-center links">
+							Don't have an account?
+							<a href="register.do">Sign Up</a>
+						</div>
+						<!-- <div class="d-flex justify-content-center">
+								<a href="#">Forgot your password?</a>
+							</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
 
 	</div>
+
 
 
 	<!-- Optional JavaScript -->
