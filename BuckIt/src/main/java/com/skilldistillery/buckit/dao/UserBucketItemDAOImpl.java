@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.buckit.entities.BucketItem;
 import com.skilldistillery.buckit.entities.UserBucketItem;
 
 @Service
@@ -55,6 +56,11 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 	@Override
 	public UserBucketItem findByID(int id) {
 		return em.find(UserBucketItem.class, id);
+	}
+
+	@Override
+	public BucketItem getBucketItemFromUserBucketItem(UserBucketItem bucketItem) {
+		return bucketItem.getBucketItem();
 	}
 	
 }

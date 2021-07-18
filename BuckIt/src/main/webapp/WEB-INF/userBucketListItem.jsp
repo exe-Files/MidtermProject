@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,42 +50,118 @@
 			</div>
 		</nav>
 	</div>
-	
-	
-	
+
+
+
 	<div class="container">
 		<div class="row">
-			<div class="col-6 offset-3">
+			<div class="col-8 offset-2">
 				<!-- Needs Fixing -->
-				<img src="#"/>
+				<img src="#" />
 				<!-- How to incorporate Map? -->
 			</div>
-			<br>
-			<div class="row">
-				<div class="col-12">
-					<ul class="nav nav-tabs">
-						<li class="nav-item active"><a class="nav-link active" aira-current="page" href="#">Description</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Comments</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Ratings</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Notes</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Resources</a></li>
-					</ul>
-				</div>
-				<div class="tab-content">
-					<!-- Tab Content Goes Here -->
-				</div>
-				<div class="col-4 offset-8">
-					<form action="editUserBucketItem.do" id="editUserItem">
-						<input type="hidden" value="${userBucketItem.id }">
-					</form>
-					<form action="deleteUserBucketItem.do" id="deleteUserItem">
-						<input type="hidden" value="${userBucketItem.id }">
-					</form>
-					<div class="btn-group">
-						<button type="submit" class="btn btn-sm btn-warning" form="editUserItem" value="Edit">Edit</button>
-						<button type="submit" class="btn btn-sm btn-danger" form="deleteUserItem" value="Delete">Delete</button>
+		</div>
+	</div>
+	<br>
+	<h4>${bucketItem.name }</h4>
+	<br>
+	<div class="container">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			<li class="nav-item active"><a class="nav-link active"
+				href="#desc" data-toggle="tab" id="description-tab" role="tab"
+				aria-controls="description" aria-selected="true">Description</a></li>
+			<li class="nav-item"><a class="nav-link" href="#comment"
+				data-toggle="tab" id="comment-tab" role="tab"
+				aria-controls="comment" aria-selected="false">Comments</a></li>
+			<li class="nav-item"><a class="nav-link" href="#rating"
+				data-toggle="tab" id="rating-tab" role="tab" aria-controls="rating"
+				aria-selected="false">Ratings</a></li>
+			<li class="nav-item"><a class="nav-link" href="#notes"
+				data-toggle="tab" id="note-tab" role="tab" aria-controls="note"
+				aria-selected="false">Notes</a></li>
+			<li class="nav-item"><a class="nav-link" href="#resources"
+				data-toggle="tab" id="resource-tab" role="tab"
+				aria-controls="resource" aria-selected="false">Resources</a></li>
+		</ul>
+		<!-- Tab Content Goes Here -->
+		<div class="tab-content" id="myTabContent">
+			<div class="tab-pane fade show active" id="desc" role="tabpanel"
+				aria-labelledby="desc-tab">
+				<p>${bucketItem.description }</p>
+			</div>
+			<div class="tab-pane fade" id="comment" role="tabpanel"
+				aria-labelledby="comment-tab">
+				<c:forEach var="comment" items="${bucketItem.comments }">
+					<div class="media">
+						<div class="media-body">
+							${comment.commentText }
+						</div>
 					</div>
-				</div>
+				</c:forEach>
+			</div>
+			<div class="tab-pane fade" id="rating" role="tabpanel"
+				aria-labelledby="rating-tab">
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>Stars</th>
+							<th>Price</th>
+							<th>Best Time to Complete</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="rating" items="${bucketItem.polls }">
+							<tr>
+								<td>${rating.ratingStars }</td>
+								<td>${rating.costDollarSigns }</td>
+								<td>${rating.bestTimeToDo }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane fade" id="notes" role="tabpanel"
+				aria-labelledby="notes-tab">
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>Title</th>
+							<th>Text</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="note" items="${userBucketItem.notes }">
+							<tr>
+								<th scope="row">${note.noteTitle }</th>
+								<td>${note.noteText }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane fade" id="resources" role="tabpanel"
+				aria-labelledby="resource-tab">
+				<ul>
+					<c:forEach var="resource" items="${userBucketItem.resources }">
+						<li>${resource }</li>
+					</c:forEach>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="col-4 offset-8">
+			<form action="editUserBucketItem.do" id="editUserItem">
+				<input type="hidden" value="${userBucketItem.id }">
+			</form>
+			<form action="deleteUserBucketItem.do" id="deleteUserItem">
+				<input type="hidden" value="${userBucketItem.id }">
+			</form>
+			<div class="btn-group">
+				<button type="submit" class="btn btn-sm btn-warning"
+					form="editUserItem" value="Edit">Edit</button>
+				<button type="submit" class="btn btn-sm btn-danger"
+					form="deleteUserItem" value="Delete">Delete</button>
 			</div>
 		</div>
 	</div>
