@@ -54,7 +54,6 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-8 offset-2">
-				Edit Item Details
 				<form class="form-group" id="updateUserItemDetails">
 					<label for="dateCompleted">Date Completed:</label>
 					<input class="form-control" type="date" name="dateCompleted" id="dateCompleted">
