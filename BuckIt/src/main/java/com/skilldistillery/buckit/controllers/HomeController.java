@@ -29,8 +29,7 @@ public class HomeController {
 			String result = "User is already logged in";
 			model.addAttribute("loginResult", result);
 			return "userBucketView";
-		} 
-		else {
+		} else {
 			User user = new User();
 			session.setAttribute("loggedInUser", user);
 			return "login";
@@ -43,16 +42,14 @@ public class HomeController {
 			String result = "User is already logged in";
 			model.addAttribute("loginResult", result);
 			return "userBucketView";
-		} 
-		else {
+		} else {
 			User userToLogin = null;
 			userToLogin = userDao.findUserByUsernameAndPassword(username, password);
 			if (userToLogin == null) {
 				String result = "No user found with the supplied username and password";
 				model.addAttribute("loginResult", result);
 				return "login";
-			}
-			else {
+			} else {
 				session.setAttribute("loggedInUser", userToLogin);
 				String result = "Successfully Logged In";
 				model.addAttribute("loginResult", result);
@@ -60,7 +57,13 @@ public class HomeController {
 			}
 		}
 	}
-	
+
+	@RequestMapping(path = "explore.do")
+	public String explorePage(HttpSession session, Model model) {
+		return "explore";
+	}
+
+
 	@RequestMapping(path = "logout.do")
 	public String logoutUser(HttpSession session) {
 		session.removeAttribute("loggedInUser");
