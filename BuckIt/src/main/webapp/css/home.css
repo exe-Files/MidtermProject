@@ -32,15 +32,15 @@
 	text-align: center;
 }
 
-.container {
+.sign-in-card {
 	height: 100%;
-	position: absolute;
+	position: relative;
+	transform: translate(0px, 50%);
 }
 
 .card {
 	height: 370px;
-	margin-top: auto;
-	margin-bottom: auto;
+	margin: auto;
 	width: 400px;
 	background-color: rgba(0, 0, 0, 0.5);
 }
@@ -49,15 +49,19 @@
 	color: white;
 }
 
-
 #explore-item-card {
-	margin-top: 10px;
-	max-width: 18rem;
+	height: auto;
+	margin-top: 2rem;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 20rem;
 	background-color: rgba(255,255,255, 0.9);
 }
-#explore-item-card.card > img{
+
+#explore-item-card > img{
 	object-fit: contain;
-	max-height: 50%;
+	margin: auto;
+	max-height: 10rem;
 }
 
 .btn-round {

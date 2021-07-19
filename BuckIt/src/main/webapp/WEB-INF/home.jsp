@@ -69,8 +69,8 @@
 	</div>
 	<div>
 		<%-- <p>${DEBUG}</p> --%>
-		<div class="container">
-			<div class="d-flex justify-content-center h-100">
+		<div class="container sign-in-card">
+		<div class="d-flex justify-content-center h-100">
 				<div class="card">
 					<div class="card-header">
 						<h3>Sign In</h3>
@@ -116,7 +116,7 @@
 			</div>
 		</div>
 
-	</div>
+ 	</div>
 
 
 	<!-- Optional JavaScript -->

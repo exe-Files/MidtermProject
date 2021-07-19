@@ -67,8 +67,11 @@
 					<div class="card-body">
 						<h4 class="card-title">${item.name }</h4>
 						<c:if test='${item.location != null}'>
-							<h5>${item.location.cityArea }</h5>
+							<h6 class="card-subtitle">${item.location.cityArea }
+								<c:if test='${item.location.countryCode != null}'>, ${item.location.countryCode.countryName }</c:if>
+							</h6>
 						</c:if>
+						<hr>
 						<p class="card-text">${item.description }</p>
 					</div>
 					<div class="card-footer">
