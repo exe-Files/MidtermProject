@@ -115,7 +115,7 @@
 									<tr>
 										<th scope="row">${resource.url }</th>
 										<td>
-											<form action="deleteResource.do">
+											<form action="deleteResource.do" method="post">
 												<input type="hidden" name="bucketItemId" value="${userBucketItem.id }"/>
 												<input type="hidden" name="resourceId" value="${resource.id }"/>
 												<input type="submit" value="Delete"/>
