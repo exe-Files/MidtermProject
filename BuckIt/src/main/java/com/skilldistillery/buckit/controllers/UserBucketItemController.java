@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.buckit.dao.UserBucketItemDAO;
 import com.skilldistillery.buckit.entities.Note;
@@ -19,7 +18,7 @@ public class UserBucketItemController {
 	private UserBucketItemDAO daoUBI;
 	
 	@RequestMapping(path="editUserBucketItem.do", method=RequestMethod.GET)
-	public String editUserBucketItemForm(int id, Model model) {
+	public String editUserBucketItemForm(Integer id, Model model) {
 		model.addAttribute("userBucketItem", daoUBI.findByID(id));
 		return "editUserBucketItemForm";
 	}
@@ -48,31 +47,31 @@ public class UserBucketItemController {
 	}
 	
 	@RequestMapping(path="deleteNote.do", method=RequestMethod.POST)
-	public String deleteNote(int id) {
-		Note note = daoUBI.findNoteById(id);
-		note.getUserBucketItem().removeNote(note);
+	public String deleteNote(int bucketItemId, int noteId, Model model) {
+		UserBucketItem userBucketItem = daoUBI.removeNoteFromUserBucketItem(bucketItemId, noteId);
+		model.addAttribute("userBucketItem", userBucketItem);
 		return "editUserBucketItemForm";
 	}
 		
 	@RequestMapping(path="deleteResource.do", method=RequestMethod.POST)
-	public String deleteResource(int id) {
-		Resource resource = daoUBI.findResourceById(id);
-		resource.getUserBucketItem().removeResource(resource);
+	public String deleteResource(int bucketItemId, int noteId, Model model) {
+		UserBucketItem userBucketItem = daoUBI.removeResourceFromUserBucketItem(bucketItemId, noteId);
+		model.addAttribute("userBucketItem", userBucketItem);
 		return "editUserBucketItemForm";
 	}
 	
-	@RequestMapping(path="addNote.do", method=RequestMethod.GET)
-	public String addNote(int id, Note note) {
-		daoUBI.findByID(id).addNote(note);
+	@RequestMapping(path="addNote.do", method=RequestMethod.POST)
+	public String addNote(Integer bucketItemId, Note note, Model model) {
+		UserBucketItem userBucketItem = daoUBI.addNoteToUserBucketItem(bucketItemId, note);
+		model.addAttribute("userBucketItem", userBucketItem);
 		return "userBucketListItem";
 	}
 	
-	@RequestMapping(path="addResource.do", method=RequestMethod.GET)
-	public String addResource(Integer id, Resource resource, Model model) {
-		System.out.println(resource);
-		UserBucketItem userBucketItem = daoUBI.findByID(id);
-		userBucketItem.addResource(resource);
-		model.addAttribute("userBucketItem",userBucketItem);
+	
+	@RequestMapping(path="addResource.do", method=RequestMethod.POST)
+	public String addResource(Integer bucketItemId, Resource resource, Model model) {
+		UserBucketItem userBucketItem = daoUBI.addResourceToUserBucketItem(bucketItemId, resource);
+		model.addAttribute("userBucketItem", userBucketItem);
 		return "userBucketListItem";
 	}
 	

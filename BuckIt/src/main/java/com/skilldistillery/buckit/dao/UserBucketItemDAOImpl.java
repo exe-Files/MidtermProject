@@ -68,6 +68,7 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 		return bucketItem.getBucketItem();
 	}
 	
+	@Override
 	public Note findNoteById(int id) {
 		return em.find(Note.class, id);
 	}
@@ -93,4 +94,31 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 		return userBucketItem;
 	}
 
+	@Override
+	public UserBucketItem addNoteToUserBucketItem(int id, Note note) {
+		note.setUserBucketItem(em.find(UserBucketItem.class, id));
+		em.persist(note);
+		return em.find(UserBucketItem.class, id);
+	}
+
+	@Override
+	public UserBucketItem addResourceToUserBucketItem(int id, Resource resource) {
+		resource.setUserBucketItem(em.find(UserBucketItem.class, id));
+		em.persist(resource);
+		return em.find(UserBucketItem.class, id);
+	}
+
+	@Override
+	public UserBucketItem removeNoteFromUserBucketItem(int bucketId, int noteId) {
+		em.remove(em.find(Note.class, noteId));
+		return em.find(UserBucketItem.class, bucketId);
+	}
+
+	@Override
+	public UserBucketItem removeResourceFromUserBucketItem(int bucketId, int resourceId) {
+		em.remove(em.find(Resource.class, resourceId));
+		return em.find(UserBucketItem.class, bucketId);
+	}
+	
+	
 }
