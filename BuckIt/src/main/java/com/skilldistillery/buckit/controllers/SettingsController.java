@@ -27,6 +27,7 @@ public class SettingsController {
 		model.addAttribute("user", user);
 		return "settings";
 	}
+	
 	@RequestMapping(path = "updatedSettings.do", method = RequestMethod.POST)
 	public String postUserSettings(Model model, HttpSession session, User user) {
 		User userUpdate = null;
@@ -36,7 +37,6 @@ public class SettingsController {
 		// TODO update current HttpSession to reflect changes
 		session.setAttribute("loggedInUser", userUpdate);
 		model.addAttribute("user", userUpdate);
-		
 		return "settings";
 	}
 	
