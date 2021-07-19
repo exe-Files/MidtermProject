@@ -67,14 +67,15 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-8 offset-2">
-				<form class="form-group" id="updateUserItemDetails">
+				<form action="updateUserBucketItem.do" class="form-group" id="updateUserItemDetails" method="post">
 					<label for="dateCompleted">Date Completed:</label>
-					<input class="form-control" type="date" name="dateCompleted" id="dateCompleted">
+					<input class="form-control" type="date" name="dateCompleted" id="dateCompleted" value="">
 					<label for="targetDate">Target Date:</label>
 					<input class="form-control" type="date" name="targetDate" id="targetDate">
 					<label for="isCompleted">Complete:</label>
 					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="true"> Yes
 					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="false"> No
+					<input type="submit" class="btn btn-success" value="Save Changes"/>
 				</form>
 				<div class="col-10 offset-1">
 					<div class="col-6">
@@ -90,8 +91,9 @@
 									<tr>
 										<th scope="row">${note.noteTitle }</th>
 										<td>
-											<form action="deleteNote.do">
-												<input type="hidden" value="${note.id }"/>
+											<form action="deleteNote.do" method="post">
+												<input type="hidden" name="bucketItemId" value="${userBucketItem.id }"/>
+												<input type="hidden" name="noteId" value="${note.id }"/>
 												<input type="submit" value="Delete"/>
 											</form>
 										</td>
@@ -114,7 +116,8 @@
 										<th scope="row">${resource.url }</th>
 										<td>
 											<form action="deleteResource.do">
-												<input type="hidden" value="${resource.id }"/>
+												<input type="hidden" name="bucketItemId" value="${userBucketItem.id }"/>
+												<input type="hidden" name="resourceId" value="${resource.id }"/>
 												<input type="submit" value="Delete"/>
 											</form>
 										</td>
@@ -126,9 +129,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-2 offset-5">
+		<!-- <div class="col-2 offset-5">
 			<button type="submit" class="btn btn-sm btn-primary" form="updateUserItemDetails" value="Save Changes">Save Changes</button>
-		</div>
+		</div> -->
 	</div>
 	
 

@@ -27,4 +27,13 @@ public interface UserBucketItemDAO {
 	List<UserBucketItem> getAllUserBucketItemsForLoggedInUser(User user);
 
 	public UserBucketItem addPublicBucketItemToUserBucket(UserBucketItem userBucketItem);
+	
+	UserBucketItem addNoteToUserBucketItem(int id, Note note);
+	
+	UserBucketItem addResourceToUserBucketItem(int id, Resource resource);
+
+	UserBucketItem removeNoteFromUserBucketItem(int bucketId, int noteId);
+	
+	UserBucketItem removeResourceFromUserBucketItem(int bucketId, int resourceId);
+	
 }

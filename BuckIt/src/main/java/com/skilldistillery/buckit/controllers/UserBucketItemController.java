@@ -18,7 +18,7 @@ public class UserBucketItemController {
 	private UserBucketItemDAO daoUBI;
 	
 	@RequestMapping(path="editUserBucketItem.do", method=RequestMethod.GET)
-	public String editUserBucketItemForm(int id, Model model) {
+	public String editUserBucketItemForm(Integer id, Model model) {
 		model.addAttribute("userBucketItem", daoUBI.findByID(id));
 		return "editUserBucketItemForm";
 	}
@@ -47,28 +47,32 @@ public class UserBucketItemController {
 	}
 	
 	@RequestMapping(path="deleteNote.do", method=RequestMethod.POST)
-	public String deleteNote(int id) {
-		Note note = daoUBI.findNoteById(id);
-		note.getUserBucketItem().removeNote(note);
+	public String deleteNote(int bucketItemId, int noteId, Model model) {
+		UserBucketItem userBucketItem = daoUBI.removeNoteFromUserBucketItem(bucketItemId, noteId);
+		model.addAttribute("userBucketItem", userBucketItem);
 		return "editUserBucketItemForm";
 	}
 		
 	@RequestMapping(path="deleteResource.do", method=RequestMethod.POST)
-	public String deleteResource(int id) {
-		Resource resource = daoUBI.findResourceById(id);
-		resource.getUserBucketItem().removeResource(resource);
+	public String deleteResource(int bucketItemId, int noteId, Model model) {
+		UserBucketItem userBucketItem = daoUBI.removeResourceFromUserBucketItem(bucketItemId, noteId);
+		model.addAttribute("userBucketItem", userBucketItem);
 		return "editUserBucketItemForm";
 	}
 	
 	@RequestMapping(path="addNote.do", method=RequestMethod.POST)
-	public String addNote(int id, Note note) {
-		daoUBI.findByID(id).addNote(note);
-		return "editUserBucketItemForm";
+	public String addNote(Integer bucketItemId, Note note, Model model) {
+		UserBucketItem userBucketItem = daoUBI.addNoteToUserBucketItem(bucketItemId, note);
+		model.addAttribute("userBucketItem", userBucketItem);
+		return "userBucketListItem";
 	}
 	
+	
 	@RequestMapping(path="addResource.do", method=RequestMethod.POST)
-	public String addResource(int id, Resource resource) {
-		daoUBI.findByID(id).addResource(resource);
-		return "editUserBucketItemForm";
+	public String addResource(Integer bucketItemId, Resource resource, Model model) {
+		UserBucketItem userBucketItem = daoUBI.addResourceToUserBucketItem(bucketItemId, resource);
+		model.addAttribute("userBucketItem", userBucketItem);
+		return "userBucketListItem";
 	}
+	
 }
