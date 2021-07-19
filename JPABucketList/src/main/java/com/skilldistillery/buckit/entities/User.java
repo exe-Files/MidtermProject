@@ -1,4 +1,4 @@
-package com.skilldistillery.buckit.entities;
+                                                    package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

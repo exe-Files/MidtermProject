@@ -72,8 +72,7 @@ public class HomeController {
 		if (userSelect.equals("home")) {
 			if (session.getAttribute("loggedInUser") != null) {
 				return "redirect:getUserBucket.do";
-			}
-			else {
+			} else {
 				return "home";
 			}
 		} else if (userSelect.equalsIgnoreCase("explore")) {
@@ -87,10 +86,13 @@ public class HomeController {
 				return "home";
 			}
 		} else if (userSelect.equalsIgnoreCase("settings")) {
-			return "redirect:settings.do";
+			if (session.getAttribute("loggedInUser") != null) {
+				return "redirect:settings.do";
+			} else {
+				return "home";
+			}
 		} else {
 			return "home";
 		}
 	}
-
 }
