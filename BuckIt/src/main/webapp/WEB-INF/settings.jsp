@@ -69,19 +69,30 @@
 			<div>
 				<h3>User Settings</h3>
 			</div>
+			<%-- <c:if test='${updateResult == "false"}'>
+				<div class="alert alert-danger alert-dismissible fade show"
+					role="alert">
+					No changes made to user settings. Please try again.
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</c:if> --%>
+
 			<form action="updatedSettings.do?id=${user.id}" method="POST">
 				<div class="row">
 					<div class="mb-auto">
 						<div>
 							<img src="${user.imageUrl}" alt="Profile Picture" class="avatar">
 							<input name="imageUrl" class="form-control input-sm"
-								placeholder="Profile Picture URL"  value="${user.imageUrl}">
+								placeholder="Profile Picture URL" value="${user.imageUrl}">
 						</div>
 						<br>
 						<div>
 							<label for="username">User Name: </label>
 							<input name="username" class="form-control"
-								placeholder="User Name"  value="${user.username}" required>
+								placeholder="User Name" value="${user.username}" required>
 						</div>
 						<div>
 							<label for="firstName">First Name: </label>
@@ -101,7 +112,8 @@
 						<div>
 							<label for="password">Password: </label>
 							<input name="password" type="password"
-								class="form-control input-sm" placeholder="Password" value="${user.password}" required>
+								class="form-control input-sm" placeholder="Password"
+								value="${user.password}" required>
 						</div>
 						<div class="text-center">
 							<button class="btn btn-outline-dark w-75 mt-3" type="submit"
