@@ -28,7 +28,7 @@ public class HomeController {
 		if (session.getAttribute("loggedInUser") != null) {
 			String result = "User is already logged in";
 			model.addAttribute("loginResult", result);
-			return "userBucketView";
+			return "redirect:getUserBucket.do";
 		} else {
 			User user = new User();
 			session.setAttribute("loggedInUser", user);
@@ -40,20 +40,23 @@ public class HomeController {
 	public String loginUser(String username, String password, HttpSession session, Model model) {
 		if (session.getAttribute("loggedInUser") != null) {
 			String result = "User is already logged in";
+			System.out.println(result);
 			model.addAttribute("loginResult", result);
-			return "userBucketView";
+			return "redirect:getUserBucket.do";
 		} else {
 			User userToLogin = null;
 			userToLogin = userDao.findUserByUsernameAndPassword(username, password);
 			if (userToLogin == null) {
 				String result = "No user found with the supplied username and password";
+				System.out.println(result);
 				model.addAttribute("loginResult", result);
-				return "login";
+				return "home";
 			} else {
 				session.setAttribute("loggedInUser", userToLogin);
 				String result = "Successfully Logged In";
+				System.out.println(result);
 				model.addAttribute("loginResult", result);
-				return "userBucketView";
+				return "redirect:getUserBucket.do";
 			}
 		}
 	}
@@ -62,16 +65,16 @@ public class HomeController {
 	public String navigationBar(HttpSession session, Model model, String userSelect) {
 		if (userSelect.equals("home")) {
 			if (session.getAttribute("loggedInUser") != null) {
-				return "userBucket";
+				return "redirect:getUserBucket.do";
 			}
 			else {
 				return "home";
 			}
 		} else if (userSelect.equalsIgnoreCase("explore")) {
-			return "explore";
+			return "redirect:exploreAll.do";
 		} else if (userSelect.equalsIgnoreCase("userBucket")) {
 			if (session.getAttribute("loggedInUser") != null) {
-				return "userBucketView";
+				return "redirect:getUserBucket.do";
 			} else {
 				String result = "You must login to access your private bucket list";
 				return "home";

@@ -32,22 +32,46 @@
 	text-align: center;
 }
 
-.container {
+.sign-in-card {
 	height: 100%;
-	position: absolute;
+	position: relative;
+	transform: translate(0px, 50%);
 }
 
 .card {
 	height: 370px;
-	margin-top: auto;
-	margin-bottom: auto;
+	margin: auto;
 	width: 400px;
-	background-color: rgba(0, 0, 0, 0.5) !important;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .card-header h3 {
 	color: white;
 }
+
+#explore-item-card {
+	height: auto;
+	margin-top: 2rem;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 20rem;
+	background-color: rgba(255,255,255, 0.9);
+}
+
+#explore-item-card > img{
+	object-fit: contain;
+	margin: auto;
+	max-height: 10rem;
+}
+
+.btn-round {
+	border-radius: 50%;
+}
+
+#detailedViewBtn {
+	float: right;
+}
+
 
 input:focus {
 	outline: 0 0 0 0 !important;
