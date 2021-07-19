@@ -3,6 +3,7 @@ package com.skilldistillery.buckit.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -76,8 +77,14 @@ public class UserDAOImpl implements UserDAO {
 	public User findUserByUsernameAndPassword(String username, String password) {
 	User user = null;
 	String query = "SELECT u FROM User u WHERE username = :username AND password = :password";
-	user = em.createQuery(query, User.class).setParameter("username", username)
+	try {
+		user = em.createQuery(query, User.class).setParameter("username", username)
 				.setParameter("password", password).getSingleResult();
+	}
+	catch (NoResultException e) {
+		e.printStackTrace();
+		return user;
+	}
 	return user;
 	}
 
