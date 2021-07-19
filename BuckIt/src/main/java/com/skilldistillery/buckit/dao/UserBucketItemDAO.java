@@ -25,4 +25,6 @@ public interface UserBucketItemDAO {
 	public Resource findResourceById(int id);
 
 	List<UserBucketItem> getAllUserBucketItemsForLoggedInUser(User user);
+
+	public UserBucketItem addPublicBucketItemToUserBucket(UserBucketItem userBucketItem);
 }
