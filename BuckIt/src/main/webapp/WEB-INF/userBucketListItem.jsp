@@ -175,6 +175,29 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="container">
+		<div class="col-8 offset-2">
+			<form action="addNote.do" id="addNote">
+				<div class="form-group">
+					<input type="hidden" value="${userBucketItem.id }"/>
+					<label for="noteTitle">Title:</label>
+					<input type="text" class="form-control" id="noteTitle" name="noteTitle" value="${note.noteTitle }"/>
+					<label for="noteText">Note:</label>
+					<textarea class="form-control" form="addNote" rows="4" cols="50"></textarea>
+					<input type="submit" class="btn btn-success form-control" value="Add Note"/>
+				</div>
+			</form>
+			<form action="addResource.do" id="addResource">
+				<div class="form-group">
+					<input type="hidden" value="${userBucketItem.id }"/>
+					<label for="resourceURL">URL:</label>
+					<input type="text" class="form-control" id="resourceURL" name="resourceURL" value="${resource.url }"/>
+					<input type="submit" class="btn btn-success form-control" value="Add Resource"/>
+				</div>
+			</form>
+		</div>
+	</div>
 
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

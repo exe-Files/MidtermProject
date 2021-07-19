@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.buckit.dao.UserBucketItemDAO;
+import com.skilldistillery.buckit.entities.Note;
+import com.skilldistillery.buckit.entities.Resource;
 import com.skilldistillery.buckit.entities.UserBucketItem;
 
 @Controller
@@ -41,5 +43,31 @@ public class UserBucketItemController {
 		model.addAttribute("userBucketItem", daoUBI.findByID(id));
 		model.addAttribute("bucketItem", daoUBI.getBucketItemFromUserBucketItem(daoUBI.findByID(id)));
 		return "userBucketListItem";
+	}
+	
+	@RequestMapping(path="deleteNote.do", method=RequestMethod.POST)
+	public String deleteNote(int id) {
+		Note note = daoUBI.findNoteById(id);
+		note.getUserBucketItem().removeNote(note);
+		return "editUserBucketItemForm";
+	}
+		
+	@RequestMapping(path="deleteResource.do", method=RequestMethod.POST)
+	public String deleteResource(int id) {
+		Resource resource = daoUBI.findResourceById(id);
+		resource.getUserBucketItem().removeResource(resource);
+		return "editUserBucketItemForm";
+	}
+	
+	@RequestMapping(path="addNote.do", method=RequestMethod.POST)
+	public String addNote(int id, Note note) {
+		daoUBI.findByID(id).addNote(note);
+		return "editUserBucketItemForm";
+	}
+	
+	@RequestMapping(path="addResource.do", method=RequestMethod.POST)
+	public String addResource(int id, Resource resource) {
+		daoUBI.findByID(id).addResource(resource);
+		return "editUserBucketItemForm";
 	}
 }

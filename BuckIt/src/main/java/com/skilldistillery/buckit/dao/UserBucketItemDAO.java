@@ -1,6 +1,8 @@
 package com.skilldistillery.buckit.dao;
 
 import com.skilldistillery.buckit.entities.BucketItem;
+import com.skilldistillery.buckit.entities.Note;
+import com.skilldistillery.buckit.entities.Resource;
 import com.skilldistillery.buckit.entities.UserBucketItem;
 
 public interface UserBucketItemDAO {
@@ -14,4 +16,8 @@ public interface UserBucketItemDAO {
 	boolean deleteBucketItem(int id);
 	
 	BucketItem getBucketItemFromUserBucketItem(UserBucketItem bucketItem);
+	
+	public Note findNoteById(int id);
+	
+	public Resource findResourceById(int id);
 }
