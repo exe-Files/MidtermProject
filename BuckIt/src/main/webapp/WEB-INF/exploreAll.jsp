@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,33 +29,27 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="#">
+					<li class="nav-item active"><a class="nav-link" href="#">
 							Home <span class="sr-only">(current)</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="exploreAll.do">Explore</a>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Explore</a>
 					</li>
 
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#">My BuckIt</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Settings</a>
+					<li class="nav-item"><a class="nav-link disabled" href="#">My
+							BuckIt</a></li>
+					<li class="nav-item"><a class="nav-link disabled" href="#">Settings</a>
 					</li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> </a>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Action</a> <a
+								class="dropdown-item" href="#">Another action</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
-					</li>
+						</div></li>
 				</ul>
 				<!-- <form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
@@ -64,62 +59,55 @@
 			</div>
 		</nav>
 	</div>
-	<div class="heading">
-		<h1>Make Every Day a BuckIt Day</h1>
-	</div>
-	<div>
-		<%-- <p>${DEBUG}</p> --%>
-		<div class="container">
-			<div class="d-flex justify-content-center h-100">
-				<div class="card">
-					<div class="card-header">
-						<h3>Sign In</h3>
-					</div>
-					<div class="card-body">
-						<form action="login.do" method="POST">
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-user"></i></span>
-								</div>
-								<input name="username" type="text" class="form-control"
-									placeholder="username">
 
-							</div>
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-key"></i></span>
-								</div>
-								<input name="password" type="password" class="form-control"
-									placeholder="password">
-							</div>
-							<div class="row align-items-center remember">
-								<input type="checkbox">
-								Remember Me
-							</div>
-							<div class="form-group">
-								<input type="submit" value="Login"
-									class="btn float-right login_btn">
-							</div>
-						</form>
-					</div>
-					<div class="card-footer">
-						<div class="d-flex justify-content-center links">
-							Don't have an account?
-							<a href="register.do">Sign Up</a>
+	<div class="container">
+		<div class="card-deck">
+			<c:forEach var="item" items="${DEBUG }">
+				<div class="card" id="explore-item-card">
+					<img src='${item.imageUrl}' class="card-img-top" alt="...">
+					<div class="card-body">
+						<h4 class="card-title">${item.name }</h4>
+						<c:if test='${item.location != null}'>
+							<h5>${item.location.cityArea }</h5>
+						</c:if>
+						<p class="card-text">${item.description }</p>
 						</div>
-						<!-- <div class="d-flex justify-content-center">
-								<a href="#">Forgot your password?</a>
-							</div> -->
+						<div class="card-footer">
+						<form action="addUserBucketItem.do" method=POST
+							id="addItemToUserBucket" hidden='true'>
+							<input type="text" class="form-control" id="bucketItemIdToAdd"
+								name="bucketItemIdToAdd" readonly hidden='true'
+								value='${item.id}'>
+						</form>
+						<button type='submit' form='addItemToUserBucket'
+							class="btn btn-sm btn-outline-success btn-round"
+							data-toggle="tooltip" title="Add to Your Bucket List"
+							data-delay='{"show":"0", "hide":"0"}'>&#10003</button>
+						<form action="viewDetailed.do" method=GET id="viewItemDetailed"
+							hidden='true'>
+							<input type="text" class="form-control" id="bucketItemIdToView"
+								name="bucketItemIdToView" readonly hidden='true'
+								value='${item.id}'>
+						</form>
+						<button type='submit' form='viewItemDetailed' id="detailedViewBtn"
+							class="btn btn-sm btn-primary" data-toggle="tooltip"
+							title="View Details" data-delay='{"show":"0", "hide":"0"}'>
+							Detailed View</button>
 					</div>
 				</div>
-			</div>
+			</c:forEach>
 		</div>
-
 	</div>
 
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script>
+		$(function() {
+			$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>
+
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
