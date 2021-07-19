@@ -15,4 +15,6 @@ public interface BucketItemDAO {
 	List<BucketItem> getAllPublicBucketItems();
 
 	BucketItem findBucketItemById(int id);
+
+	List<BucketItem> getAllBucketItems();
 }

@@ -53,7 +53,7 @@ class UserTest {
 		assertEquals("admin", user.getRole());
 		assertEquals("Admin", user.getFirstName());
 		assertEquals("Admin", user.getLastName());
-		assertEquals(true, user.isActive());
+		assertEquals(true, user.getIsActive());
 		
 	}
 	
