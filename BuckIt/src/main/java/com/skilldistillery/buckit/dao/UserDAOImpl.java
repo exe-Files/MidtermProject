@@ -33,8 +33,8 @@ public class UserDAOImpl implements UserDAO {
 	public User updateUser(User user) {
 		User dbUser = em.find(User.class, user.getId());
 
-		dbUser.setActive(user.isActive());
-		dbUser.setDateCreated(user.getDateCreated());
+		dbUser.setActive(user.getIsActive());
+//		dbUser.setDateCreated(user.getDateCreated());
 		dbUser.setUsername(user.getUsername());
 		dbUser.setPassword(user.getPassword());
 		dbUser.setEmail(user.getEmail());
@@ -42,11 +42,8 @@ public class UserDAOImpl implements UserDAO {
 		dbUser.setFirstName(user.getFirstName());
 		dbUser.setLastName(user.getLastName());
 		dbUser.setImageUrl(user.getImageUrl());
-		dbUser.setUserBucketItems(user.getUserBucketItems());
-		dbUser.setUserComments(user.getUserComments());
-		dbUser.setUserPolls(user.getUserPolls());
 
-		return user;
+		return dbUser;
 	}
 
 	@Override
@@ -86,6 +83,14 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 	}
 	return user;
+	}
+	
+	@Override
+	public List<User> getAllUsers() {
+		List<User> userList = null;
+		String jpqlQuery = "SELECT u FROM User u";
+		userList = em.createQuery(jpqlQuery, User.class).getResultList();
+		return userList;
 	}
 
 }

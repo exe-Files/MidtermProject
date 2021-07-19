@@ -1,0 +1,21 @@
+.navbar{
+	background-color: rgb(0, 0, 0);	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+	position: relative;
+}
+
+.adminTabs {
+	margin: auto;
+}
+input:focus {
+	outline: 0 0 0 0 !important;
+	box-shadow: 0 0 0 0 !important;
+}
+
+.links {
+	color: white;
+}
+
+.links a {
+	margin-left: 4px;
+}
