@@ -99,7 +99,7 @@
 						<div>
 							<label for="password">Password: </label>
 							<input name="password" type="password"
-								class="form-control input-sm" placeholder="Password">
+								class="form-control input-sm" placeholder="Password" value="${user.email}">
 						</div>
 						<div class="text-center">
 							<button class="btn btn-outline-dark w-75 mt-3" type="submit"
