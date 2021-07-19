@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,6 +76,54 @@
 					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="true"> Yes
 					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="false"> No
 				</form>
+				<div class="col-10 offset-1">
+					<div class="col-6">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Note Title</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="note" items="${userBucketItem.notes }">
+									<tr>
+										<th scope="row">${note.noteTitle }</th>
+										<td>
+											<form action="deleteNote.do">
+												<input type="hidden" value="${note.id }"/>
+												<input type="submit" value="Delete"/>
+											</form>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-6">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>URL</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var="resource" items="${userBucketItem.resources }">
+									<tr>
+										<th scope="row">${resource.url }</th>
+										<td>
+											<form action="deleteResource.do">
+												<input type="hidden" value="${resource.id }"/>
+												<input type="submit" value="Delete"/>
+											</form>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="col-2 offset-5">
