@@ -61,6 +61,12 @@ public class HomeController {
 		}
 	}
 
+	@RequestMapping(path = "logout.do")
+	public String logoutUser(HttpSession session) {
+		session.removeAttribute("loggedInUser");
+		return "home";
+	}
+
 	@RequestMapping(path = "navi.do")
 	public String navigationBar(HttpSession session, Model model, String userSelect) {
 		if (userSelect.equals("home")) {
@@ -76,7 +82,8 @@ public class HomeController {
 			if (session.getAttribute("loggedInUser") != null) {
 				return "redirect:getUserBucket.do";
 			} else {
-				String result = "You must login to access your private bucket list";
+				String loginResult = "You must login to access your private bucket list";
+				model.addAttribute("loginResult", loginResult);
 				return "home";
 			}
 		} else if (userSelect.equalsIgnoreCase("settings")) {
@@ -85,28 +92,5 @@ public class HomeController {
 			return "home";
 		}
 	}
-
-//	@RequestMapping(path = "explore.do")
-//	public String explorePage(HttpSession session, Model model) {
-//		return "explore";
-//	}
-//
-//	@RequestMapping(path = "userBucket.do")
-//	public String userBucketList(HttpSession session) {
-//		session.removeAttribute("loggedInUser");
-//		return "userBucket";
-//	}
-//
-//	@RequestMapping(path = "logout.do")
-//	public String logoutUser(HttpSession session) {
-//		session.removeAttribute("loggedInUser");
-//		return "home";
-//	}
-//
-//	@RequestMapping(path = "settings.do")
-//	public String settings(HttpSession session) {
-//		session.removeAttribute("loggedInUser");
-//		return "settings";
-//	}
 
 }

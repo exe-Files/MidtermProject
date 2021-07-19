@@ -38,10 +38,10 @@
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link disabled" href="navi.do?userSelect=userBucket">My BuckIt</a>
+						<a class="nav-link" href="navi.do?userSelect=userBucket">My BuckIt</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="navi.do?userSelect=settings">Settings</a>
+						<a class="nav-link" href="navi.do?userSelect=settings">Settings</a>
 					</li>
 
 					<li class="nav-item dropdown">
