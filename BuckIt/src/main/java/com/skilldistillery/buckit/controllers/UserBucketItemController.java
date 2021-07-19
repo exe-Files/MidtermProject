@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.buckit.dao.UserBucketItemDAO;
 import com.skilldistillery.buckit.entities.Note;
@@ -59,15 +60,19 @@ public class UserBucketItemController {
 		return "editUserBucketItemForm";
 	}
 	
-	@RequestMapping(path="addNote.do", method=RequestMethod.POST)
+	@RequestMapping(path="addNote.do", method=RequestMethod.GET)
 	public String addNote(int id, Note note) {
 		daoUBI.findByID(id).addNote(note);
-		return "editUserBucketItemForm";
+		return "userBucketListItem";
 	}
 	
-	@RequestMapping(path="addResource.do", method=RequestMethod.POST)
-	public String addResource(int id, Resource resource) {
-		daoUBI.findByID(id).addResource(resource);
-		return "editUserBucketItemForm";
+	@RequestMapping(path="addResource.do", method=RequestMethod.GET)
+	public String addResource(Integer id, Resource resource, Model model) {
+		System.out.println(resource);
+		UserBucketItem userBucketItem = daoUBI.findByID(id);
+		userBucketItem.addResource(resource);
+		model.addAttribute("userBucketItem",userBucketItem);
+		return "userBucketListItem";
 	}
+	
 }
