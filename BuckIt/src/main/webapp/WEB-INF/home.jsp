@@ -50,6 +50,8 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="adminHome.do">Admin Home</a>
+							<a class="dropdown-item" href="#">Another action</a>
 							<a class="dropdown-item" href="#">User Polls</a>
 							<a class="dropdown-item" href="#">User Comments</a>
 							<div class="dropdown-divider"></div>
