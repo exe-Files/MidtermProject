@@ -39,7 +39,7 @@ public class SettingsController {
 //		userUpdate = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
 		// TODO update current HttpSession to reflect changes
 		session.setAttribute("loggedInUser", userUpdate);
-		model.addAttribute("user", userUpdate);
+//		model.addAttribute("user", userUpdate);
 		return "settings";
 	}
 	

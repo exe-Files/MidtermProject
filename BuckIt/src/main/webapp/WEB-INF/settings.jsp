@@ -66,19 +66,21 @@
 	</div>
 	<div class="settingsForm">
 		<div>
-			<h3>User Settings</h3>
-		</div>
-		<div>
+			<div>
+				<h3>User Settings</h3>
+			</div>
 			<form action="updatedSettings.do?id=${user.id}" method="POST">
 				<div class="row">
-					<div class="mb-3">
+					<div class="mb-auto">
 						<div>
 							<img src="${user.imageUrl}" alt="Profile Picture" class="avatar">
-
+							<input name="imageUrl" class="form-control input-sm"
+								placeholder="Profile Picture URL"  value="${user.imageUrl}">
 						</div>
+						<br>
 						<div>
 							<label for="username">User Name: </label>
-							<input name="username" class="form-control input-sm"
+							<input name="username" class="form-control"
 								placeholder="User Name"  value="${user.username}" required>
 						</div>
 						<div>
