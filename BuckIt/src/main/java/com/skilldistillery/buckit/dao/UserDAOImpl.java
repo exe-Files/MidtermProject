@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
 		dbUser.setUserComments(user.getUserComments());
 		dbUser.setUserPolls(user.getUserPolls());
 
-		return user;
+		return dbUser;
 	}
 
 	@Override

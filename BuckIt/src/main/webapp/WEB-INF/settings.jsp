@@ -79,27 +79,27 @@
 						<div>
 							<label for="username">User Name: </label>
 							<input name="username" class="form-control input-sm"
-								placeholder="User Name" required value="${user.username}">
+								placeholder="User Name"  value="${user.username}" required>
 						</div>
 						<div>
-							<label for="fname">First Name: </label>
-							<input name="fname" class="form-control input-sm"
-								placeholder="First Name" required value="${user.firstName}">
+							<label for="firstName">First Name: </label>
+							<input name="firstName" class="form-control input-sm"
+								placeholder="First Name" value="${user.firstName}">
 						</div>
 						<div>
-							<label for="lname">Last Name: </label>
-							<input name="lname" class="form-control input-sm"
+							<label for="lastName">Last Name: </label>
+							<input name="lastName" class="form-control input-sm"
 								placeholder="Last Name" value="${user.lastName}">
 						</div>
 						<div>
 							<label for="email">Email: </label>
 							<input name="email" class="form-control input-sm"
-								placeholder="Email" value="${user.email}">
+								placeholder="Email" value="${user.email}" required>
 						</div>
 						<div>
 							<label for="password">Password: </label>
 							<input name="password" type="password"
-								class="form-control input-sm" placeholder="Password">
+								class="form-control input-sm" placeholder="Password" value="${user.password}" required>
 						</div>
 						<div class="text-center">
 							<button class="btn btn-outline-dark w-75 mt-3" type="submit"
