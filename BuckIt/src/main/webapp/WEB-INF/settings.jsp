@@ -12,10 +12,9 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <link href="../css/home.css" rel="stylesheet" id="bootstrap-css">
-
-<title>BuckIt, The #1 Bucket-List</title>
+<title>User Settings</title>
 </head>
-<body class="homebg">
+<body>
 	<div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
 			<a class="navbar-brand" href="home.do">BuckIt List</a>
@@ -38,7 +37,8 @@
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="navi.do?userSelect=userBucket">My BuckIt</a>
+						<a class="nav-link" href="navi.do?userSelect=userBucket">My
+							BuckIt</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="navi.do?userSelect=settings">Settings</a>
@@ -49,10 +49,10 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">User Polls</a>
-							<a class="dropdown-item" href="#">User Comments</a>
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="logout.do">Log out</a>
+							<a class="dropdown-item" href="#">Something else here</a>
 						</div>
 					</li>
 				</ul>
@@ -64,59 +64,53 @@
 			</div>
 		</nav>
 	</div>
-	<div class="heading">
-		<h1>Make Every Day a BuckIt Day</h1>
-	</div>
-	<div>
-		<%-- <p>${DEBUG}</p> --%>
-		<div class="container sign-in-card">
-		<div class="d-flex justify-content-center h-100">
-				<div class="card">
-					<div class="card-header">
-						<h3>Sign In</h3>
-					</div>
-					<div class="card-body">
-						<form action="login.do" method="POST">
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-user"></i></span>
-								</div>
-								<input name="username" type="text" class="form-control"
-									placeholder="username">
-
-							</div>
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-key"></i></span>
-								</div>
-								<input name="password" type="password" class="form-control"
-									placeholder="password">
-							</div>
-							<div class="row align-items-center remember">
-								<input type="checkbox">
-								Remember Me
-								<!-- This doesn't actually do anything -->
-							</div>
-							<div class="form-group">
-								<input type="submit" value="Login"
-									class="btn float-right login_btn">
-							</div>
-						</form>
-					</div>
-					<div class="card-footer">
-						<div class="d-flex justify-content-center links">
-							Don't have an account?
-							<a href="register.do">Sign Up</a>
-						</div>
-						<!-- <div class="d-flex justify-content-center">
-								<a href="#">Forgot your password?</a>
-							</div> -->
-					</div>
-				</div>
-			</div>
+	<div class="settingsForm">
+		<div>
+			<h3>User Settings</h3>
 		</div>
+		<div>
+			<form action="updatedSettings.do?id=${user.id}" method="POST">
+				<div class="row">
+					<div class="mb-3">
+						<div>
+							<img src="${user.imageUrl}" alt="Profile Picture" class="avatar">
 
- 	</div>
+						</div>
+						<div>
+							<label for="username">User Name: </label>
+							<input name="username" class="form-control input-sm"
+								placeholder="User Name" required value="${user.username}">
+						</div>
+						<div>
+							<label for="fname">First Name: </label>
+							<input name="fname" class="form-control input-sm"
+								placeholder="First Name" required value="${user.firstName}">
+						</div>
+						<div>
+							<label for="lname">Last Name: </label>
+							<input name="lname" class="form-control input-sm"
+								placeholder="Last Name" value="${user.lastName}">
+						</div>
+						<div>
+							<label for="email">Email: </label>
+							<input name="email" class="form-control input-sm"
+								placeholder="Email" value="${user.email}">
+						</div>
+						<div>
+							<label for="password">Password: </label>
+							<input name="password" type="password"
+								class="form-control input-sm" placeholder="Password">
+						</div>
+						<div class="text-center">
+							<button class="btn btn-outline-dark w-75 mt-3" type="submit"
+								value="Update">Submit</button>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
 
 
 	<!-- Optional JavaScript -->
@@ -132,5 +126,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+</body>
 </body>
 </html>

@@ -87,7 +87,7 @@ public class HomeController {
 				return "home";
 			}
 		} else if (userSelect.equalsIgnoreCase("settings")) {
-			return "settings";
+			return "redirect:settings.do";
 		} else {
 			return "home";
 		}
