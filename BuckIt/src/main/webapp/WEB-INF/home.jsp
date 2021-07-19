@@ -17,7 +17,7 @@
 <title>BuckIt, The #1 Bucket-List</title>
 </head>
 <body class="homebg">
-	<div>
+<div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
 			<a class="navbar-brand" href="home.do">BuckIt List</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -29,36 +29,33 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link"
-						href="navi.do?userSelect=home"> Home <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="navi.do?userSelect=explore">Explore</a></li>
+					<li class="nav-item active">
+						<a class="nav-link" href="navi.do?userSelect=home">
+							Home <span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="navi.do?userSelect=explore">Explore</a>
+					</li>
 
-					<li class="nav-item"><a class="nav-link"
-						href="navi.do?userSelect=userBucket">My BuckIt</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="navi.do?userSelect=settings">Settings</a></li>
+					<li class="nav-item">
+						<a class="nav-link" href="navi.do?userSelect=userBucket">My BuckIt</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="navi.do?userSelect=settings">Settings</a>
+					</li>
 
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> </a>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
 							<a class="dropdown-item" href="#">User Polls</a>
 							<a class="dropdown-item" href="#">User Comments</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="logout.do">Log out</a>
 						</div>
 					</li>
-=======
-							<a class="dropdown-item" href="#">Action</a> <a
-								class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div></li>
->>>>>>> fe157d4876b9eb58bd82bbadf392b11fa688e0c0
 				</ul>
 				<!-- <form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
