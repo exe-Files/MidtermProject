@@ -30,12 +30,13 @@ public class UserBucketItemController {
 	}
 	
 	@RequestMapping(path="deleteUserBucketItem.do", method=RequestMethod.POST)
-	public String deleteUserBucketItem(int id, Model model) {
+	public String deleteUserBucketItem(Integer id, Model model) {
 		boolean deleted = daoUBI.deleteBucketItem(id);
 		if(deleted) {
-			return "success";
+//			return "success";
 		}
-		return "fail";
+//		return "fail";
+		return "redirect:getUserBucket.do";
 	}
 	
 	@RequestMapping(path="viewUserBucketItem.do", method=RequestMethod.GET)

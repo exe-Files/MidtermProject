@@ -3,6 +3,7 @@ package com.skilldistillery.buckit.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -57,14 +58,29 @@ public class BucketItemDAOImpl implements BucketItemDAO {
 
 		return deleted;
 	}
-	
+
 	@Override
 	public List<BucketItem> getAllPublicBucketItems() {
 		List<BucketItem> allPublicBucketItemsList = null;
-		
+
 		String jpqlQuery = "SELECT bi FROM BucketItem bi WHERE isPublicAtCreation = :flag ORDER BY name";
-		allPublicBucketItemsList = em.createQuery(jpqlQuery, BucketItem.class).setParameter("flag", true).getResultList();
+		allPublicBucketItemsList = em.createQuery(jpqlQuery, BucketItem.class).setParameter("flag", true)
+				.getResultList();
 		return allPublicBucketItemsList;
+	}
+
+	@Override
+	public BucketItem findBucketItemById(int id) {
+		BucketItem resultBucketItem = null;
+		String jpqlQuery = "SELECT bi FROM BucketItem bi WHERE id = :id";
+		try {
+			resultBucketItem = em.createQuery(jpqlQuery, BucketItem.class).setParameter("id", id).getSingleResult();
+			return resultBucketItem;
+		}
+		catch (NoResultException e) {
+			e.printStackTrace();
+			return resultBucketItem;
+		}
 	}
 
 }
