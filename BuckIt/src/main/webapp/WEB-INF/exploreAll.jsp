@@ -87,9 +87,9 @@
 								data-toggle="tooltip" title="Add to Your Bucket List"
 								data-delay='{"show":"0", "hide":"0"}'>&#10003</button>
 						</c:if>
-						<form action="viewDetailed.do" method=GET id="viewItemDetailed"
+						<form action="viewDetailed.do" method=GET id="viewItemDetailed${item.id }"
 							hidden='true'>
-							<input type="text" class="form-control" id="bucketItemIdToView${item.id }"
+							<input type="text" class="form-control" id="bucketItemIdToView"
 								name="bucketItemIdToView" readonly hidden='true'
 								value='${item.id}'>
 						</form>

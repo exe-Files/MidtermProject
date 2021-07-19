@@ -86,5 +86,11 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 				.getResultList();
 		return allUserBucketItemsList;
 	}
+	
+	@Override
+	public UserBucketItem addPublicBucketItemToUserBucket(UserBucketItem userBucketItem) {
+		em.persist(userBucketItem);
+		return userBucketItem;
+	}
 
 }

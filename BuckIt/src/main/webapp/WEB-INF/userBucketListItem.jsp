@@ -164,8 +164,8 @@
 			<form action="editUserBucketItem.do" id="editUserItem">
 				<input type="hidden" value="${userBucketItem.id }">
 			</form>
-			<form action="deleteUserBucketItem.do" id="deleteUserItem">
-				<input type="hidden" value="${userBucketItem.id }">
+			<form action="deleteUserBucketItem.do" id="deleteUserItem" method="post">
+				<input type="hidden" value="${userBucketItem.id }" name="id">
 			</form>
 			<div class="btn-group">
 				<button type="submit" class="btn btn-sm btn-warning"

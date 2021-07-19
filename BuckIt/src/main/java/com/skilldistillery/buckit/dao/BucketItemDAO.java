@@ -13,4 +13,6 @@ public interface BucketItemDAO {
 	boolean deleteBucketItem(int id);
 
 	List<BucketItem> getAllPublicBucketItems();
+
+	BucketItem findBucketItemById(int id);
 }

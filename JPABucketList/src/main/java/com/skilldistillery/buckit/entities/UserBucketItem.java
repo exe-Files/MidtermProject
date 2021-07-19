@@ -124,7 +124,7 @@ public class UserBucketItem {
 	public String toString() {
 		return "UserBucketItem [id=" + id + ", dateAdded=" + dateAdded + ", dateCompleted=" + dateCompleted
 				+ ", targetDate=" + targetDate + ", isCompleted=" + isCompleted + ", notes=" + notes + ", user=" + user
-				+ "]";
+				+ ", bucketItem=" + bucketItem + "]";
 	}
 
 	public BucketItem getBucketItem() {
