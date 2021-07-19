@@ -82,5 +82,14 @@ public class BucketItemDAOImpl implements BucketItemDAO {
 			return resultBucketItem;
 		}
 	}
+	
+	@Override
+	public List<BucketItem> getAllBucketItems() {
+		List<BucketItem> allBucketItemsList = null;
+
+		String jpqlQuery = "SELECT bi FROM BucketItem bi";
+		allBucketItemsList = em.createQuery(jpqlQuery, BucketItem.class).getResultList();
+		return allBucketItemsList;
+	}
 
 }

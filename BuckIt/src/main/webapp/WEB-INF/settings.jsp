@@ -1,4 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,11 +12,10 @@
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 <link href="../css/home.css" rel="stylesheet" id="bootstrap-css">
-
-<title>BuckIt, The #1 Bucket-List</title>
+<title>User Settings</title>
 </head>
-<body class="homebg">
-<div>
+<body>
+	<div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
 			<a class="navbar-brand" href="home.do">BuckIt List</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -39,7 +37,8 @@
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link" href="navi.do?userSelect=userBucket">My BuckIt</a>
+						<a class="nav-link" href="navi.do?userSelect=userBucket">My
+							BuckIt</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="navi.do?userSelect=settings">Settings</a>
@@ -50,12 +49,10 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="adminHome.do">Admin Home</a>
+							<a class="dropdown-item" href="#">Action</a>
 							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">User Polls</a>
-							<a class="dropdown-item" href="#">User Comments</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="logout.do">Log out</a>
+							<a class="dropdown-item" href="#">Something else here</a>
 						</div>
 					</li>
 				</ul>
@@ -67,74 +64,71 @@
 			</div>
 		</nav>
 	</div>
-	<div class="heading">
-		<h1>Make Every Day a BuckIt Day</h1>
-	</div>
-	<div>
-		<%-- <p>${DEBUG}</p> --%>
-		<div class="container sign-in-card">
-			<div class="d-flex justify-content-center h-100">
-				<div class="card">
-					<div class="card-header">
-						<h3>Sign In</h3>
-
-<c:if test='${loginResult == "No user found with the supplied username and password"}'>
-						<div class="alert alert-danger alert-dismissible fade show"
-							role="alert">
-							No account was found with the provided Username and Password. Please try again.
-							<button type="button" class="close" data-dismiss="alert"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div></c:if>
-
-					</div>
-					<div class="card-body">
-						<form action="login.do" method="POST">
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-user"></i></span>
-								</div>
-								<input name="username" type="text" class="form-control"
-									placeholder="username">
-
-							</div>
-							<div class="input-group form-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-key"></i></span>
-								</div>
-								<input name="password" type="password" class="form-control"
-									placeholder="password">
-							</div>
-							<div class="row align-items-center remember">
-								<input type="checkbox"> Remember Me
-								<!-- This doesn't actually do anything -->
-							</div>
-							<div class="form-group">
-								<input type="submit" value="Login"
-									class="btn float-right login_btn">
-							</div>
-						</form>
-					</div>
-					<div class="card-footer">
-						<div class="d-flex justify-content-center links">
-							Don't have an account? <a href="register.do">Sign Up</a>
-						</div>
-						<!-- <div class="d-flex justify-content-center">
-								<a href="#">Forgot your password?</a>
-							</div> -->
-					</div>
-				</div>
+	<div class="settingsForm">
+		<div>
+			<div>
+				<h3>User Settings</h3>
 			</div>
-		</div>
+			<%-- <c:if test='${updateResult == "false"}'>
+				<div class="alert alert-danger alert-dismissible fade show"
+					role="alert">
+					No changes made to user settings. Please try again.
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</c:if> --%>
 
+			<form action="updatedSettings.do?id=${user.id}" method="POST">
+				<div class="row">
+					<div class="mb-auto">
+						<div>
+							<img src="${user.imageUrl}" alt="Profile Picture" class="avatar">
+							<input name="imageUrl" class="form-control input-sm"
+								placeholder="Profile Picture URL" value="${user.imageUrl}">
+						</div>
+						<br>
+						<div>
+							<label for="username">User Name: </label>
+							<input name="username" class="form-control"
+								placeholder="User Name" value="${user.username}" required>
+						</div>
+						<div>
+							<label for="firstName">First Name: </label>
+							<input name="firstName" class="form-control input-sm"
+								placeholder="First Name" value="${user.firstName}">
+						</div>
+						<div>
+							<label for="lastName">Last Name: </label>
+							<input name="lastName" class="form-control input-sm"
+								placeholder="Last Name" value="${user.lastName}">
+						</div>
+						<div>
+							<label for="email">Email: </label>
+							<input name="email" class="form-control input-sm"
+								placeholder="Email" value="${user.email}" required>
+						</div>
+						<div>
+							<label for="password">Password: </label>
+							<input name="password" type="password"
+								class="form-control input-sm" placeholder="Password"
+								value="${user.password}" required>
+						</div>
+						<div class="text-center">
+							<button class="btn btn-outline-dark w-75 mt-3" type="submit"
+								value="Update">Submit</button>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
 	</div>
 
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
@@ -146,5 +140,6 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+</body>
 </body>
 </html>

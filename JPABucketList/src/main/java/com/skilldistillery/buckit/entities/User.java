@@ -1,4 +1,4 @@
-package com.skilldistillery.buckit.entities;
+                                                    package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -110,7 +110,7 @@ public class User {
 		this.dateCreated = dateCreated;
 	}
 
-	public boolean isActive() {
+	public boolean getIsActive() {
 		return isActive;
 	}
 
