@@ -31,10 +31,10 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link"
 						href="navi.do?userSelect=home"> Home </a></li>
-					<li class="nav-item active"><a class="nav-link"
+					<li class="nav-item"><a class="nav-link"
 						href="navi.do?userSelect=explore">Explore<span class="sr-only">(current)</span></a></li>
 
-					<li class="nav-item"><a class="nav-link disabled"
+					<li class="nav-item active"><a class="nav-link disabled"
 						href="navi.do?userSelect=userBucket">My BuckIt</a></li>
 					<li class="nav-item"><a class="nav-link disabled"
 						href="navi.do?userSelect=settings">Settings</a></li>
@@ -61,42 +61,29 @@
 
 	<div class="container">
 		<div class="card-deck">
-			<c:forEach var="item" items="${allPublicBucketItems }">
+			<c:forEach var="item" items="${allUserBucketItems }">
 				<div class="card" id="explore-item-card">
-					<img src='${item.imageUrl}' class="card-img-top" alt="...">
+					<img src='${item.bucketItem.imageUrl}' class="card-img-top" alt="...">
 					<div class="card-body">
-						<h4 class="card-title">${item.name }</h4>
-						<c:if test='${item.location != null}'>
-							<h6 class="card-subtitle">${item.location.cityArea }
-								<c:if test='${item.location.countryCode != null}'>, ${item.location.countryCode.countryName }</c:if>
+						<h4 class="card-title">${item.bucketItem.name }</h4>
+						<c:if test='${item.bucketItem.location != null}'>
+							<h6 class="card-subtitle">${item.bucketItem.location.cityArea }
+								<c:if test='${item.bucketItem.location.countryCode != null}'>, ${item.bucketItem.location.countryCode.countryName }</c:if>
 							</h6>
 						</c:if>
 						<hr>
-						<p class="card-text">${item.description }</p>
+						<p class="card-text">${item.bucketItem.description }</p>
 					</div>
 					<div class="card-footer">
-						<form action="addUserBucketItem.do" method=POST
-							id="addItemToUserBucket${item.id }" hidden='true'>
-							<input type="text" class="form-control" id="bucketItemIdToAdd"
-								name="bucketItemIdToAdd" readonly hidden='true'
+						<p>Target Date: ${item.targetDate }</p>
+						<form action="viewUserBucketItem.do" method=GET id="viewUserItemDetailed${item.id }">
+							<input type="number" class="form-control" id="itemId"
+								name="itemId" hidden='true'
 								value='${item.id}'>
-						</form>
-						<c:if test='${loggedInUser != null }'>
-							<button type='submit' form='addItemToUserBucket${item.id }'
-								class="btn btn-sm btn-outline-success btn-round"
-								data-toggle="tooltip" title="Add to Your Bucket List"
-								data-delay='{"show":"0", "hide":"0"}'>&#10003</button>
-						</c:if>
-						<form action="viewDetailed.do" method=GET id="viewItemDetailed"
-							hidden='true'>
-							<input type="text" class="form-control" id="bucketItemIdToView${item.id }"
-								name="bucketItemIdToView" readonly hidden='true'
-								value='${item.id}'>
-						</form>
-						<button type='submit' form='viewItemDetailed${item.id }' id="detailedViewBtn"
-							class="btn btn-sm btn-primary" data-toggle="tooltip"
-							title="View Details" data-delay='{"show":"0", "hide":"0"}'>
+						<button type='submit' form='viewUserItemDetailed${item.id }' id="detailedViewBtn"
+							class="btn btn-sm btn-primary">
 							Detailed View</button>
+						</form>
 					</div>
 				</div>
 			</c:forEach>
@@ -106,11 +93,6 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script>
-		$(function() {
-			$('[data-toggle="tooltip"]').tooltip()
-		})
-	</script>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

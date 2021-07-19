@@ -1,6 +1,9 @@
 package com.skilldistillery.buckit.dao;
 
+import java.util.List;
+
 import com.skilldistillery.buckit.entities.BucketItem;
+import com.skilldistillery.buckit.entities.User;
 import com.skilldistillery.buckit.entities.UserBucketItem;
 
 public interface UserBucketItemDAO {
@@ -14,4 +17,6 @@ public interface UserBucketItemDAO {
 	boolean deleteBucketItem(int id);
 	
 	BucketItem getBucketItemFromUserBucketItem(UserBucketItem bucketItem);
+
+	List<UserBucketItem> getAllUserBucketItemsForLoggedInUser(User user);
 }
