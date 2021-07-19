@@ -20,7 +20,7 @@ public class ExploreController {
 	public String exploreAllBucketItems(Model model) {
 		List<BucketItem> allPublicBucketItems = null;
 		allPublicBucketItems = bucketItemDao.getAllPublicBucketItems();
-		model.addAttribute("DEBUG", allPublicBucketItems);
+		model.addAttribute("allPublicBucketItems", allPublicBucketItems);
 		return "exploreAll";
 	}
 

@@ -17,7 +17,7 @@
 </head>
 <body class="homebg">
 	<div>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
 			<a class="navbar-brand" href="home.do">BuckIt List</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -29,19 +29,19 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">
+						<a class="nav-link" href="navi.do?userSelect=home">
 							Home <span class="sr-only">(current)</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="exploreAll.do">Explore</a>
+						<a class="nav-link" href="navi.do?userSelect=explore">Explore</a>
 					</li>
 
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">My BuckIt</a>
+						<a class="nav-link disabled" href="navi.do?userSelect=userBucket">My BuckIt</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link disabled" href="#">Settings</a>
+						<a class="nav-link disabled" href="navi.do?userSelect=settings">Settings</a>
 					</li>
 
 					<li class="nav-item dropdown">
@@ -95,6 +95,7 @@
 							<div class="row align-items-center remember">
 								<input type="checkbox">
 								Remember Me
+								<!-- This doesn't actually do anything -->
 							</div>
 							<div class="form-group">
 								<input type="submit" value="Login"

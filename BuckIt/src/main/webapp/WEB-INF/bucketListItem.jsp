@@ -5,15 +5,57 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- Bootstrap -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	crossorigin="anonymous">
-<title>Bucket Item Details</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+			<a class="navbar-brand" href="home.do">BuckIt List</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="navi.do?userSelect=home">
+							Home <span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="navi.do?userSelect=explore">Explore</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link disabled" href="navi.do?userSelect=userBucket">My BuckIt</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link disabled" href="navi.do?userSelect=settings">Settings</a>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Action</a>
+							<a class="dropdown-item" href="#">Another action</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
+						</div>
+					</li>
+				</ul>
+				<!-- <form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form> -->
+			</div>
+		</nav>
+	</div>	<div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
 			<a class="navbar-brand" href="home.do">BuckIt List</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -86,12 +128,6 @@
 			<li class="nav-item"><a class="nav-link" href="#rating"
 				data-toggle="tab" id="rating-tab" role="tab" aria-controls="rating"
 				aria-selected="false">Ratings</a></li>
-			<li class="nav-item"><a class="nav-link" href="#notes"
-				data-toggle="tab" id="note-tab" role="tab" aria-controls="note"
-				aria-selected="false">Notes</a></li>
-			<li class="nav-item"><a class="nav-link" href="#resources"
-				data-toggle="tab" id="resource-tab" role="tab"
-				aria-controls="resource" aria-selected="false">Resources</a></li>
 		</ul>
 		<!-- Tab Content Goes Here -->
 		<div class="tab-content" id="myTabContent">
@@ -103,9 +139,7 @@
 				aria-labelledby="comment-tab">
 				<c:forEach var="comment" items="${bucketItem.comments }">
 					<div class="media">
-						<div class="media-body">
-							${comment.commentText }
-						</div>
+						<div class="media-body">${comment.commentText }</div>
 					</div>
 				</c:forEach>
 			</div>
@@ -130,52 +164,8 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="tab-pane fade" id="notes" role="tabpanel"
-				aria-labelledby="notes-tab">
-				<table class="table">
-					<thead class="thead-dark">
-						<tr>
-							<th>Title</th>
-							<th>Text</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="note" items="${userBucketItem.notes }">
-							<tr>
-								<th scope="row">${note.noteTitle }</th>
-								<td>${note.noteText }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-			</div>
-			<div class="tab-pane fade" id="resources" role="tabpanel"
-				aria-labelledby="resource-tab">
-				<ul>
-					<c:forEach var="resource" items="${userBucketItem.resources }">
-						<li>${resource }</li>
-					</c:forEach>
-				</ul>
-			</div>
 		</div>
 	</div>
-	<div class="container">
-		<div class="col-4 offset-8">
-			<form action="editUserBucketItem.do" id="editUserItem">
-				<input type="hidden" value="${userBucketItem.id }">
-			</form>
-			<form action="deleteUserBucketItem.do" id="deleteUserItem">
-				<input type="hidden" value="${userBucketItem.id }">
-			</form>
-			<div class="btn-group">
-				<button type="submit" class="btn btn-sm btn-warning"
-					form="editUserItem" value="Edit">Edit</button>
-				<button type="submit" class="btn btn-sm btn-danger"
-					form="deleteUserItem" value="Delete">Delete</button>
-			</div>
-		</div>
-	</div>
-
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
