@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.buckit.entities.BucketItem;
+import com.skilldistillery.buckit.entities.Category;
 import com.skilldistillery.buckit.entities.Note;
 import com.skilldistillery.buckit.entities.Resource;
 import com.skilldistillery.buckit.entities.User;
@@ -120,6 +121,14 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 	public UserBucketItem removeResourceFromUserBucketItem(int bucketId, int resourceId) {
 		em.remove(em.find(Resource.class, resourceId));
 		return em.find(UserBucketItem.class, bucketId);
+	}
+	
+	@Override
+	public List<UserBucketItem> getUserBucketItemsWithCategory(Category category) {
+		List<UserBucketItem> filteredBucketItemList = null;
+		String jpqlQuery = "SELECT ubi FROM UserBucketItem ubi WHERE :category MEMBER OF bucketItem.categories";
+		filteredBucketItemList = em.createQuery(jpqlQuery, UserBucketItem.class).setParameter("category", category).getResultList();
+		return filteredBucketItemList;
 	}
 	
 	

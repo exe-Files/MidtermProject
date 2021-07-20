@@ -61,31 +61,63 @@
 
 	<div class="container">
 		<div class="card-deck">
-			<c:forEach var="item" items="${allUserBucketItems }">
-				<div class="card" id="explore-item-card">
-					<img src='${item.bucketItem.imageUrl}' class="card-img-top" alt="...">
-					<div class="card-body">
-						<h4 class="card-title">${item.bucketItem.name }</h4>
-						<c:if test='${item.bucketItem.location != null}'>
-							<h6 class="card-subtitle">${item.bucketItem.location.cityArea }
-								<c:if test='${item.bucketItem.location.countryCode != null}'>, ${item.bucketItem.location.countryCode.countryName }</c:if>
-							</h6>
-						</c:if>
-						<hr>
-						<p class="card-text">${item.bucketItem.description }</p>
-					</div>
-					<div class="card-footer">
-						<p>Target Date: ${item.targetDate }</p>
-						<form action="viewUserBucketItem.do" method=GET id="viewUserItemDetailed${item.id }">
-							<input type="number" class="form-control" id="itemId"
-								name="itemId" hidden='true'
-								value='${item.id}'>
-						<button type='submit' form='viewUserItemDetailed${item.id }' id="detailedViewBtn"
-							class="btn btn-sm btn-primary">
-							Detailed View</button>
-						</form>
-					</div>
+			<div class="card" id="explore-item-card">
+				<img
+					src='https://media.istockphoto.com/vectors/filter-icon-vector-icon-simple-element-illustration-filter-symbol-vector-id1007786246?k=6&m=1007786246&s=170667a&w=0&h=THvnIMFDqpJBquWZ3XHTGIxbwcdS03AJCjkI2trPQ-M='
+					class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title">Filter By Category</h4>
+					<h6 class="card-subtitle"></h6>
+					<hr>
+					<form action="filterByCategoryUserBucket.do" method=POST
+						id="filterByCategory">
+						<select id="categoryId" name="categoryId">
+							<option value="-1">View All</option>
+							<c:forEach var="category" items="${allCategories}">
+								<option value="${category.id}">${category.categoryName }</option>
+							</c:forEach>
+						</select>
+					</form>
 				</div>
+				<div class="card-footer">
+					<button type='submit' form='filterByCategory'
+						class='btn btn-sm btn-outline'>Search</button>
+				</div>
+			</div>
+
+			<c:set var="cardsInRow" value="1" />
+			<c:forEach var="item" items="${allUserBucketItems }">
+				<c:if test="${cardsInRow == 3}">
+		</div>
+		<div class="card-deck">
+			<c:set var="cardsInRow" value="0" />
+			</c:if>
+			<div class="card" id="explore-item-card">
+				<img src='${item.bucketItem.imageUrl}' class="card-img-top"
+					alt="...">
+				<div class="card-body">
+					<h4 class="card-title">${item.bucketItem.name}</h4>
+					<c:if test='${item.bucketItem.location != null}'>
+						<h6 class="card-subtitle">${item.bucketItem.location.cityArea }
+							<c:if test='${item.bucketItem.location.countryCode != null}'>, ${item.bucketItem.location.countryCode.countryName }</c:if>
+						</h6>
+					</c:if>
+					<hr>
+					<p class="card-text">${item.bucketItem.description }</p>
+				</div>
+				<div class="card-footer">
+					<p>Target Date: ${item.targetDate }</p>
+					<form action="viewUserBucketItem.do" method=GET
+						id="viewUserItemDetailed${item.id }">
+						<input type="number" class="form-control" id="itemId"
+							name="itemId" hidden='true' value='${item.id}'>
+						<button type='submit' form='viewUserItemDetailed${item.id }'
+							id="detailedViewBtn" class="btn btn-sm btn-primary">
+							Detailed View</button>
+					</form>
+				</div>
+			</div>
+			<c:set var="cardsInRow" value="${cardsInRow +1 }" />
 			</c:forEach>
 		</div>
 	</div>
