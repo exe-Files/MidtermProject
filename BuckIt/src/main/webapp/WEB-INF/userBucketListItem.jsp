@@ -163,7 +163,7 @@
 				aria-labelledby="resource-tab">
 				<ul>
 					<c:forEach var="resource" items="${userBucketItem.resources }">
-						<li>${resource }</li>
+						<li>${resource.url }</li>
 					</c:forEach>
 				</ul>
 				<form action="addResource.do" method="post" id="addResource">
