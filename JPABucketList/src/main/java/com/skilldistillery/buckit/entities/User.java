@@ -1,4 +1,4 @@
-package com.skilldistillery.buckit.entities;
+                                                    package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
 public class User {
@@ -28,6 +30,7 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 	@Column(name = "date_created")
+	@CreationTimestamp
 	private LocalDateTime dateCreated;
 	@Column(name = "is_active")
 	private boolean isActive;

@@ -30,15 +30,17 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 	@Override
 	public UserBucketItem updateBucketItem(UserBucketItem bucketItem) {
 		UserBucketItem bucketItemDB = em.find(UserBucketItem.class, bucketItem.getId());
-
-		bucketItemDB.setDateAdded(bucketItem.getDateAdded());
+		System.out.println(bucketItem);
+		System.out.println(bucketItem.getDateAdded());
+		
+//		bucketItemDB.setDateAdded(bucketItem.getDateAdded());
 		bucketItemDB.setDateCompleted(bucketItem.getDateCompleted());
 		bucketItemDB.setTargetDate(bucketItem.getTargetDate());
 		bucketItemDB.setCompleted(bucketItem.isCompleted());
-		bucketItemDB.setNotes(bucketItem.getNotes());
-		bucketItemDB.setResources(bucketItem.getResources());
-		bucketItemDB.setUser(bucketItem.getUser());
-		bucketItemDB.setBucketItem(bucketItem.getBucketItem());
+//		bucketItemDB.setNotes(bucketItem.getNotes());
+//		bucketItemDB.setResources(bucketItem.getResources());
+//		bucketItemDB.setUser(bucketItem.getUser());
+//		bucketItemDB.setBucketItem(bucketItem.getBucketItem());
 
 		em.flush();
 
@@ -68,6 +70,7 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 		return bucketItem.getBucketItem();
 	}
 	
+	@Override
 	public Note findNoteById(int id) {
 		return em.find(Note.class, id);
 	}
@@ -93,4 +96,31 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 		return userBucketItem;
 	}
 
+	@Override
+	public UserBucketItem addNoteToUserBucketItem(int id, Note note) {
+		note.setUserBucketItem(em.find(UserBucketItem.class, id));
+		em.persist(note);
+		return em.find(UserBucketItem.class, id);
+	}
+
+	@Override
+	public UserBucketItem addResourceToUserBucketItem(int id, Resource resource) {
+		resource.setUserBucketItem(em.find(UserBucketItem.class, id));
+		em.persist(resource);
+		return em.find(UserBucketItem.class, id);
+	}
+
+	@Override
+	public UserBucketItem removeNoteFromUserBucketItem(int bucketId, int noteId) {
+		em.remove(em.find(Note.class, noteId));
+		return em.find(UserBucketItem.class, bucketId);
+	}
+
+	@Override
+	public UserBucketItem removeResourceFromUserBucketItem(int bucketId, int resourceId) {
+		em.remove(em.find(Resource.class, resourceId));
+		return em.find(UserBucketItem.class, bucketId);
+	}
+	
+	
 }

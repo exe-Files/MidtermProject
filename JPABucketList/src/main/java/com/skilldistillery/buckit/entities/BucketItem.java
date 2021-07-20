@@ -2,6 +2,8 @@ package com.skilldistillery.buckit.entities;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,6 +18,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "bucket_item")
 public class BucketItem {
@@ -28,9 +33,11 @@ public class BucketItem {
 	private String description;
 
 	@Column(name = "date_created")
+	@CreationTimestamp
 	private LocalDateTime dateCreated;
 
 	@Column(name = "date_updated")
+	@UpdateTimestamp
 	private LocalDateTime dateUpdated;
 
 	@Column(name = "is_public_at_creation")
@@ -225,6 +232,78 @@ public class BucketItem {
 		if (comments != null && comments.contains(comment)) {
 			comments.remove(comment);
 		}
+	}
+	
+	public int getAverageStarRating() {
+		int totalRating = 0;
+		int numOfRatings = 0;
+		for (Poll poll : polls) {
+			if (poll.getRatingStars() != null) {
+				totalRating += poll.getRatingStars();
+				++numOfRatings;
+			}
+		}
+		if (numOfRatings != 0) {
+			int averageStarRating = totalRating / numOfRatings;
+			return averageStarRating;
+		}
+		return totalRating;	
+	}
+	
+	public int getAverageCostRating() {
+		int totalRating = 0;
+		int numOfRatings = 0;
+		for (Poll poll : polls) {
+			if (poll.getCostDollarSigns() != null) {
+				totalRating += poll.getCostDollarSigns();
+				++numOfRatings;
+			}
+		}
+		if (numOfRatings != 0) {
+			int averageCostRating = totalRating / numOfRatings;
+			return averageCostRating;
+		}
+		return totalRating;	
+	}
+	
+	public String getMostFrequentBestTime() {
+		List<String> allBestTimeVotes = new ArrayList<>();
+		String entry = "";
+		for (Poll poll : polls) {
+			if (poll.getBestTimeToDo() != null) {
+				allBestTimeVotes.add(poll.getBestTimeToDo());
+			}
+		}
+		if (allBestTimeVotes.size()>0) {
+			
+			allBestTimeVotes.sort(Comparator.naturalOrder());
+			
+			int maxCount = 1;
+			entry = allBestTimeVotes.get(0);
+			
+			int currentCount = 0;
+			
+			for (int i = 1; i < allBestTimeVotes.size(); i++) {
+				if (allBestTimeVotes.get(i).equals(allBestTimeVotes.get(i-1))) {
+					currentCount++;
+				}
+				else {
+					if (currentCount > maxCount) {
+						maxCount = currentCount;
+						entry = allBestTimeVotes.get(i-1);
+					}
+					currentCount = 1;
+				}
+				
+			}
+			
+			if (currentCount > maxCount) {
+				maxCount = currentCount;
+				entry = allBestTimeVotes.get(allBestTimeVotes.size()-1);
+			}
+			
+		}
+		return entry;
 	}
 
 	// TO STRING

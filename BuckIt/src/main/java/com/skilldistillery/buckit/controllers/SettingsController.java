@@ -31,13 +31,21 @@ public class SettingsController {
 	@RequestMapping(path = "updatedSettings.do", method = RequestMethod.POST)
 	public String postUserSettings(Model model, HttpSession session, User user) {
 		User userUpdate = null;
-		System.out.println("in dao");
 		userUpdate = userDao.updateUser(user);
-//		userUpdate = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
-		// TODO update current HttpSession to reflect changes
-		session.setAttribute("loggedInUser", userUpdate);
-		model.addAttribute("user", userUpdate);
-		return "settings";
+		boolean result;
+		System.out.println(userUpdate);
+		if(userUpdate == null) {
+			result = false;
+			model.addAttribute("updateResult", result);
+			return "settings";
+		} else {
+			// userUpdate = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
+			// TODO update current HttpSession to reflect changes
+			result = true;
+			session.setAttribute("loggedInUser", userUpdate);
+			model.addAttribute("updateResult", result);
+			return "settings";
+		}
 	}
 	
 }
