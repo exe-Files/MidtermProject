@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.buckit.entities.BucketItem;
+import com.skilldistillery.buckit.entities.Category;
 
 @Service
 @Transactional
@@ -90,6 +91,14 @@ public class BucketItemDAOImpl implements BucketItemDAO {
 		String jpqlQuery = "SELECT bi FROM BucketItem bi";
 		allBucketItemsList = em.createQuery(jpqlQuery, BucketItem.class).getResultList();
 		return allBucketItemsList;
+	}
+	
+	@Override
+	public List<BucketItem> getAllBucketItemsWithCategory(Category category) {
+		List<BucketItem> filteredBucketItemList = null;
+		String jpqlQuery = "SELECT bi FROM BucketItem bi WHERE :category MEMBER OF categories";
+		filteredBucketItemList = em.createQuery(jpqlQuery, BucketItem.class).setParameter("category", category).getResultList();
+		return filteredBucketItemList;
 	}
 
 }

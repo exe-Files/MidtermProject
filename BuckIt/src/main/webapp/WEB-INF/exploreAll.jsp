@@ -61,6 +61,30 @@
 
 	<div class="container">
 		<div class="card-deck">
+			<div class="card" id="explore-item-card">
+				<img
+					src='https://media.istockphoto.com/vectors/filter-icon-vector-icon-simple-element-illustration-filter-symbol-vector-id1007786246?k=6&m=1007786246&s=170667a&w=0&h=THvnIMFDqpJBquWZ3XHTGIxbwcdS03AJCjkI2trPQ-M='
+					class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title">Filter By Category</h4>
+					<h6 class="card-subtitle"></h6>
+					<hr>
+					<form action="filterByCategory.do" method=POST
+						id="filterByCategory">
+						<select id="categoryId" name="categoryId">
+							<option value="-1">View All</option>
+							<c:forEach var="category" items="${allCategories}">
+								<option value="${category.id}">${category.categoryName }</option>
+							</c:forEach>
+						</select>
+					</form>
+				</div>
+				<div class="card-footer">
+					<button type='submit' form='filterByCategory'
+						class='btn btn-sm btn-outline'>Search</button>
+				</div>
+			</div>
+
 			<c:forEach var="item" items="${allPublicBucketItems }">
 				<div class="card" id="explore-item-card">
 					<img src='${item.imageUrl}' class="card-img-top" alt="...">
@@ -87,16 +111,16 @@
 								data-toggle="tooltip" title="Add to Your Bucket List"
 								data-delay='{"show":"0", "hide":"0"}'>&#10003</button>
 						</c:if>
-						<form action="viewDetailed.do" method=GET id="viewItemDetailed${item.id }"
-							hidden='true'>
+						<form action="viewDetailed.do" method=GET
+							id="viewItemDetailed${item.id }" hidden='true'>
 							<input type="text" class="form-control" id="bucketItemIdToView"
 								name="bucketItemIdToView" readonly hidden='true'
 								value='${item.id}'>
 						</form>
-						<button type='submit' form='viewItemDetailed${item.id }' id="detailedViewBtn"
-							class="btn btn-sm btn-primary" data-toggle="tooltip"
-							title="View Details" data-delay='{"show":"0", "hide":"0"}'>
-							Detailed View</button>
+						<button type='submit' form='viewItemDetailed${item.id }'
+							id="detailedViewBtn" class="btn btn-sm btn-primary"
+							data-toggle="tooltip" title="View Details"
+							data-delay='{"show":"0", "hide":"0"}'>Detailed View</button>
 					</div>
 				</div>
 			</c:forEach>
