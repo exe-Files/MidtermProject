@@ -54,8 +54,8 @@ public class BucketItemController {
 		poll.setBucketItem(bucketItem);
 		pollDao.createPoll(poll);
 		ra.addAttribute("bucketItemIdToView", bucketItemId);
-		return "redirect:viewDetailed.do";
-		
+		return "redirect:viewDetailed.do";		
 	}
+	
 	
 }

@@ -42,6 +42,9 @@ public class ExploreController {
 	public String viewDetailedBucketItem(Model model, Integer bucketItemIdToView) {
 		BucketItem itemToView = bucketItemDao.findBucketItemById(bucketItemIdToView);
 		model.addAttribute("bucketItem", itemToView);
+		model.addAttribute("avgStarRating", itemToView.getAverageStarRating());
+		model.addAttribute("avgCostRating", itemToView.getAverageCostRating());
+		model.addAttribute("bestTimeToDo", itemToView.getMostFrequentBestTime());
 		return "bucketListItem";
 	}
 	
