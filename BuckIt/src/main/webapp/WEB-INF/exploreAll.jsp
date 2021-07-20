@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -111,10 +112,18 @@
 							value='${item.id}'>
 					</form>
 					<c:if test='${loggedInUser != null }'>
+						<c:set var="btnDisabled" value="" />
+						<c:set var="btnStyle" value="btn-outline-success" />
+						<c:set var="message" value="Add to Your Bucket List"/>
+						<c:if test="${  fn:contains( allUserItems, item ) }">
+							<c:set var="btnDisabled" value="disabled" />
+							<c:set var="btnStyle" value="btn-success" />
+							<c:set var="message" value="This item is already in your bucket"/>
+						</c:if>
 						<button type='submit' form='addItemToUserBucket${item.id }'
-							class="btn btn-sm btn-outline-success btn-round"
-							data-toggle="tooltip" title="Add to Your Bucket List"
-							data-delay='{"show":"0", "hide":"0"}'>&#10003</button>
+							class="btn btn-sm ${btnStyle } btn-round"
+							data-toggle="tooltip" title="${message}"
+							data-delay='{"show":"0", "hide":"0"}' ${btnDisabled}>&#10003</button>
 					</c:if>
 					<form action="viewDetailed.do" method=GET
 						id="viewItemDetailed${item.id }" hidden='true'>
