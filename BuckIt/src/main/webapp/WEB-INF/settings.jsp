@@ -69,7 +69,7 @@
 			<div>
 				<h3>User Settings</h3>
 			</div>
-			<%-- <c:if test='${updateResult == "false"}'>
+			<!-- <c:if test='${updateResult == "false"}'>
 				<div class="alert alert-danger alert-dismissible fade show"
 					role="alert">
 					No changes made to user settings. Please try again.
@@ -78,14 +78,13 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-			</c:if> --%>
+			</c:if> -->
 
 			<form action="updatedSettings.do?id=${user.id}" method="POST">
-				<div class="row">
 					<div class="mb-auto">
 						<div>
 							<img src="${user.imageUrl}" alt="Profile Picture" class="avatar">
-							<input name="imageUrl" class="form-control input-sm"
+							<input name="imageUrl" class="form-control"
 								placeholder="Profile Picture URL" value="${user.imageUrl}">
 						</div>
 						<br>
@@ -121,7 +120,6 @@
 						</div>
 					</div>
 
-				</div>
 			</form>
 		</div>
 	</div>
