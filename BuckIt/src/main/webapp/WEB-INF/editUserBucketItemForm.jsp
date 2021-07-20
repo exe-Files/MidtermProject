@@ -68,13 +68,17 @@
 		<div class="row">
 			<div class="col-8 offset-2">
 				<form action="updateUserBucketItem.do" class="form-group" id="updateUserItemDetails" method="post">
+					<input type="hidden" name="id" value="${userBucketItem.id }">
 					<label for="dateCompleted">Date Completed:</label>
-					<input class="form-control" type="date" name="dateCompleted" id="dateCompleted" value="">
+					<input class="form-control" type="date" name="dateCompleted" id="dateCompleted">
 					<label for="targetDate">Target Date:</label>
 					<input class="form-control" type="date" name="targetDate" id="targetDate">
 					<label for="isCompleted">Complete:</label>
+					&emsp;
 					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="true"> Yes
+					&emsp;
 					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="false"> No
+					<br>
 					<input type="submit" class="btn btn-success" value="Save Changes"/>
 				</form>
 				<div class="col-10 offset-1">

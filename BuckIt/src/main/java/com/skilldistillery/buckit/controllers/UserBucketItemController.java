@@ -1,5 +1,8 @@
 package com.skilldistillery.buckit.controllers;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +27,68 @@ public class UserBucketItemController {
 	}
 	
 	@RequestMapping(path="updateUserBucketItem.do", method=RequestMethod.POST)
-	public String updateUserBucketItem(UserBucketItem userBucketItem, Model model) {
-		model.addAttribute("userBucketItem", daoUBI.updateBucketItem(userBucketItem));
+	public String updateUserBucketItem(Integer id, String dateCompleted, String targetDate, String isCompleted, Model model) {
+		UserBucketItem userBucketItem = daoUBI.findByID(id);
+		System.out.println(userBucketItem);
+		LocalDate dateComplete = LocalDate.parse(dateCompleted);
+		LocalDate dateTargeted = LocalDate.parse(targetDate);
+		DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.parse(targetDate));
+		if(isCompleted.equals("true")) {
+			userBucketItem.setCompleted(true);
+		} else {
+			userBucketItem.setCompleted(false);
+		}
+		
+		userBucketItem.setDateCompleted(dateComplete);
+		userBucketItem.setTargetDate(dateTargeted);
+		System.out.println(userBucketItem);
+		
+		daoUBI.updateBucketItem(userBucketItem);
+		model.addAttribute("userBucketItem", userBucketItem);
+		
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-DD-YYYY");
+//		LocalDate completedDate = LocalDate.parse(dateCompleted, formatter);
+//		System.out.println(completedDate);
 		return "userBucketListItem";
 	}
+	
+//    @InitBinder
+//    public void initBinder(WebDataBinder webDataBinder) {
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            dateFormat.setLenient(true);
+//            webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+//            webDataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+//                    @Override
+//                    public void setAsText(String text) throws IllegalArgumentException {
+//                            setValue(LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+//                    }
+//                    @Override
+//                    public String getAsText() throws IllegalArgumentException {
+//                            return DateTimeFormatter.ofPattern("yyyy-MM-dd").format((LocalDate) getValue());
+//                    }
+//            });
+//            webDataBinder.registerCustomEditor(LocalTime.class, new PropertyEditorSupport() {
+//                    @Override
+//                    public void setAsText(String text) throws IllegalArgumentException {
+//                            setValue(LocalTime.parse(text, DateTimeFormatter.ofPattern("HH:mm")));
+//                    }
+//                    @Override
+//                    public String getAsText() throws IllegalArgumentException {
+//                            return DateTimeFormatter.ofPattern("HH:mm").format((LocalTime) getValue());
+//                    }
+//            });
+//            // 2020-11-04T09:44
+//            webDataBinder.registerCustomEditor(LocalDateTime.class, new PropertyEditorSupport() {
+//                    @Override
+//                    public void setAsText(String text) throws IllegalArgumentException {
+//                            setValue(LocalDateTime.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+//                    }
+//                    @Override
+//                    public String getAsText() throws IllegalArgumentException {
+//                            return DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm").format((LocalDateTime) getValue());
+//                    }
+//            });
+//    }
 	
 	@RequestMapping(path="deleteUserBucketItem.do", method=RequestMethod.POST)
 	public String deleteUserBucketItem(Integer id, Model model) {

@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name="user_bucket_item")
 public class UserBucketItem {
@@ -22,6 +24,7 @@ public class UserBucketItem {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "date_added")
+	@CreationTimestamp
 	private LocalDate dateAdded;
 	@Column(name = "date_completed")
 	private LocalDate dateCompleted;
