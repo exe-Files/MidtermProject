@@ -150,6 +150,26 @@ h5 {
 	padding: 10px;
 }
 
+.fa-bitbucket {
+	color: #FE7;
+    text-shadow: 0 0 10px #952;
+    font-size: 36px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.fa-usd {
+	color: #03BF18;
+    text-shadow: 0 0 5px #00820F;
+    font-size: 36px;
+    padding-left: 10px;
+    padding-top: 5px;;
+}
+
+.avg-rating {
+	font-size: 36px;
+}
+
 /*
     All the Google Maps stuff
 */

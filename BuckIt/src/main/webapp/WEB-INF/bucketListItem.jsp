@@ -160,25 +160,42 @@
 					</div>
 				</form>
 
+					<hr>
+					<div class="row">
+					<div class="col">
+					<h3 class="d-flex justify-content-center"><strong>Average Rating</strong></h3>
+					<h2 class="avg-rating d-flex justify-content-center">${avgStarRating}<i class="fa fa-bitbucket" aria-hidden="true"></i></h2>
+					</div>
+					<div class="col">
+					<h3 class="d-flex justify-content-center"><strong>Average Cost</strong></h3>
+					<h2 class="avg-rating d-flex justify-content-center">${avgCostRating}<i class="fa fa-usd" aria-hidden="true"></i></h2>
+					</div>
+					<div class="col">
+					<h3 class="d-flex justify-content-center"><strong>Best Time To Do</strong></h3>
+					<h2 class="avg-rating d-flex justify-content-center">${bestTimeToDo}</h2>
+					</div>
+					<div class="col"></div>
+					</div>
 
-				<table class="table">
-					<thead class="thead-dark">
-						<tr>
-							<th>Stars</th>
-							<th>Price</th>
-							<th>Best Time to Complete</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="rating" items="${bucketItem.polls }">
-							<tr>
-								<td>${rating.ratingStars }</td>
-								<td>${rating.costDollarSigns }</td>
-								<td>${rating.bestTimeToDo }</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+
+<!-- 				<table class="table"> -->
+<!-- 					<thead class="thead-dark"> -->
+<!-- 						<tr> -->
+<!-- 							<th>Stars</th> -->
+<!-- 							<th>Price</th> -->
+<!-- 							<th>Best Time to Complete</th> -->
+<!-- 						</tr> -->
+<!-- 					</thead> -->
+<!-- 					<tbody> -->
+<%-- 						<c:forEach var="rating" items="${bucketItem.polls }"> --%>
+<!-- 							<tr> -->
+<%-- 								<td>${rating.ratingStars }</td> --%>
+<%-- 								<td>${rating.costDollarSigns }</td> --%>
+<%-- 								<td>${rating.bestTimeToDo }</td> --%>
+<!-- 							</tr> -->
+<%-- 						</c:forEach> --%>
+<!-- 					</tbody> -->
+<!-- 				</table> -->
 			</div>
 		</div>
 	</div>
