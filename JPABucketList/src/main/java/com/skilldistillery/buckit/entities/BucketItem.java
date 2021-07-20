@@ -36,7 +36,7 @@ public class BucketItem {
 	@CreationTimestamp
 	private LocalDateTime dateCreated;
 
-	@Column(name = "date_updated")
+	@Column(name = "date_updated" )
 	@UpdateTimestamp
 	private LocalDateTime dateUpdated;
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.buckit.entities.BucketItem;
 import com.skilldistillery.buckit.entities.Category;
+import com.skilldistillery.buckit.entities.User;
 
 @Service
 @Transactional
@@ -98,6 +99,14 @@ public class BucketItemDAOImpl implements BucketItemDAO {
 		List<BucketItem> filteredBucketItemList = null;
 		String jpqlQuery = "SELECT bi FROM BucketItem bi WHERE :category MEMBER OF categories";
 		filteredBucketItemList = em.createQuery(jpqlQuery, BucketItem.class).setParameter("category", category).getResultList();
+		return filteredBucketItemList;
+	}
+	
+	@Override
+	public List<BucketItem> getFilteredByUserBucketItems(User user) {
+		List<BucketItem> filteredBucketItemList = null;
+		String jpqlQuery = "SELECT bi FROM BucketItem bi WHERE createdByUser = :user";
+		filteredBucketItemList = em.createQuery(jpqlQuery, BucketItem.class).setParameter("user", user).getResultList();
 		return filteredBucketItemList;
 	}
 

@@ -12,6 +12,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 <link href="../css/admin.css" rel="stylesheet" id="bootstrap-css">
 
 <title>Admin Dashboard</title>
@@ -63,20 +65,34 @@
 		<h4>Admin Dashboard</h4>
 		<div class="adminTabs">
 			<nav>
+			
+			<c:if test="${returnToItemTab != true}">
+				<c:set var="navUsersClass" value="active"/>
+				<c:set var="usersTabClass" value="show active"/>
+				<c:set var="navItemClass" value=""/>
+				<c:set var="itemTabClass" value=""/>
+			</c:if>
+			<c:if test="${returnToItemTab == true}">
+				<c:set var="navUsersClass" value=""/>
+				<c:set var="usersTabClass" value=""/>
+				<c:set var="navItemClass" value="active"/>
+				<c:set var="itemTabClass" value="show active"/>
+			</c:if>
+			
+			
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
-					<a class="nav-item nav-link active" id="nav-users-tab"
+					<a class="nav-item nav-link ${navUsersClass}" id="nav-users-tab"
 						data-toggle="tab" href="#nav-users" role="tab"
 						aria-controls="nav-users" aria-selected="true">Users</a> <a
-						class="nav-item nav-link" id="nav-bucketitem-tab"
+						class="nav-item nav-link ${navItemClass}" id="nav-bucketitem-tab"
 						data-toggle="tab" href="#nav-bucketitem" role="tab"
 						aria-controls="nav-bucketitem" aria-selected="false">All
 						Bucket Items</a>
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				<div class="tab-pane fade show active" id="nav-users"
+				<div class="tab-pane fade ${usersTabClass}" id="nav-users"
 					role="tabpanel" aria-labelledby="nav-users-tab">
-					ALL USERS
 					<table class="table">
 						<thead>
 							<tr>
@@ -114,11 +130,23 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					END OF USER LIST
 				</div>
-				<div class="tab-pane fade" id="nav-bucketitem" role="tabpanel"
+				<div class="tab-pane fade ${itemTabClass}" id="nav-bucketitem" role="tabpanel"
 					aria-labelledby="nav-bucketitem-tab">
-					ALL BUCKET LIST ITEMS
+					<div class="row">
+						<form action="adminFilterItemsByCreatedByUser" method=GET
+							id="adminFilterItems">
+							<select class="selectpicker" data-live-search="true"
+								name="userId">
+								<option selected value="-1" style="display: none">--
+									Filter by User Created By --</option>
+								<c:forEach var="user" items="${allUsers}">
+									<option value="${ user.id }">${user.username }</option>
+								</c:forEach>
+							</select> <input type="submit" class="btn btn-sm btn-secondary"
+								id="filterSubmitBtn">
+						</form>
+					</div>
 					<table class="table">
 						<thead>
 							<tr>
@@ -161,7 +189,6 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					END OF BUCKET LIST ITEMS
 				</div>
 			</div>
 
@@ -184,5 +211,8 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 </body>
 </html>

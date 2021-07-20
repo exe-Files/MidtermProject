@@ -45,8 +45,8 @@ public class AdminController {
 		}
 		return "redirect:getUserBucket";
 	}
-	
-	@RequestMapping(path = "adminEditUser.do", method=RequestMethod.GET)
+
+	@RequestMapping(path = "adminEditUser.do", method = RequestMethod.GET)
 	public String goToEditUser(HttpSession session, Model model, int adminUserToEdit) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			User userToEdit = userDao.findById(adminUserToEdit);
@@ -55,8 +55,8 @@ public class AdminController {
 		}
 		return "redirect:getUserBucket";
 	}
-	
-	@RequestMapping(path = "editUserDetails.do", method=RequestMethod.POST)
+
+	@RequestMapping(path = "editUserDetails.do", method = RequestMethod.POST)
 	public String adminEditUser(HttpSession session, Model model, User userFromForm, String isActive) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			if (isActive.equals("true")) {
@@ -68,8 +68,8 @@ public class AdminController {
 		}
 		return "redirect:getUserBucket";
 	}
-	
-	@RequestMapping(path = "adminDeleteCommentFromUser.do", method=RequestMethod.POST)
+
+	@RequestMapping(path = "adminDeleteCommentFromUser.do", method = RequestMethod.POST)
 	public String adminDeleteCommentReturnToUser(HttpSession session, Model model, int idToDelete, int userId) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			commentDao.deleteComment(idToDelete);
@@ -79,8 +79,8 @@ public class AdminController {
 		}
 		return "redirect:getUserBucket";
 	}
-	
-	@RequestMapping(path = "adminDeletePollFromUser.do", method=RequestMethod.POST)
+
+	@RequestMapping(path = "adminDeletePollFromUser.do", method = RequestMethod.POST)
 	public String adminDeletePollReturnToUser(HttpSession session, Model model, int idToDelete, int userId) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			Poll pollToDelete = pollDao.findById(idToDelete);
@@ -91,9 +91,8 @@ public class AdminController {
 		}
 		return "redirect:getUserBucket";
 	}
-	
 
-	@RequestMapping(path = "adminEditItem.do", method=RequestMethod.GET)
+	@RequestMapping(path = "adminEditItem.do", method = RequestMethod.GET)
 	public String goToEditItem(HttpSession session, Model model, int adminItemToEdit) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			BucketItem itemToEdit = bucketItemDao.findBucketItemById(adminItemToEdit);
@@ -102,9 +101,10 @@ public class AdminController {
 		}
 		return "redirect:getUserBucket";
 	}
-	
-	@RequestMapping(path = "editItemDetails.do", method=RequestMethod.POST)
-	public String adminEditItem(HttpSession session, Model model, BucketItem bucketItemFromForm, String isActive, String isPublicAtCreation) {
+
+	@RequestMapping(path = "editItemDetails.do", method = RequestMethod.POST)
+	public String adminEditItem(HttpSession session, Model model, BucketItem bucketItemFromForm, String isActive,
+			String isPublicAtCreation) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			if (isActive.equals("true")) {
 				bucketItemFromForm.setIsActive(true);
@@ -114,12 +114,17 @@ public class AdminController {
 			}
 			BucketItem editedBucketItem = bucketItemDao.updateBucketItem(bucketItemFromForm);
 			model.addAttribute("item", editedBucketItem);
-			return "redirect:adminHome.do";
+			List<User> allUsers = userDao.getAllUsers();
+			model.addAttribute("allUsers", allUsers);
+			List<BucketItem> allBucketItems = bucketItemDao.getAllBucketItems();
+			model.addAttribute("allBucketItems", allBucketItems);
+			model.addAttribute("returnToItemTab", true);
+			return "adminHome";
 		}
 		return "redirect:getUserBucket";
 	}
-	
-	@RequestMapping(path = "adminDeleteCommentFromItem.do", method=RequestMethod.POST)
+
+	@RequestMapping(path = "adminDeleteCommentFromItem.do", method = RequestMethod.POST)
 	public String adminDeleteCommentReturnToItem(HttpSession session, Model model, int idToDelete, int itemId) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			commentDao.deleteComment(idToDelete);
@@ -129,8 +134,8 @@ public class AdminController {
 		}
 		return "redirect:getUserBucket";
 	}
-	
-	@RequestMapping(path = "adminDeletePollFromItem.do", method=RequestMethod.POST)
+
+	@RequestMapping(path = "adminDeletePollFromItem.do", method = RequestMethod.POST)
 	public String adminDeletePollReturnToItem(HttpSession session, Model model, int idToDelete, int itemId) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			Poll pollToDelete = pollDao.findById(idToDelete);
@@ -138,6 +143,25 @@ public class AdminController {
 			BucketItem itemToEdit = bucketItemDao.findBucketItemById(itemId);
 			model.addAttribute("item", itemToEdit);
 			return "adminEditItem";
+		}
+		return "redirect:getUserBucket";
+	}
+
+	@RequestMapping(path = "adminFilterItemsByCreatedByUser", method = RequestMethod.GET)
+	public String adminFilterItemsByUser(HttpSession session, Model model, Integer userId) {
+		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
+			List<User> allUsers = userDao.getAllUsers();
+			model.addAttribute("allUsers", allUsers);
+			if (userId == -1) {
+				List<BucketItem> allBucketItems = bucketItemDao.getAllBucketItems();
+				model.addAttribute("allBucketItems", allBucketItems);
+			} else {
+				User userToFilterBy = userDao.findById(userId);
+				List<BucketItem> allBucketItems = bucketItemDao.getFilteredByUserBucketItems(userToFilterBy);
+				model.addAttribute("allBucketItems", allBucketItems);
+			}
+			model.addAttribute("returnToItemTab", true);
+			return "adminHome";
 		}
 		return "redirect:getUserBucket";
 	}
