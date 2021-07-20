@@ -165,4 +165,16 @@ public class UserBucketItem {
 			resources.remove(resource);
 		}
 	}
+	
+	public int getStarRating() {
+		return bucketItem.getAverageStarRating();
+	}
+	
+	public int getCostRating() {
+		return bucketItem.getAverageCostRating();
+	}
+	
+	public String getBestTime() {
+		return bucketItem.getMostFrequentBestTime();
+	}
 }
