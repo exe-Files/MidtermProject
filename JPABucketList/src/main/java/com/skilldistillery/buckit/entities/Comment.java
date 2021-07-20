@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class Comment {
 	
@@ -19,8 +22,10 @@ public class Comment {
 	@Column(name="comment_text")
 	private String commentText;
 	@Column(name="date_created")
+	@CreationTimestamp
 	private LocalDate dateCreated;
 	@Column(name="date_updated")
+	@UpdateTimestamp
 	private LocalDate dateUpdated;
 	@Column(name="image_url")
 	private String imageUrl;
