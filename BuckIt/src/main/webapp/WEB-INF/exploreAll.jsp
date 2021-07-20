@@ -58,7 +58,6 @@
 			</div>
 		</nav>
 	</div>
-
 	<div class="container">
 		<div class="card-deck">
 			<div class="card" id="explore-item-card">
@@ -85,44 +84,51 @@
 				</div>
 			</div>
 
+			<c:set var="cardsInRow" value="1" />
 			<c:forEach var="item" items="${allPublicBucketItems }">
-				<div class="card" id="explore-item-card">
-					<img src='${item.imageUrl}' class="card-img-top" alt="...">
-					<div class="card-body">
-						<h4 class="card-title">${item.name }</h4>
-						<c:if test='${item.location != null}'>
-							<h6 class="card-subtitle">${item.location.cityArea }
-								<c:if test='${item.location.countryCode != null}'>, ${item.location.countryCode.countryName }</c:if>
-							</h6>
-						</c:if>
-						<hr>
-						<p class="card-text">${item.description }</p>
-					</div>
-					<div class="card-footer">
-						<form action="addUserBucketItem.do" method=POST
-							id="addItemToUserBucket${item.id }" hidden='true'>
-							<input type="text" class="form-control" id="bucketItemIdToAdd"
-								name="bucketItemIdToAdd" readonly hidden='true'
-								value='${item.id}'>
-						</form>
-						<c:if test='${loggedInUser != null }'>
-							<button type='submit' form='addItemToUserBucket${item.id }'
-								class="btn btn-sm btn-outline-success btn-round"
-								data-toggle="tooltip" title="Add to Your Bucket List"
-								data-delay='{"show":"0", "hide":"0"}'>&#10003</button>
-						</c:if>
-						<form action="viewDetailed.do" method=GET
-							id="viewItemDetailed${item.id }" hidden='true'>
-							<input type="text" class="form-control" id="bucketItemIdToView"
-								name="bucketItemIdToView" readonly hidden='true'
-								value='${item.id}'>
-						</form>
-						<button type='submit' form='viewItemDetailed${item.id }'
-							id="detailedViewBtn" class="btn btn-sm btn-primary"
-							data-toggle="tooltip" title="View Details"
-							data-delay='{"show":"0", "hide":"0"}'>Detailed View</button>
-					</div>
+				<c:if test="${cardsInRow == 3}">
+		</div>
+		<div class="card-deck">
+			<c:set var="cardsInRow" value="0" />
+			</c:if>
+			<div class="card" id="explore-item-card">
+				<img src='${item.imageUrl}' class="card-img-top" alt="...">
+				<div class="card-body">
+					<h4 class="card-title">${item.name }</h4>
+					<c:if test='${item.location != null}'>
+						<h6 class="card-subtitle">${item.location.cityArea }
+							<c:if test='${item.location.countryCode != null}'>, ${item.location.countryCode.countryName }</c:if>
+						</h6>
+					</c:if>
+					<hr>
+					<p class="card-text">${item.description }</p>
 				</div>
+				<div class="card-footer">
+					<form action="addUserBucketItem.do" method=POST
+						id="addItemToUserBucket${item.id }" hidden='true'>
+						<input type="text" class="form-control" id="bucketItemIdToAdd"
+							name="bucketItemIdToAdd" readonly hidden='true'
+							value='${item.id}'>
+					</form>
+					<c:if test='${loggedInUser != null }'>
+						<button type='submit' form='addItemToUserBucket${item.id }'
+							class="btn btn-sm btn-outline-success btn-round"
+							data-toggle="tooltip" title="Add to Your Bucket List"
+							data-delay='{"show":"0", "hide":"0"}'>&#10003</button>
+					</c:if>
+					<form action="viewDetailed.do" method=GET
+						id="viewItemDetailed${item.id }" hidden='true'>
+						<input type="text" class="form-control" id="bucketItemIdToView"
+							name="bucketItemIdToView" readonly hidden='true'
+							value='${item.id}'>
+					</form>
+					<button type='submit' form='viewItemDetailed${item.id }'
+						id="detailedViewBtn" class="btn btn-sm btn-primary"
+						data-toggle="tooltip" title="View Details"
+						data-delay='{"show":"0", "hide":"0"}'>Detailed View</button>
+				</div>
+			</div>
+			<c:set var="cardsInRow" value="${cardsInRow +1 }" />
 			</c:forEach>
 		</div>
 	</div>
