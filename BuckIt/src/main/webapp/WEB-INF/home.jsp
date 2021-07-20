@@ -17,7 +17,7 @@
 <title>BuckIt, The #1 Bucket-List</title>
 </head>
 <body class="homebg">
-<div>
+	<div>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
 			<a class="navbar-brand" href="home.do">BuckIt List</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -29,24 +29,20 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="navi.do?userSelect=home">
+					<li class="nav-item active"><a class="nav-link"
+							href="navi.do?userSelect=home">
 							Home <span class="sr-only">(current)</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="navi.do?userSelect=explore">Explore</a>
-					</li>
+						</a></li>
+					<li class="nav-item"><a class="nav-link"
+							href="navi.do?userSelect=explore">Explore</a></li>
 
-					<li class="nav-item">
-						<a class="nav-link" href="navi.do?userSelect=userBucket">My BuckIt</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="navi.do?userSelect=settings">Settings</a>
-					</li>
+					<li class="nav-item"><a class="nav-link"
+							href="navi.do?userSelect=userBucket">My BuckIt</a></li>
+					<li class="nav-item"><a class="nav-link"
+							href="navi.do?userSelect=settings">Settings</a></li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false"> </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -56,21 +52,29 @@
 							<a class="dropdown-item" href="#">User Comments</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="logout.do">Log out</a>
-						</div>
-					</li>
+						</div></li>
 				</ul>
 				<!-- <form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form> -->
+				<!-- 
+				<div class=justify-content: flex-end>
+					<img src="${session.loggedInUser.user.imageUrl}" alt="Profile Picture"
+						class="avatar">
+				</div>
+				
+				 -->
+
+
 			</div>
 		</nav>
 	</div>
-	<div class="heading">
-		<h1>Make Every Day a BuckIt Day</h1>
-	</div>
-	<div>
+	<div id="content">
+		<div class="heading d-flex justify-content-center ">
+			<h1>Make Every Day a BuckIt Day</h1>
+		</div>
 		<%-- <p>${DEBUG}</p> --%>
 		<div class="container sign-in-card">
 			<div class="d-flex justify-content-center h-100">
@@ -78,15 +82,18 @@
 					<div class="card-header">
 						<h3>Sign In</h3>
 
-<c:if test='${loginResult == "No user found with the supplied username and password"}'>
-						<div class="alert alert-danger alert-dismissible fade show"
-							role="alert">
-							No account was found with the provided Username and Password. Please try again.
-							<button type="button" class="close" data-dismiss="alert"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div></c:if>
+						<c:if
+							test='${loginResult == "No user found with the supplied username and password"}'>
+							<div class="alert alert-danger alert-dismissible fade show"
+								role="alert">
+								No account was found with the provided Username and Password.
+								Please try again.
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</c:if>
 
 					</div>
 					<div class="card-body">
@@ -107,7 +114,8 @@
 									placeholder="password">
 							</div>
 							<div class="row align-items-center remember">
-								<input type="checkbox"> Remember Me
+								<input type="checkbox">
+								Remember Me
 								<!-- This doesn't actually do anything -->
 							</div>
 							<div class="form-group">
@@ -118,7 +126,8 @@
 					</div>
 					<div class="card-footer">
 						<div class="d-flex justify-content-center links">
-							Don't have an account? <a href="register.do">Sign Up</a>
+							Don't have an account?
+							<a href="register.do">Sign Up</a>
 						</div>
 						<!-- <div class="d-flex justify-content-center">
 								<a href="#">Forgot your password?</a>
@@ -127,8 +136,8 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
+
 
 
 	<!-- Optional JavaScript -->
