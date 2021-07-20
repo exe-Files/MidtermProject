@@ -58,7 +58,7 @@
 	<h1>Please complete registration information below:</h1>
 		<form class="needs-validation" action="registrationinfo.do" method="POST" novalidate>
 			<input type="hidden" name="role" value="user">
-			<input type="hidden" name="isActive" value="true">
+			<input type="hidden" name="isActive" value=true>
 		
 		
           <!-- First row -->
