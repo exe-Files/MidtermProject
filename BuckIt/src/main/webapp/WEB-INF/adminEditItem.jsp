@@ -91,7 +91,7 @@
 							name="dateCreated" value="${item.dateCreated}" readonly>
 						<label for="dateUpdated"> Date Updated: </label> <input
 							type="text" class="form-control" id="dateUpdated"
-							name="dateUpdated" value="${item.dateUpdated}" readonly>
+							name="dateUpdated" placeholder="${item.dateUpdated}" readonly>
 						<label for="isActive"> Active?: </label> <select id="isActive"
 							name="isActive">
 							<option value="${item.isActive}" selected hidden="true">${item.isActive}</option>

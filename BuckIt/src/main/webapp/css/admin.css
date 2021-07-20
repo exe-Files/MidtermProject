@@ -19,3 +19,8 @@ input:focus {
 .links a {
 	margin-left: 4px;
 }
+
+#adminFilterItems {
+	padding-left: 15px;
+
+}
