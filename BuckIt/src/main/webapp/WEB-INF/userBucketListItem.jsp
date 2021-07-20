@@ -10,7 +10,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
-<title>Bucket Item Details</title>
+<title>User Bucket Item</title>
 </head>
 <body>
 	<div>
@@ -67,13 +67,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-8 offset-2">
-				<img src="${bucketItem.imageUrl }" />
+				<img src="${userBucketItem.bucketItem.imageUrl }" />
 				<!-- How to incorporate Map? -->
 			</div>
 		</div>
 	</div>
 	<br>
-	<h4>${bucketItem.name }</h4>
+	<h4>${userBucketItem.bucketItem.name }</h4>
 	<br>
 	<div class="container">
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -97,11 +97,11 @@
 		<div class="tab-content" id="myTabContent">
 			<div class="tab-pane fade show active" id="desc" role="tabpanel"
 				aria-labelledby="desc-tab">
-				<p>${bucketItem.description }</p>
+				<p>${userBucketItem.bucketItem.description }</p>
 			</div>
 			<div class="tab-pane fade" id="comment" role="tabpanel"
 				aria-labelledby="comment-tab">
-				<c:forEach var="comment" items="${bucketItem.comments }">
+				<c:forEach var="comment" items="${userBucketItem.bucketItem.comments }">
 					<div class="media">
 						<div class="media-body">
 							${comment.commentText }
@@ -120,7 +120,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="rating" items="${bucketItem.polls }">
+						<c:forEach var="rating" items="${userBucketItem.bucketItem.polls }">
 							<tr>
 								<td>${rating.ratingStars }</td>
 								<td>${rating.costDollarSigns }</td>
@@ -135,19 +135,29 @@
 				<table class="table">
 					<thead class="thead-dark">
 						<tr>
-							<th>Title</th>
+							<th scope="row">Title</th>
 							<th>Text</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="note" items="${userBucketItem.notes }">
 							<tr>
-								<th scope="row">${note.noteTitle }</th>
+								<th>${note.noteTitle }</th>
 								<td>${note.noteText }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				<form action="addNote.do" method="post" id="addNote">
+					<div class="form-group">
+						<input type="hidden" name="bucketItemId" value="${userBucketItem.id }"/>
+						<label for="noteTitle">Title:</label>
+						<input type="text" class="form-control" id="noteTitle" name="noteTitle" value="${note.noteTitle }"/>
+						<label for="text">Note:</label>
+						<textarea class="form-control" form="addNote" name="noteText" rows="4" cols="50"></textarea>
+						<input type="submit" class="btn btn-success form-control" value="Add Note"/>
+					</div>
+				</form>
 			</div>
 			<div class="tab-pane fade" id="resources" role="tabpanel"
 				aria-labelledby="resource-tab">
@@ -156,13 +166,21 @@
 						<li>${resource }</li>
 					</c:forEach>
 				</ul>
+				<form action="addResource.do" method="post" id="addResource">
+					<div class="form-group">
+						<input type="hidden" name="bucketItemId" value="${userBucketItem.id }"/>
+						<label for="url">URL:</label>
+						<input type="text" class="form-control" id="url" name="url" value="${resource.url }"/>
+						<input type="submit" class="btn btn-success form-control" value="Add Resource"/>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
 	<div class="container">
 		<div class="col-4 offset-8">
 			<form action="editUserBucketItem.do" id="editUserItem">
-				<input type="hidden" value="${userBucketItem.id }">
+				<input type="hidden" name="id" value="${userBucketItem.id }">
 			</form>
 			<form action="deleteUserBucketItem.do" id="deleteUserItem" method="post">
 				<input type="hidden" value="${userBucketItem.id }" name="id">
@@ -178,24 +196,6 @@
 	
 	<div class="container">
 		<div class="col-8 offset-2">
-			<form action="addNote.do" id="addNote">
-				<div class="form-group">
-					<input type="hidden" value="${userBucketItem.id }"/>
-					<label for="noteTitle">Title:</label>
-					<input type="text" class="form-control" id="noteTitle" name="noteTitle" value="${note.noteTitle }"/>
-					<label for="noteText">Note:</label>
-					<textarea class="form-control" form="addNote" rows="4" cols="50"></textarea>
-					<input type="submit" class="btn btn-success form-control" value="Add Note"/>
-				</div>
-			</form>
-			<form action="addResource.do" id="addResource">
-				<div class="form-group">
-					<input type="hidden" value="${userBucketItem.id }"/>
-					<label for="resourceURL">URL:</label>
-					<input type="text" class="form-control" id="resourceURL" name="resourceURL" value="${resource.url }"/>
-					<input type="submit" class="btn btn-success form-control" value="Add Resource"/>
-				</div>
-			</form>
 		</div>
 	</div>
 

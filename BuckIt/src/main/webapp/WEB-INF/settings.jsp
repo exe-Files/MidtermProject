@@ -66,40 +66,54 @@
 	</div>
 	<div class="settingsForm">
 		<div>
-			<h3>User Settings</h3>
-		</div>
-		<div>
+			<div>
+				<h3>User Settings</h3>
+			</div>
+			<%-- <c:if test='${updateResult == "false"}'>
+				<div class="alert alert-danger alert-dismissible fade show"
+					role="alert">
+					No changes made to user settings. Please try again.
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+			</c:if> --%>
+
 			<form action="updatedSettings.do?id=${user.id}" method="POST">
 				<div class="row">
-					<div class="mb-3">
+					<div class="mb-auto">
 						<div>
 							<img src="${user.imageUrl}" alt="Profile Picture" class="avatar">
-
+							<input name="imageUrl" class="form-control input-sm"
+								placeholder="Profile Picture URL" value="${user.imageUrl}">
 						</div>
+						<br>
 						<div>
 							<label for="username">User Name: </label>
-							<input name="username" class="form-control input-sm"
-								placeholder="User Name" required value="${user.username}">
+							<input name="username" class="form-control"
+								placeholder="User Name" value="${user.username}" required>
 						</div>
 						<div>
-							<label for="fname">First Name: </label>
-							<input name="fname" class="form-control input-sm"
-								placeholder="First Name" required value="${user.firstName}">
+							<label for="firstName">First Name: </label>
+							<input name="firstName" class="form-control input-sm"
+								placeholder="First Name" value="${user.firstName}">
 						</div>
 						<div>
-							<label for="lname">Last Name: </label>
-							<input name="lname" class="form-control input-sm"
+							<label for="lastName">Last Name: </label>
+							<input name="lastName" class="form-control input-sm"
 								placeholder="Last Name" value="${user.lastName}">
 						</div>
 						<div>
 							<label for="email">Email: </label>
 							<input name="email" class="form-control input-sm"
-								placeholder="Email" value="${user.email}">
+								placeholder="Email" value="${user.email}" required>
 						</div>
 						<div>
 							<label for="password">Password: </label>
 							<input name="password" type="password"
-								class="form-control input-sm" placeholder="Password">
+								class="form-control input-sm" placeholder="Password"
+								value="${user.password}" required>
 						</div>
 						<div class="text-center">
 							<button class="btn btn-outline-dark w-75 mt-3" type="submit"
