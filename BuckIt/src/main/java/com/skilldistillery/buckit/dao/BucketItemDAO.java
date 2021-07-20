@@ -3,6 +3,7 @@ package com.skilldistillery.buckit.dao;
 import java.util.List;
 
 import com.skilldistillery.buckit.entities.BucketItem;
+import com.skilldistillery.buckit.entities.Category;
 
 public interface BucketItemDAO {
 	
@@ -17,4 +18,6 @@ public interface BucketItemDAO {
 	BucketItem findBucketItemById(int id);
 
 	List<BucketItem> getAllBucketItems();
+
+	List<BucketItem> getAllBucketItemsWithCategory(Category category);
 }
