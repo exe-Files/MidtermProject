@@ -17,65 +17,100 @@
 <title>BuckIt, The #1 Bucket-List</title>
 </head>
 <body class="homebg">
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-			<a class="navbar-brand" href="home.do">BuckIt List</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<!-- 	<div>
+		<div class="container">
+		  <div class="row">
+		    <div class="col">
+		      Column
+		    </div>
+		    <div class="col">
+		      Column
+		    </div>
+		    <div class="col">
+		      Column
+		    </div>
+		  </div>
+		</div> -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+		<a class="navbar-brand" href="home.do">BuckIt List</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link"
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<!-- <li class="nav-item active"><a class="nav-link"
 							href="navi.do?userSelect=home">
 							Home <span class="sr-only">(current)</span>
-						</a></li>
-					<li class="nav-item"><a class="nav-link"
-							href="navi.do?userSelect=explore">Explore</a></li>
+						</a></li> -->
+				<li class="nav-item"><a class="nav-link"
+						href="navi.do?userSelect=explore">Explore</a></li>
 
-					<li class="nav-item"><a class="nav-link"
-							href="navi.do?userSelect=userBucket">My BuckIt</a></li>
-					<!-- <li class="nav-item"><a class="nav-link"
+				<li class="nav-item"><a class="nav-link"
+						href="navi.do?userSelect=userBucket">My BuckIt</a> <c:if
+						test='${not empty loggedInUser}'>
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false"> </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="newbucketitem.do">Add New
+								Bucket List Item</a>
+
+						</div>
+					</c:if></li>
+
+				<!-- <li class="nav-item"><a class="nav-link"
 							href="navi.do?userSelect=settings">Settings</a></li> -->
-				</ul>
+			</ul>
 
-				<!-- <form class="form-inline my-2 my-lg-0">
+			<!-- <form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
 						placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 				</form> -->
-				<c:if test='${not empty loggedInUser}'>			 
+			<c:if test='${not empty loggedInUser}'>
 				<div class=justify-content: flex-end>
-					<img src="${sessionScope.loggedInUser.imageUrl}" alt="Profile Picture"
-						class="avatar" class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="adminHome.do">Admin Home</a>
-							<a class="dropdown-item" href="#">Another action</a>
-							<a class="dropdown-item" href="#">User Polls</a>
-							<a class="dropdown-item" href="#">User Comments</a>
-							<a class="dropdown-item" href="navi.do?userSelect=settings">Settings</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="logout.do">Log out</a>
-						</div>
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
+						<img src="${sessionScope.loggedInUser.imageUrl}"
+							alt="Profile Picture" class="avatar" class="nav-item dropdown">
+					</a>
+					<div class="dropdown-menu " aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="adminHome.do">Admin Home</a>
+						<a class="dropdown-item" href="#">User Polls</a>
+						<a class="dropdown-item" href="#">User Comments</a>
+						<a class="dropdown-item" href="navi.do?userSelect=settings">Settings</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="logout.do">Log out</a>
+					</div>
 				</div>
-				</c:if>
-				
+			</c:if>
 
 
-			</div>
-		</nav>
-	</div>
+			<!-- 		<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Action</a>
+					<a class="dropdown-item" href="#">Another action</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Something else here</a>
+				</div></li>
+ -->
+
+
+		</div>
+	</nav>
 	<div id="content">
 		<div class="heading d-flex justify-content-center ">
 			<h1>Make Every Day a BuckIt Day</h1>
 		</div>
-		<%-- <p>${DEBUG}</p> --%>
+		<!-- <p>${DEBUG}</p> -->
 		<div class="container sign-in-card">
 			<div class="d-flex justify-content-center h-100">
 				<div class="card">
