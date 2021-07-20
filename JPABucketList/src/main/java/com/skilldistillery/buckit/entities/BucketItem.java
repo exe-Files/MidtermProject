@@ -16,6 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 @Table(name = "bucket_item")
 public class BucketItem {
@@ -28,9 +31,11 @@ public class BucketItem {
 	private String description;
 
 	@Column(name = "date_created")
+	@CreationTimestamp
 	private LocalDateTime dateCreated;
 
 	@Column(name = "date_updated")
+	@UpdateTimestamp
 	private LocalDateTime dateUpdated;
 
 	@Column(name = "is_public_at_creation")
