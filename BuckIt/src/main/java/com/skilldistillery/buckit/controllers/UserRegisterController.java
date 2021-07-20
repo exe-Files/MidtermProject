@@ -29,7 +29,7 @@ public class UserRegisterController {
 //		TODO validate username is unique, else redirect
 		mv.addObject("user", userDao.createUser(user));
 		
-		mv.setViewName("user-added");		
+		mv.setViewName("redirect:home.do");		
 
 		return mv;
 	}

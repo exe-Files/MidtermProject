@@ -10,6 +10,9 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="../css/utility.css" rel="stylesheet" id="bootstrap-css">
 <title>Bucket Item</title>
 </head>
 <body>
@@ -25,33 +28,27 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="navi.do?userSelect=home">
-							Home <span class="sr-only">(current)</span>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="navi.do?userSelect=explore">Explore</a>
-					</li>
+					<li class="nav-item active"><a class="nav-link"
+						href="navi.do?userSelect=home"> Home <span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="navi.do?userSelect=explore">Explore</a></li>
 
-					<li class="nav-item">
-						<a class="nav-link disabled" href="navi.do?userSelect=userBucket">My BuckIt</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link disabled" href="navi.do?userSelect=settings">Settings</a>
-					</li>
+					<li class="nav-item"><a class="nav-link disabled"
+						href="navi.do?userSelect=userBucket">My BuckIt</a></li>
+					<li class="nav-item"><a class="nav-link disabled"
+						href="navi.do?userSelect=settings">Settings</a></li>
 
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-							role="button" data-toggle="dropdown" aria-haspopup="true"
-							aria-expanded="false"> </a>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> </a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a>
-							<a class="dropdown-item" href="#">Another action</a>
+							<a class="dropdown-item" href="#">Action</a> <a
+								class="dropdown-item" href="#">Another action</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="#">Something else here</a>
-						</div>
-					</li>
+						</div></li>
 				</ul>
 				<!-- <form class="form-inline my-2 my-lg-0">
 					<input class="form-control mr-sm-2" type="search"
@@ -103,14 +100,67 @@
 				<!-- Add Comment / Might need work on Controller side -->
 				<div class="offset-3">
 					<form class="form-inline" action="addComment.do" id=addComment>
-						<input type="hidden" value="${bucketItem.id }"/>
-						<textarea class="form-control" form="addComment" rows="3" cols="40"></textarea>
-						<input type="submit" class="btn btn-primary form-control" value="Add Comment"/>
+						<input type="hidden" value="${bucketItem.id }" name="bucketItemId" />
+						<textarea class="form-control" form="addComment" rows="3"
+							cols="40" name="commentText"></textarea>
+						<input type="submit" class="btn btn-primary form-control"
+							value="Add Comment" />
 					</form>
 				</div>
 			</div>
 			<div class="tab-pane fade" id="rating" role="tabpanel"
 				aria-labelledby="rating-tab">
+				<form action="addPole.do">
+					<div class="form-row">
+						<div class="col">
+							<h5 class="d-flex justify-content-center">Rating</h5>
+							<div class="stars">
+								<input class="star star-5" value="5" id="star-5" type="radio"
+									name="ratingStars" /> <label class="star star-5" for="star-5"></label>
+								<input class="star star-4" value="4" id="star-4" type="radio"
+									name="ratingStars" /> <label class="star star-4" for="star-4"></label>
+								<input class="star star-3" value="3" id="star-3" type="radio"
+									name="ratingStars" /> <label class="star star-3" for="star-3"></label>
+								<input class="star star-2" value="2" id="star-2" type="radio"
+									name="ratingStars" /> <label class="star star-2" for="star-2"></label>
+								<input class="star star-1" value="1" id="star-1" type="radio"
+									name="ratingStars" /> <label class="star star-1" for="star-1"></label>
+							</div>
+						</div>
+
+						<div class="col">
+							<h5 class="d-flex justify-content-center">Cost</h5>
+							<div class="cost">
+								<input class="cost cost-5" value="5" id="cost-5" type="radio"
+									name="costDollarSigns" /> <label class="cost cost-5"
+									for="cost-5"></label> <input class="cost cost-4" value="4"
+									id="cost-4" type="radio" name="costDollarSigns" /> <label
+									class="cost cost-4" for="cost-4"></label> <input
+									class="cost cost-3" value="3" id="cost-3" type="radio"
+									name="costDollarSigns" /> <label class="cost cost-3"
+									for="cost-3"></label> <input class="cost cost-2" value="2"
+									id="cost-2" type="radio" name="costDollarSigns" /> <label
+									class="cost cost-2" for="cost-2"></label> <input
+									class="cost cost-1" value="1" id="cost-1" type="radio"
+									name="costDollarSigns" /> <label class="cost cost-1"
+									for="cost-1"></label>
+							</div>
+						</div>
+						<div class="col">
+							<h5 class="d-flex justify-content-center">Best Time To Do</h5>
+							<input type="text" name="bestTimeToDo" class="form-control"
+								id="besttime" placeholder="ex. Fall">
+						</div>
+						<div class="col">
+							<br>
+							<br> <input type="hidden" value="${bucketItem.id }"
+								name="bucketItemId" /> <input id="vote-btn" type="submit"
+								class="btn btn-success btn-sm form-control" value="Vote" />
+						</div>
+					</div>
+				</form>
+
+
 				<table class="table">
 					<thead class="thead-dark">
 						<tr>

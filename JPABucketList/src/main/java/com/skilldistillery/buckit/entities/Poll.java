@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Entity
 public class Poll {
 	
@@ -23,8 +26,10 @@ public class Poll {
 	@Column(name="best_time_todo")
 	private String bestTimeToDo;
 	@Column(name="date_created")
+	@CreationTimestamp
 	private LocalDate dateCreated;
 	@Column(name="date_updated")
+	@UpdateTimestamp
 	private LocalDate dateUpdated;
 	@ManyToOne								// Test Once BucketItem is complete
 	@JoinColumn(name="bucket_item_id") 
