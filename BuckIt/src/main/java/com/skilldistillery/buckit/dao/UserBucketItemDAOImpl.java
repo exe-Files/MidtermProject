@@ -30,15 +30,17 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 	@Override
 	public UserBucketItem updateBucketItem(UserBucketItem bucketItem) {
 		UserBucketItem bucketItemDB = em.find(UserBucketItem.class, bucketItem.getId());
-
-		bucketItemDB.setDateAdded(bucketItem.getDateAdded());
+		System.out.println(bucketItem);
+		System.out.println(bucketItem.getDateAdded());
+		
+//		bucketItemDB.setDateAdded(bucketItem.getDateAdded());
 		bucketItemDB.setDateCompleted(bucketItem.getDateCompleted());
 		bucketItemDB.setTargetDate(bucketItem.getTargetDate());
 		bucketItemDB.setCompleted(bucketItem.isCompleted());
-		bucketItemDB.setNotes(bucketItem.getNotes());
-		bucketItemDB.setResources(bucketItem.getResources());
-		bucketItemDB.setUser(bucketItem.getUser());
-		bucketItemDB.setBucketItem(bucketItem.getBucketItem());
+//		bucketItemDB.setNotes(bucketItem.getNotes());
+//		bucketItemDB.setResources(bucketItem.getResources());
+//		bucketItemDB.setUser(bucketItem.getUser());
+//		bucketItemDB.setBucketItem(bucketItem.getBucketItem());
 
 		em.flush();
 
