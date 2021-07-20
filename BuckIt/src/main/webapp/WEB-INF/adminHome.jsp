@@ -142,10 +142,10 @@
 											id="adminEditItem${loopItem.index }" hidden='true'>
 											<input type="text" class="form-control"
 												id="adminEditItem${loopItem.index }" name="adminItemToEdit"
-												readonly hidden='true' value='${user.id}'>
+												readonly hidden='true' value='${item.id}'>
 										</form>
 										<button type='submit' form='adminEditItem${loopItem.index }'
-											id="adminEditBtn" class="btn btn-sm btn-secondary">${user.id }</button></td>
+											id="adminEditBtn" class="btn btn-sm btn-secondary">${item.id }</button></td>
 									<td>${item.name }</td>
 									<td>${item.description }</td>
 									<td>${item.dateCreated }</td>

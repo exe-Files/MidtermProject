@@ -35,11 +35,11 @@ public class BucketItemDAOImpl implements BucketItemDAO {
 		bucketItemDB.setIsPublicAtCreation(bucketItem.getIsPublicAtCreation());
 		bucketItemDB.setIsActive(bucketItem.getIsActive());
 		bucketItemDB.setImageUrl(bucketItem.getImageUrl());
-		bucketItemDB.setLocation(bucketItem.getLocation());
-		bucketItemDB.setCreatedByUser(bucketItem.getCreatedByUser());
-		bucketItemDB.setCategories(bucketItem.getCategories());
-		bucketItemDB.setPolls(bucketItem.getPolls());
-		bucketItemDB.setComments(bucketItem.getComments());
+//		bucketItemDB.setLocation(bucketItem.getLocation());
+//		bucketItemDB.setCreatedByUser(bucketItem.getCreatedByUser());
+//		bucketItemDB.setCategories(bucketItem.getCategories());
+//		bucketItemDB.setPolls(bucketItem.getPolls());
+//		bucketItemDB.setComments(bucketItem.getComments());
 
 		em.flush();
 
