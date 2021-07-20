@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
@@ -16,6 +17,8 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+	
 <link rel="stylesheet" href="../css/utility.css">
 
 <title>Create new bucket item</title>
@@ -95,11 +98,11 @@
 						class="img-fluid rounded shadow-sm mx-auto d-block">
 				</div>
 			</div>
-			
+
 			<!-- Right column where the google maps functionality goes -->
 			<div class="column">
-				
-			
+
+
 				<!-- <div class="card-container">
 					<div class="panel">
 						<div>
@@ -129,24 +132,38 @@
 			<!-- Any hidden attributes to be passed to controller go here -->
 			<input type="hidden" name="isActive" value="true">
 			<!-- TODO add hidden url for default photo -->
-			
+
 
 			<!-- First row -->
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
-			<label for="place">Place</label> <input type="text"
+				
+					<label for="place">Place</label> <input type="text"
 						class="form-control" id="place" name="cityArea"
-						placeholder="Where the magic happens" required>
+						placeholder="Where the magic happens" >
 					<div class="valid-feedback">Looks good!</div>
+					<select class="selectpicker" data-live-search="true" name="countryId">
+					<option selected value="blank" style="display:none"> -- select a country -- </option>
+						<c:forEach var="country" items="${countries}">
+						<option value="${ country.countryCode }"> ${country.countryName }</option>
+						</c:forEach>	
+					</select>
+					<br>
+					<br>
 					<label for="validationCustom01">Title</label> <input type="text"
 						class="form-control" id="validationCustom01" name="name"
 						placeholder="My bucket item" required>
 					<div class="valid-feedback">Looks good!</div>
-					<div>
-						<input type="checkbox" id="public" name="isPublicAtCreation"
-							value="0" checked> <label for="public">Make
-							private?</label>
+
+					<div class="btn-group btn-group-toggle" data-toggle="buttons">
+  						<label class="btn btn-primary active">
+   						 <input type="radio" value="true" name="isPublicAtCreation" id="option1" checked> Public
+  						</label>
+  						<label class="btn btn-secondary">
+    					 <input type="radio" value="false" name="isPublicAtCreation" id="option2"> Private
+  						</label>
 					</div>
+					
 				</div>
 
 				<div class="col-md-12">
@@ -245,9 +262,11 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
-	<script
+	<!-- <script
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U&libraries=places&callback=initMap&channel=GMPSB_addressselection_v1_cABC"
-		async defer></script>
+		async defer></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+		
 	<script src="../javascript/picpicker.js"></script>
 	<script src="../javascript/googlemaps.js"></script>
 
