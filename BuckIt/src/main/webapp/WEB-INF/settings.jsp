@@ -285,6 +285,44 @@
 				</div>
 			</c:if> -->
 
+			<form action="updatedSettings.do?id=${user.id}" method="POST">
+					<div class="mb-auto">
+						<div>
+							<img src="${user.imageUrl}" alt="Profile Picture" class="avatar">
+							<input name="imageUrl" class="form-control"
+								placeholder="Profile Picture URL" value="${user.imageUrl}">
+						</div>
+						<br>
+						<div>
+							<label for="username">User Name: </label>
+							<input name="username" class="form-control"
+								placeholder="User Name" value="${user.username}" required>
+						</div>
+						<div>
+							<label for="firstName">First Name: </label>
+							<input name="firstName" class="form-control input-sm"
+								placeholder="First Name" value="${user.firstName}">
+						</div>
+						<div>
+							<label for="lastName">Last Name: </label>
+							<input name="lastName" class="form-control input-sm"
+								placeholder="Last Name" value="${user.lastName}">
+						</div>
+						<div>
+							<label for="email">Email: </label>
+							<input name="email" class="form-control input-sm"
+								placeholder="Email" value="${user.email}" required>
+						</div>
+						<div>
+							<label for="password">Password: </label>
+							<input name="password" type="password"
+								class="form-control input-sm" placeholder="Password" value="${user.password}">
+						</div>
+						<div class="text-center">
+							<button class="btn btn-outline-dark w-75 mt-3" type="submit"
+								value="Update">Submit</button>
+						</div>
+					</div>
 
 		</div>
 	</div>
