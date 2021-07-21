@@ -138,10 +138,12 @@
 					<c:forEach var="comment"
 						items="${userBucketItem.bucketItem.comments }">
 						<div class="media">
+						<!-- Profile Image here if we have time -->
 							<div class="media-body">
-								<h5 class="mt-0">${comment.user.firstName }
-									${comment.user.lastName }</h5>
-								<p>${comment.commentText }</p>
+								<h6 class="mt-0">${comment.user.firstName }
+									${comment.user.lastName } &emsp; <em>${comment.dateCreated }</em></h6>
+								
+								<div>${comment.commentText }</div>
 							</div>
 						</div>
 						<hr>
