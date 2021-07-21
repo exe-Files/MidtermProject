@@ -30,7 +30,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link"
+				<li class="nav-item"><a class="nav-link active active-underline"
 						href="navi.do?userSelect=explore">Explore</a></li>
 				<li class="nav-item">
 					<div class="dropdown">

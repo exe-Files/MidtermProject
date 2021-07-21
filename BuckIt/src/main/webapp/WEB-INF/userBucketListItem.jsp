@@ -34,7 +34,7 @@
 					<li class="nav-item">
 						<div class="dropdown">
 							<c:if test='${not empty loggedInUser}'>
-								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+								<a class="nav-link dropdown-toggle active active-underline" href="#" id="navbarDropdown"
 									role="button" data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false"> My Bucket </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">

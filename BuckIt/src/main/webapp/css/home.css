@@ -17,6 +17,9 @@
 	content:none;
 }
 
+a:link.active-underline {
+	text-decoration: underline;
+}
 
 #content{
 	display: flex;
