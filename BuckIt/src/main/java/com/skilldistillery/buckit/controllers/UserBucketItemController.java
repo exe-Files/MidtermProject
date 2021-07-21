@@ -101,12 +101,15 @@ public class UserBucketItemController {
 	}
 	
 	@RequestMapping(path="viewUserBucketItem.do", method=RequestMethod.GET)
-	public String viewUserBucketItemDetails(Integer itemId, Model model) {
+	public String viewUserBucketItemDetails(Integer itemId, Model model, String addSuccessful) {
 		UserBucketItem userBucketItem = daoUBI.findByID(itemId);
 		model.addAttribute("userBucketItem", userBucketItem);
 		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
 		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
 		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
+		if (addSuccessful != null && !addSuccessful.equals("")) {
+			model.addAttribute("addSuccessful", addSuccessful);
+		}
 		return "userBucketListItem";
 	}
 	

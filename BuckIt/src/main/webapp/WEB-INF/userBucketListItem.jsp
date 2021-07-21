@@ -34,8 +34,9 @@
 					<li class="nav-item">
 						<div class="dropdown">
 							<c:if test='${not empty loggedInUser}'>
-								<a class="nav-link dropdown-toggle active active-underline" href="#" id="navbarDropdown"
-									role="button" data-toggle="dropdown" aria-haspopup="true"
+								<a class="nav-link dropdown-toggle active active-underline"
+									href="#" id="navbarDropdown" role="button"
+									data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false"> My Bucket </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="navi.do?userSelect=userBucket">My
@@ -75,6 +76,19 @@
 
 
 	<div class="container">
+		<c:if
+			test='${addSuccessful == "Successfully added new item to your bucket!"}'>
+			<div class="alert alert-success alert-dismissible fade show"
+				role="alert">
+				Successfully added new item to your bucket!
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</c:if>
+		
+		
 		<div class="row">
 			<div class="col-8 offset-1">
 				<img src="${userBucketItem.bucketItem.imageUrl }" />
