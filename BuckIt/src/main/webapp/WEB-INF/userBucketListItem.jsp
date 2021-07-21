@@ -74,7 +74,7 @@
 	</div>
 
 
-
+<div id="content">
 	<div class="container">
 		<c:if
 			test='${addSuccessful == "Successfully added new item to your bucket!"}'>
@@ -368,7 +368,7 @@
 	<div class="container">
 		<div class="col-8 offset-2"></div>
 	</div>
-
+</div>
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

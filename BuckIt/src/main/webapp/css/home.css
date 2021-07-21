@@ -1,16 +1,20 @@
 .navbar{
 	background-color: rgb(0, 0, 0);	/* Fallback color */
 	background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
-	position: relative;
+	position: fixed; /* Set the navbar to fixed position */
+ 	top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 1;
 }
 
 .homebg {
 	background-image: url("https://source.unsplash.com/1920x1080/?adventure,extreme,thrill,sport,inspirational,motivational");
 	/* //https://source.unsplash.com/featured/?{KEYWORD},{KEYWORD}  */
 	/* https://source.unsplash.com/1600x900/?nature,water search with size */
-	background-position: center;
+	background-position: static;
 	background-repeat: no-repeat;
 	background-size: 1920 1080;
+	background-attachment: fixed;
 }
 
 .dropdown-toggle::after{
@@ -24,7 +28,8 @@ a:link.active-underline {
 #content{
 	display: flex;
   	flex-direction: column;
-  	padding-top:125px
+  	padding-top: 170px;
+
 }
 .heading {
 	margin-top: 100px;
@@ -55,8 +60,11 @@ a:link.active-underline {
 	transform: translate(0px, 50%);
 }
 
+.card-deck {
+	padding-top: 100px;
+}
 .card {
-	height: 370px;
+
 	margin: auto;
 	width: 400px;
 	border: 3px solid #f1f1f1;
