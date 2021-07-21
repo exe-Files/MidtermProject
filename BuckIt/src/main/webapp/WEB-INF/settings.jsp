@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -62,7 +63,7 @@
 
 	<div class="container-fluid">
 		<h4>User Settings - Edit User</h4>
-		<div class="adminTabs">
+		<div class="userTabs">
 			<nav>
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
 					<a class="nav-item nav-link active" id="nav-userDetails-tab"
@@ -98,7 +99,7 @@
 							value="${user.lastName}"> <label for="role">
 							Role: </label> <select id="role" name="role">
 							<option value="${user.role}" selected hidden='true'>${user.role}</option>
-							<option value="admin">admin</option>
+							<option value="user">user</option>
 							<option value="user">user</option>
 						</select><br> <label for="isActive"> Active?: </label> <select
 							id="isActive" name="isActive">
@@ -155,8 +156,9 @@
 													value="${user.password}" required>
 											</div>
 											<div class="text-center">
-												<button class="btn btn-outline-dark w-75 mt-3" type="submit"
-													value="Update">Submit</button>
+												<button type='submit' id="saveChanges"
+													class="btn btn-sm btn-success btn-outline-dark w-75 mt-3"
+													value="Update">Save Changes</button>
 											</div>
 										</div>
 
@@ -170,7 +172,7 @@
 				</div>
 				<div class="tab-pane fade" id="nav-userComments" role="tabpanel"
 					aria-labelledby="nav-userComments-tab">
-					ALL COMMENTS FROM USER:
+					ALL COMMENTS FROM USER: 
 					<c:out value='${user.username}' />
 					<table class="table">
 						<thead>
@@ -199,14 +201,14 @@
 										${comment.bucketItem.location.specificLocation},
 										${comment.bucketItem.location.countryCode.countryName}</td>
 									<td>
-										<form action="adminDeleteCommentFromUser.do" method=POST
-											id="adminDeleteComment${loopComment.index}">
+										<form action="userDeleteCommentFromUser.do" method=POST
+											id="userDeleteComment${loopComment.index}">
 											<input type="number" class="form-control" id="idToDelete"
 												name="idToDelete" value="${comment.id}" hidden='true'>
 											<input type="number" class="form-control" id="userId"
 												name="userId" value="${user.id}" hidden='true'>
 											<button type='submit'
-												form="adminDeleteComment${loopComment.index}"
+												form="userDeleteComment${loopComment.index}"
 												id="deleteComment" class="btn btn-sm btn-danger">Delete</button>
 										</form>
 									</td>
@@ -250,13 +252,13 @@
 										${poll.bucketItem.location.specificLocation},
 										${poll.bucketItem.location.countryCode.countryName}</td>
 									<td>
-										<form action="adminDeletePollFromUser.do" method=POST
-											id="adminDeletePoll${loopPoll.index}">
+										<form action="userDeletePollFromUser.do" method=POST
+											id="userDeletePoll${loopPoll.index}">
 											<input type="number" class="form-control" id="idToDelete"
 												name="idToDelete" value="${poll.id}" hidden='true'>
 											<input type="number" class="form-control" id="userId"
 												name="userId" value="${user.id}" hidden='true'>
-											<button type='submit' form="adminDeletePoll${loopPoll.index}"
+											<button type='submit' form="userDeletePoll${loopPoll.index}"
 												id="deletePoll" class="btn btn-sm btn-danger">Delete</button>
 										</form>
 									</td>
@@ -273,7 +275,6 @@
 
 	<div>
 		<div>
-			<div></div>
 			<!-- <c:if test='${updateResult == "false"}'>
 				<div class="alert alert-danger alert-dismissible fade show"
 					role="alert">
@@ -284,45 +285,6 @@
 					</button>
 				</div>
 			</c:if> -->
-
-			<form action="updatedSettings.do?id=${user.id}" method="POST">
-					<div class="mb-auto">
-						<div>
-							<img src="${user.imageUrl}" alt="Profile Picture" class="avatar">
-							<input name="imageUrl" class="form-control"
-								placeholder="Profile Picture URL" value="${user.imageUrl}">
-						</div>
-						<br>
-						<div>
-							<label for="username">User Name: </label>
-							<input name="username" class="form-control"
-								placeholder="User Name" value="${user.username}" required>
-						</div>
-						<div>
-							<label for="firstName">First Name: </label>
-							<input name="firstName" class="form-control input-sm"
-								placeholder="First Name" value="${user.firstName}">
-						</div>
-						<div>
-							<label for="lastName">Last Name: </label>
-							<input name="lastName" class="form-control input-sm"
-								placeholder="Last Name" value="${user.lastName}">
-						</div>
-						<div>
-							<label for="email">Email: </label>
-							<input name="email" class="form-control input-sm"
-								placeholder="Email" value="${user.email}" required>
-						</div>
-						<div>
-							<label for="password">Password: </label>
-							<input name="password" type="password"
-								class="form-control input-sm" placeholder="Password" value="${user.password}">
-						</div>
-						<div class="text-center">
-							<button class="btn btn-outline-dark w-75 mt-3" type="submit"
-								value="Update">Submit</button>
-						</div>
-					</div>
 
 		</div>
 	</div>
