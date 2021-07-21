@@ -98,6 +98,9 @@ public class UserBucketItemController {
 	public String addNote(Integer bucketItemId, Note note, Model model) {
 		UserBucketItem userBucketItem = daoUBI.addNoteToUserBucketItem(bucketItemId, note);
 		model.addAttribute("userBucketItem", userBucketItem);
+		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
+		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
+		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
 		return "userBucketListItem";
 	}
 
@@ -105,6 +108,9 @@ public class UserBucketItemController {
 	public String addResource(Integer bucketItemId, Resource resource, Model model) {
 		UserBucketItem userBucketItem = daoUBI.addResourceToUserBucketItem(bucketItemId, resource);
 		model.addAttribute("userBucketItem", userBucketItem);
+		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
+		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
+		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
 		return "userBucketListItem";
 	}
 
