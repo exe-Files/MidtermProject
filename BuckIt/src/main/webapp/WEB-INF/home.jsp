@@ -80,7 +80,9 @@
 							alt="Profile Picture" class="avatar" class="nav-item dropdown">
 					</a>
 					<div class="dropdown-menu " aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="adminHome.do">Admin Home</a>
+						<c:if test='${not empty loggedInUser.role}'>
+							<a class="dropdown-item" href="adminHome.do">Admin Home</a>
+						</c:if>
 						<a class="dropdown-item" href="#">User Polls</a>
 						<a class="dropdown-item" href="#">User Comments</a>
 						<a class="dropdown-item" href="navi.do?userSelect=settings">Settings</a>
