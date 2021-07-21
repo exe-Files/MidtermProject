@@ -1,7 +1,5 @@
 package com.skilldistillery.buckit.controllers;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +8,25 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.buckit.dao.BucketItemDAO;
+import com.skilldistillery.buckit.dao.CommentDAO;
+import com.skilldistillery.buckit.dao.PollDAO;
+import com.skilldistillery.buckit.dao.UserBucketItemDAO;
 import com.skilldistillery.buckit.dao.UserDAO;
+import com.skilldistillery.buckit.entities.BucketItem;
+import com.skilldistillery.buckit.entities.Poll;
 import com.skilldistillery.buckit.entities.User;
-import com.skilldistillery.buckit.entities.UserBucketItem;
 
 @Controller
 public class SettingsController {
-
+	@Autowired
+	private BucketItemDAO bucketItemDao;
 	@Autowired
 	private UserDAO userDao;
+	@Autowired
+	private CommentDAO commentDao;
+	@Autowired
+	private PollDAO pollDao;
 	
 	@RequestMapping(path = "settings.do", method = RequestMethod.GET)
 	public String getUserSettings(Model model, HttpSession session) {
@@ -46,6 +54,29 @@ public class SettingsController {
 			model.addAttribute("updateResult", result);
 			return "settings";
 		}
+	}
+	
+	@RequestMapping(path = "userDeleteCommentFromUser.do", method=RequestMethod.POST)
+	public String userDeleteCommentReturnToItem(HttpSession session, Model model, int idToDelete, int itemId) {
+		if (((User) session.getAttribute("loggedInUser")) != null) {
+			commentDao.deleteComment(idToDelete);
+			BucketItem itemToEdit = bucketItemDao.findBucketItemById(itemId);
+			model.addAttribute("item", itemToEdit);
+			return "settings";
+		}
+		return "redirect:getUserBucket";
+	}
+	
+	@RequestMapping(path = "userDeletePollFromUser.do", method=RequestMethod.POST)
+	public String userDeletePollReturnToItem(HttpSession session, Model model, int idToDelete, int itemId) {
+		if (((User) session.getAttribute("loggedInUser")) != null) {
+			Poll pollToDelete = pollDao.findById(idToDelete);
+			pollDao.deletePoll(pollToDelete);
+			BucketItem itemToEdit = bucketItemDao.findBucketItemById(itemId);
+			model.addAttribute("item", itemToEdit);
+			return "settings";
+		}
+		return "redirect:getUserBucket";
 	}
 	
 }
