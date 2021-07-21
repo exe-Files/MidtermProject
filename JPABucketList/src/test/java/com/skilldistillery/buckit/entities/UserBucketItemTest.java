@@ -48,7 +48,7 @@ class UserBucketItemTest {
 		assertNotNull(userBucketItem);
 		assertNull(userBucketItem.getDateAdded());
 		assertNull(userBucketItem.getDateCompleted());
-		assertFalse(userBucketItem.isCompleted());
+		assertFalse(userBucketItem.getIsCompleted());
 	}
 	
 	@Test

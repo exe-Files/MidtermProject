@@ -79,7 +79,7 @@ public class UserBucketItem {
 		this.targetDate = targetDate;
 	}
 
-	public boolean isCompleted() {
+	public boolean getIsCompleted() {
 		return isCompleted;
 	}
 

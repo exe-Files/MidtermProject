@@ -34,8 +34,9 @@
 					<li class="nav-item">
 						<div class="dropdown">
 							<c:if test='${not empty loggedInUser}'>
-								<a class="nav-link dropdown-toggle active active-underline" href="#" id="navbarDropdown"
-									role="button" data-toggle="dropdown" aria-haspopup="true"
+								<a class="nav-link dropdown-toggle active active-underline"
+									href="#" id="navbarDropdown" role="button"
+									data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false"> My Bucket </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="navi.do?userSelect=userBucket">My
@@ -120,14 +121,32 @@
 				</div>
 				<div class="card-footer">
 					<p>Target Date: ${item.targetDate }</p>
-					<form action="viewUserBucketItem.do" method=GET
-						id="viewUserItemDetailed${item.id }">
-						<input type="number" class="form-control" id="itemId"
-							name="itemId" hidden='true' value='${item.id}'>
-						<button type='submit' form='viewUserItemDetailed${item.id }'
-							id="detailedViewBtn" class="btn btn-sm btn-primary">
-							Detailed View</button>
-					</form>
+
+
+
+					<div class="row">
+						<div class="col">
+							<c:if test="${item.isCompleted == true}">
+								<button class="btn btn-sm btn-success btn-round"
+									data-toggle="tooltip" title="Congratulations - You are living!"
+									data-delay='{"show":"0", "hide":"0"}' disabled>&#10003</button>
+							</c:if>
+
+						</div>
+						<div class="col">
+
+
+
+							<form action="viewUserBucketItem.do" method=GET
+								id="viewUserItemDetailed${item.id }">
+								<input type="number" class="form-control" id="itemId"
+									name="itemId" hidden='true' value='${item.id}'>
+								<button type='submit' form='viewUserItemDetailed${item.id }'
+									id="detailedViewBtn" class="btn btn-sm btn-primary">
+									Detailed View</button>
+							</form>
+						</div>
+					</div>
 				</div>
 			</div>
 			<c:set var="cardsInRow" value="${cardsInRow +1 }" />

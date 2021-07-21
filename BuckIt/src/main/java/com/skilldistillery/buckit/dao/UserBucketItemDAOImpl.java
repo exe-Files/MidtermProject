@@ -37,7 +37,7 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 //		bucketItemDB.setDateAdded(bucketItem.getDateAdded());
 		bucketItemDB.setDateCompleted(bucketItem.getDateCompleted());
 		bucketItemDB.setTargetDate(bucketItem.getTargetDate());
-		bucketItemDB.setCompleted(bucketItem.isCompleted());
+		bucketItemDB.setCompleted(bucketItem.getIsCompleted());
 //		bucketItemDB.setNotes(bucketItem.getNotes());
 //		bucketItemDB.setResources(bucketItem.getResources());
 //		bucketItemDB.setUser(bucketItem.getUser());
