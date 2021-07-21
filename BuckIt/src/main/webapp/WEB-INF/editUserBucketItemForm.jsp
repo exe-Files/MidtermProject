@@ -70,12 +70,12 @@
 				<form action="updateUserBucketItem.do" class="form-group" id="updateUserItemDetails" method="post">
 					<input type="hidden" name="id" value="${userBucketItem.id }">
 					<label for="dateCompleted">Date Completed:</label>
-					<input class="form-control" type="date" name="dateCompleted" id="dateCompleted">
+					<input class="form-control" type="date" name="dateCompleted" id="dateCompleted" value="${userBucketItem.dateCompleted }" required>
 					<label for="targetDate">Target Date:</label>
-					<input class="form-control" type="date" name="targetDate" id="targetDate">
+					<input class="form-control" type="date" name="targetDate" id="targetDate" value="${userBucketItem.targetDate }" required>
 					<label for="isCompleted">Complete:</label>
 					&emsp;
-					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="true"> Yes
+					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="true" required> Yes
 					&emsp;
 					<input class="form-control-sm" type="radio" name="isCompleted" id="isCompleted" value="false"> No
 					<br>
