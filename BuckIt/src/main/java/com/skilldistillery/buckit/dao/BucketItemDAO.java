@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.skilldistillery.buckit.entities.BucketItem;
 import com.skilldistillery.buckit.entities.Category;
+import com.skilldistillery.buckit.entities.User;
 
 public interface BucketItemDAO {
 	
@@ -20,4 +21,6 @@ public interface BucketItemDAO {
 	List<BucketItem> getAllBucketItems();
 
 	List<BucketItem> getAllBucketItemsWithCategory(Category category);
+
+	List<BucketItem> getFilteredByUserBucketItems(User user);
 }

@@ -102,8 +102,11 @@ public class UserBucketItemController {
 	
 	@RequestMapping(path="viewUserBucketItem.do", method=RequestMethod.GET)
 	public String viewUserBucketItemDetails(Integer itemId, Model model) {
-		model.addAttribute("userBucketItem", daoUBI.findByID(itemId));
-		model.addAttribute("bucketItem", daoUBI.getBucketItemFromUserBucketItem(daoUBI.findByID(itemId)));
+		UserBucketItem userBucketItem = daoUBI.findByID(itemId);
+		model.addAttribute("userBucketItem", userBucketItem);
+		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
+		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
+		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
 		return "userBucketListItem";
 	}
 	
@@ -115,8 +118,8 @@ public class UserBucketItemController {
 	}
 		
 	@RequestMapping(path="deleteResource.do", method=RequestMethod.POST)
-	public String deleteResource(int bucketItemId, int noteId, Model model) {
-		UserBucketItem userBucketItem = daoUBI.removeResourceFromUserBucketItem(bucketItemId, noteId);
+	public String deleteResource(int bucketItemId, int resourceId, Model model) {
+		UserBucketItem userBucketItem = daoUBI.removeResourceFromUserBucketItem(bucketItemId, resourceId);
 		model.addAttribute("userBucketItem", userBucketItem);
 		return "editUserBucketItemForm";
 	}

@@ -28,7 +28,13 @@ public class ExploreController {
 	private CategoryDAO categoryDao;
 
 	@RequestMapping(path = "exploreAll.do")
-	public String exploreAllBucketItems(Model model) {
+	public String exploreAllBucketItems(Model model, HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			User user = (User)session.getAttribute("loggedInUser");
+			List<UserBucketItem> allUserBucketItems = null;
+			allUserBucketItems = userBucketItemDao.getAllUserBucketItemsForLoggedInUser(user);
+			model.addAttribute("allUserItems", allUserBucketItems);
+		}
 		List<BucketItem> allPublicBucketItems = null;
 		allPublicBucketItems = bucketItemDao.getAllPublicBucketItems();
 		model.addAttribute("allPublicBucketItems", allPublicBucketItems);
