@@ -91,6 +91,7 @@ public class AddBucketItemController {
 		UserBucketItem newUserItem = userBucketDao.createBucketItem(userItem);
 
 		ra.addAttribute("itemId", newUserItem.getId());
+		mv.addObject("addSuccessful", "Successfully added new item to your bucket!");
 		mv.setViewName("redirect:viewUserBucketItem.do");
 
 		return mv;

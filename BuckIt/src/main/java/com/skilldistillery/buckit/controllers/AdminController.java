@@ -1,16 +1,25 @@
 package com.skilldistillery.buckit.controllers;
 
+import java.beans.PropertyEditorSupport;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.buckit.dao.BucketItemDAO;
 import com.skilldistillery.buckit.dao.CategoryDAO;
@@ -44,9 +53,7 @@ public class AdminController {
 		ModelAndView mv = new ModelAndView();		
 		mv.addObject("category", categoryDao.addCategory(category));
 		mv.addObject("returnToTab", "sitewide");
-//		ra.addAttribute("returnToTab", "sitewide");
 		mv.setViewName("redirect:adminHome.do");		
-//		return "redirect:adminHome.do";
 		return mv;
 	}
 	
@@ -143,6 +150,7 @@ public class AdminController {
 			if (isPublicAtCreation.equals("true")) {
 				bucketItemFromForm.setIsPublicAtCreation(true);
 			}
+			bucketItemFromForm.setDateCreated(bucketItemDao.findBucketItemById(bucketItemFromForm.getId()).getDateCreated());
 			BucketItem editedBucketItem = bucketItemDao.updateBucketItem(bucketItemFromForm);
 			model.addAttribute("item", editedBucketItem);
 			List<User> allUsers = userDao.getAllUsers();
@@ -196,5 +204,44 @@ public class AdminController {
 		}
 		return "redirect:getUserBucket";
 	}
+	
+	
+//	@InitBinder
+//    public void initBinder(WebDataBinder webDataBinder) {
+//            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//            dateFormat.setLenient(true);
+//            webDataBinder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+//            webDataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+//                    @Override
+//                    public void setAsText(String text) throws IllegalArgumentException {
+//                            setValue(LocalDate.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+//                    }
+//                    @Override
+//                    public String getAsText() throws IllegalArgumentException {
+//                            return DateTimeFormatter.ofPattern("yyyy-MM-dd").format((LocalDate) getValue());
+//                    }
+//            });
+//            webDataBinder.registerCustomEditor(LocalTime.class, new PropertyEditorSupport() {
+//                    @Override
+//                    public void setAsText(String text) throws IllegalArgumentException {
+//                            setValue(LocalTime.parse(text, DateTimeFormatter.ofPattern("HH:mm")));
+//                    }
+//                    @Override
+//                    public String getAsText() throws IllegalArgumentException {
+//                            return DateTimeFormatter.ofPattern("HH:mm").format((LocalTime) getValue());
+//                    }
+//            });
+//            // 2020-11-04T09:44
+//            webDataBinder.registerCustomEditor(LocalDateTime.class, new PropertyEditorSupport() {
+//                    @Override
+//                    public void setAsText(String text) throws IllegalArgumentException {
+//                            setValue(LocalDateTime.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")));
+//                    }
+//                    @Override
+//                    public String getAsText() throws IllegalArgumentException {
+//                            return DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm").format((LocalDateTime) getValue());
+//                    }
+//            });
+//    }
 
 }

@@ -75,6 +75,18 @@
 
 	</nav>
 <!-- NavBar End -->
+						<c:if
+							test='${usernameTaken == "true"}'>
+							<div class="alert alert-danger alert-dismissible fade show"
+								role="alert">
+								Please Try Again. That username already exists!
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</c:if>
+
 	<h1>Please complete registration information below:</h1>
 		<form class="needs-validation" action="registrationinfo.do" method="POST" novalidate>
 			<input type="hidden" name="role" value="user">
@@ -110,6 +122,7 @@
       </div>
 
     <!-- Third row -->
+    
     <div class="form-row">
       <div class="col-md-4 mb-3">
         <label for="validationCustomUsername">Username</label>
@@ -149,6 +162,7 @@
   </form>
 
   <script>
+  
   // Example starter JavaScript for disabling form submissions if there are invalid fields
   (function() {
     'use strict';
