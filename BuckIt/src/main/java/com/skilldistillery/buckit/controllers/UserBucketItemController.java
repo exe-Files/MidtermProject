@@ -118,8 +118,8 @@ public class UserBucketItemController {
 	}
 		
 	@RequestMapping(path="deleteResource.do", method=RequestMethod.POST)
-	public String deleteResource(int bucketItemId, int noteId, Model model) {
-		UserBucketItem userBucketItem = daoUBI.removeResourceFromUserBucketItem(bucketItemId, noteId);
+	public String deleteResource(int bucketItemId, int resourceId, Model model) {
+		UserBucketItem userBucketItem = daoUBI.removeResourceFromUserBucketItem(bucketItemId, resourceId);
 		model.addAttribute("userBucketItem", userBucketItem);
 		return "editUserBucketItemForm";
 	}
