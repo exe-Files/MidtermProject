@@ -88,6 +88,18 @@
 			</div>
 		</c:if>
 		
+		<c:if
+			test='${editSuccessful == "Successfully updated item in your bucket!"}'>
+			<div class="alert alert-success alert-dismissible fade show"
+				role="alert">
+				Successfully updated an item in your bucket!
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</c:if>
+		
 		
 		<div class="row">
 			<div class="col-7">

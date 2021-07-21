@@ -49,6 +49,7 @@ public class UserBucketItemController {
 		System.out.println(userBucketItem);
 
 		daoUBI.updateBucketItem(userBucketItem);
+		model.addAttribute("editSuccessful", "Successfully updated item in your bucket!");
 		model.addAttribute("userBucketItem", userBucketItem);
 		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
 		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
