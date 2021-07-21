@@ -78,7 +78,6 @@
 	<h1>Please complete registration information below:</h1>
 		<form class="needs-validation" action="registrationinfo.do" method="POST" novalidate>
 			<input type="hidden" name="role" value="user">
-			<input type="hidden" name="isActive" value=true>
 		
 		
           <!-- First row -->
@@ -103,7 +102,7 @@
     <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="validationCustom03">Email</label>
-        <input type="text" class="form-control" id="validationCustom03" name="email" placeholder="bob@giraffe.com" required>
+        <input type="email" class="form-control" id="validationCustom03" name="email" placeholder="bob@giraffe.com" required>
         <div class="invalid-feedback">
           Please provide a valid email address.
         </div>
@@ -118,7 +117,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroupPrepend">@</span>
           </div>
-          <input type="text" class="form-control" id="validationCustomUsername" name="username" placeholder="minimum 3 characters" aria-describedby="inputGroupPrepend" required>
+          <input type="text" minlength="3" class="form-control" id="validationCustomUsername" name="username" placeholder="minimum 3 characters" aria-describedby="inputGroupPrepend" required>
           <div class="invalid-feedback">
             Please choose a username.
           </div>
