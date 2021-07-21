@@ -102,7 +102,7 @@
 							id="description" name="description" value="${item.description}">
 						<label for="dateCreated"> Date Created: </label> <input
 							type="text" class="form-control" id="dateCreated"
-							name="dateCreated" value="${item.dateCreated}" readonly>
+							name="dateCreated" placeholder="${item.dateCreated}" readonly>
 						<label for="dateUpdated"> Date Updated: </label> <input
 							type="text" class="form-control" id="dateUpdated"
 							name="dateUpdated" placeholder="${item.dateUpdated}" readonly>
