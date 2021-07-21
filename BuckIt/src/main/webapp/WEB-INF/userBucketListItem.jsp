@@ -90,9 +90,20 @@
 		
 		
 		<div class="row">
-			<div class="col-8 offset-1">
+			<div class="col-7">
 				<img src="${userBucketItem.bucketItem.imageUrl }" />
 				<!-- How to incorporate Map? -->
+			</div>
+			<div class="col-5">
+				<h5>
+					Date Added: &nbsp; ${userBucketItem.dateAdded }
+					<br>
+					Date Completed: &nbsp; ${userBucketItem.dateCompleted }
+					<br>
+					Target Date: &nbsp; ${userBucketItem.targetDate }
+					<br>
+					Location: &nbsp; ${userBucketItem.bucketItem.location.cityArea }, &nbsp; ${userBucketItem.bucketItem.location.countryCode.countryName }
+				</h5>
 			</div>
 		</div>
 	</div>
@@ -103,6 +114,12 @@
 		</div>
 	</div>
 	<br>
+	<div class="btn-group offset-7">
+		<button type="submit" class="btn btn-sm btn-warning"
+			form="editUserItem" value="Edit">Edit My Bucket Item</button>
+		<button type="submit" class="btn btn-sm btn-danger"
+			form="deleteUserItem" value="Delete">Delete My Bucket Item</button>
+	</div>
 	<div class="container">
 		<div class="col-10 offset-1">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -134,10 +151,12 @@
 					<c:forEach var="comment"
 						items="${userBucketItem.bucketItem.comments }">
 						<div class="media">
+						<!-- Profile Image here if we have time -->
 							<div class="media-body">
-								<h5 class="mt-0">${comment.user.firstName }
-									${comment.user.lastName }</h5>
-								<p>${comment.commentText }</p>
+								<h6 class="mt-0">${comment.user.firstName }
+									${comment.user.lastName } &emsp; <em>${comment.dateCreated }</em></h6>
+								
+								<div>${comment.commentText }</div>
 							</div>
 						</div>
 						<hr>
@@ -331,12 +350,6 @@
 				method="post">
 				<input type="hidden" value="${userBucketItem.id }" name="id">
 			</form>
-			<div class="btn-group">
-				<button type="submit" class="btn btn-sm btn-warning"
-					form="editUserItem" value="Edit">Edit</button>
-				<button type="submit" class="btn btn-sm btn-danger"
-					form="deleteUserItem" value="Delete">Delete</button>
-			</div>
 		</div>
 	</div>
 

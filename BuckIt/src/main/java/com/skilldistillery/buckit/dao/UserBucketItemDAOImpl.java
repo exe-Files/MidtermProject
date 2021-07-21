@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.buckit.entities.BucketItem;
@@ -54,6 +55,16 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 
 		UserBucketItem itemTBD = em.find(UserBucketItem.class, id);
 		if (itemTBD != null) {
+			List<Note> notesTBD = itemTBD.getNotes();
+			List<Resource> resourcesTBD = itemTBD.getResources();
+			for (Note n : notesTBD){
+				removeNoteFromUserBucketItem(id, n.getId());
+			}
+			
+			for(Resource r : resourcesTBD) {
+				removeResourceFromUserBucketItem(id, r.getId());
+			}
+			
 			em.remove(itemTBD);
 			deleted = !em.contains(itemTBD);
 		}

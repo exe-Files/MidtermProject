@@ -36,6 +36,9 @@ public class UserRegisterController {
 			}
 		}
 
+		user.setActive(true);
+		System.out.println("From controller: " + user.getIsActive());
+		
 		mv.addObject("user", userDao.createUser(user));
 		
 		mv.setViewName("redirect:home.do");		
