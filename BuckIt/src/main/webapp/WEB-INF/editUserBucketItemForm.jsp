@@ -27,7 +27,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link"
-						href="navi.do?userSelect=explore">Explore</a></li>
+							href="navi.do?userSelect=explore">Explore</a></li>
 					<li class="nav-item">
 						<div class="dropdown">
 							<c:if test='${not empty loggedInUser}'>
@@ -36,8 +36,9 @@
 									aria-expanded="false"> My Bucket </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="navi.do?userSelect=userBucket">My
-										Bucket List</a> <a class="dropdown-item" href="newbucketitem.do">
-										Add New Bucket List Item </a>
+										Bucket List</a>
+									<a class="dropdown-item" href="newbucketitem.do"> Add New
+										Bucket List Item </a>
 								</div>
 							</c:if>
 						</div>
@@ -48,9 +49,9 @@
 						<div class="dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 								role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false"> <img
-								src="${sessionScope.loggedInUser.imageUrl}"
-								alt="Profile Picture" class="avatar" class="nav-item dropdown">
+								aria-expanded="false">
+								<img src="${sessionScope.loggedInUser.imageUrl}"
+									alt="Profile Picture" class="avatar" class="nav-item dropdown">
 							</a>
 
 							<div class="dropdown-menu dropdown-menu-right"
@@ -77,18 +78,21 @@
 				<form action="updateUserBucketItem.do" class="form-group"
 					id="updateUserItemDetails" method="post">
 					<input type="hidden" name="id" value="${userBucketItem.id }">
-					<label for="dateCompleted">Date Completed:</label> <input
-						class="form-control" type="date" name="dateCompleted"
+					<label for="dateCompleted">Date Completed:</label>
+					<input class="form-control" type="date" name="dateCompleted"
 						id="dateCompleted" value="${userBucketItem.dateCompleted }"
-						required> <label for="targetDate">Target Date:</label> <input
-						class="form-control" type="date" name="targetDate" id="targetDate"
-						value="${userBucketItem.targetDate }" required> <label
-						for="isCompleted">Complete:</label> &emsp; <input
-						class="form-control-sm" type="radio" name="isCompleted"
-						id="isCompleted" value="true" required> Yes &emsp; <input
-						class="form-control-sm" type="radio" name="isCompleted"
-						id="isCompleted" value="false"> No <br> <input
-						type="submit" class="btn btn-success" value="Save Changes" />
+						>
+					<label for="targetDate">Target Date:</label>
+					<input class="form-control" type="date" name="targetDate"
+						id="targetDate" value="${userBucketItem.targetDate }">
+					<label for="isCompleted">Complete:</label> &emsp;
+					<input class="form-control-sm" type="radio" name="isCompleted"
+						id="isCompleted" value="true" required>
+					Yes &emsp;
+					<input class="form-control-sm" type="radio" name="isCompleted"
+						id="isCompleted" value="false">
+					No <br>
+					<input type="submit" class="btn btn-success" value="Save Changes" />
 				</form>
 				<div class="col-10 offset-1">
 					<div class="col-6">
@@ -106,9 +110,9 @@
 										<td>
 											<form action="deleteNote.do" method="post">
 												<input type="hidden" name="bucketItemId"
-													value="${userBucketItem.id }" /> <input type="hidden"
-													name="noteId" value="${note.id }" /> <input type="submit"
-													value="Delete" />
+													value="${userBucketItem.id }" />
+												<input type="hidden" name="noteId" value="${note.id }" />
+												<input type="submit" value="Delete" />
 											</form>
 										</td>
 									</tr>
@@ -131,9 +135,10 @@
 										<td>
 											<form action="deleteResource.do" method="post">
 												<input type="hidden" name="bucketItemId"
-													value="${userBucketItem.id }" /> <input type="hidden"
-													name="resourceId" value="${resource.id }" /> <input
-													type="submit" value="Delete" />
+													value="${userBucketItem.id }" />
+												<input type="hidden" name="resourceId"
+													value="${resource.id }" />
+												<input type="submit" value="Delete" />
 											</form>
 										</td>
 									</tr>
