@@ -13,11 +13,12 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="../css/utility.css" rel="stylesheet" id="bootstrap-css">
+<link href="../css/home.css" rel="stylesheet" id="bootstrap-css">
 <title>User Bucket Item</title>
 </head>
 <body>
 	<div>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 			<a class="navbar-brand" href="home.do">BuckIt List</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarSupportedContent"
@@ -28,33 +29,45 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link"
-						href="navi.do?userSelect=home"> Home <span class="sr-only">(current)</span>
-					</a></li>
 					<li class="nav-item"><a class="nav-link"
 						href="navi.do?userSelect=explore">Explore</a></li>
-
-					<li class="nav-item"><a class="nav-link disabled"
-						href="navi.do?userSelect=userBucket">My BuckIt</a></li>
-					<li class="nav-item"><a class="nav-link disabled"
-						href="navi.do?userSelect=settings">Settings</a></li>
-
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a> <a
-								class="dropdown-item" href="#">Another action</a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div></li>
+					<li class="nav-item">
+						<div class="dropdown">
+							<c:if test='${not empty loggedInUser}'>
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+									role="button" data-toggle="dropdown" aria-haspopup="true"
+									aria-expanded="false"> My Bucket </a>
+								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="navi.do?userSelect=userBucket">My
+										Bucket List</a> <a class="dropdown-item" href="newbucketitem.do">
+										Add New Bucket List Item </a>
+								</div>
+							</c:if>
+						</div>
+					</li>
 				</ul>
-				<!-- <form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search"
-						placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form> -->
+				<c:if test='${not empty loggedInUser}'>
+					<div class=justify-content: flex-end>
+						<div class="dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+								role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"> <img
+								src="${sessionScope.loggedInUser.imageUrl}"
+								alt="Profile Picture" class="avatar" class="nav-item dropdown">
+							</a>
+
+							<div class="dropdown-menu dropdown-menu-right"
+								aria-labelledby="navbarDropdown">
+								<c:if test='${loggedInUser.role == "admin"}'>
+									<a class="dropdown-item" href="adminHome.do">Admin Home</a>
+								</c:if>
+								<a class="dropdown-item" href="navi.do?userSelect=settings">Settings</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="logout.do">Log out</a>
+							</div>
+						</div>
+					</div>
+				</c:if>
 			</div>
 		</nav>
 	</div>
@@ -108,7 +121,8 @@
 						items="${userBucketItem.bucketItem.comments }">
 						<div class="media">
 							<div class="media-body">
-								<h5 class="mt-0">${comment.user.firstName } ${comment.user.lastName }</h5>
+								<h5 class="mt-0">${comment.user.firstName }
+									${comment.user.lastName }</h5>
 								<p>${comment.commentText }</p>
 							</div>
 						</div>
@@ -265,7 +279,8 @@
 							<input type="hidden" name="bucketItemId"
 								value="${userBucketItem.id }" /> <label for="noteTitle">Title:</label>
 							<input type="text" class="form-control" id="noteTitle"
-								name="noteTitle" value="${note.noteTitle }" /> <label for="text">Note:</label>
+								name="noteTitle" value="${note.noteTitle }" /> <label
+								for="text">Note:</label>
 							<textarea class="form-control" form="addNote" name="noteText"
 								rows="4" cols="50"></textarea>
 							<input type="submit" class="btn btn-success form-control"
@@ -283,8 +298,8 @@
 					<form action="addResource.do" method="post" id="addResource">
 						<div class="form-group">
 							<input type="hidden" name="bucketItemId"
-								value="${userBucketItem.id }" /> <label for="url">URL:</label> <input
-								type="text" class="form-control" id="url" name="url"
+								value="${userBucketItem.id }" /> <label for="url">URL:</label>
+							<input type="text" class="form-control" id="url" name="url"
 								value="${resource.url }" /> <input type="submit"
 								class="btn btn-success form-control" value="Add Resource" />
 						</div>
