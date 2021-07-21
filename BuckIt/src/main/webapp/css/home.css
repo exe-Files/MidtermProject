@@ -13,6 +13,11 @@
 	background-size: 1920 1080;
 }
 
+.dropdown-toggle::after{
+	content:none;
+}
+
+
 #content{
 	display: flex;
   	flex-direction: column;
