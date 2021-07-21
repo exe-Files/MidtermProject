@@ -70,7 +70,7 @@
 			</c:if>
 		</div>
 	</nav>
-<!-- NavBar End -->
+	<!-- NavBar End -->
 
 	<div class="container-fluid">
 		<h4>User Settings - Edit User</h4>
@@ -90,39 +90,7 @@
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				<!-- 			<div class="tab-pane fade show active" id="nav-userDetails"
-					role="tabpanel" aria-labelledby="nav-userDetails-tab">
-					<form action="editUserDetails.do" method=POST id="editUserDetails">
-						<label for="id"> ID #: </label> <input type="text"
-							class="form-control" id="id" name="id" value="${user.id}"
-							readonly> <label for="username"> Username: </label> <input
-							type="text" class="form-control" id="username" name="username"
-							value="${user.username}"> <label for="password">
-							Password: </label> <input type="text" class="form-control" id="password"
-							name="password" value="${user.password}"> <label
-							for="email"> Email: </label> <input type="text"
-							class="form-control" id="email" name="email"
-							value="${user.email}"> <label for="firstName">
-							First Name: </label> <input type="text" class="form-control"
-							id="firstName" name="firstName" value="${user.firstName}">
-						<label for="lastName"> Last Name: </label> <input type="text"
-							class="form-control" id="lastName" name="lastName"
-							value="${user.lastName}"> <label for="role">
-							Role: </label> <select id="role" name="role">
-							<option value="${user.role}" selected hidden='true'>${user.role}</option>
-							<option value="user">user</option>
-							<option value="user">user</option>
-						</select><br> <label for="isActive"> Active?: </label> <select
-							id="isActive" name="isActive">
-							<option value="${user.isActive}" selected hidden="true">${user.isActive}</option>
-							<option value="true">True</option>
-							<option value="false">False</option>
-						</select><br> <label for="imageUrl"> Avatar Image: </label> <input
-							type="text" class="form-control" id="imageUrl" name="imageUrl"
-							value="${user.imageUrl}">
-						<button type='submit' id="saveChanges"
-							class="btn btn-sm btn-success">Save Changes</button>
-					</form> -->
+				
 				<div class="tab-pane fade show active" id="nav-userDetails"
 					role="tabpanel" aria-labelledby="nav-userDetails-tab">
 					<div class="settingsForm">
@@ -131,6 +99,9 @@
 								<div class="col"></div>
 								<div class="col-8">
 									<h3>User Settings</h3>
+									<c:if test='${updateResult}'>
+										<div class="alert alert-success" role="alert">Settings Updated Successfully!</div>
+									</c:if>
 									<form action="updatedSettings.do?id=${user.id}" method="POST">
 										<div class="mb-auto">
 											<div>
@@ -183,7 +154,7 @@
 				</div>
 				<div class="tab-pane fade" id="nav-userComments" role="tabpanel"
 					aria-labelledby="nav-userComments-tab">
-					ALL COMMENTS FROM USER: 
+					ALL COMMENTS FROM USER:
 					<c:out value='${user.username}' />
 					<table class="table">
 						<thead>
