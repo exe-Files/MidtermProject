@@ -179,9 +179,6 @@
 									<td>${comment.dateUpdated }</td>
 									<td>${comment.imageUrl }</td>
 									<td>${comment.bucketItem.name}</td>
-									<td>${comment.bucketItem.location.cityArea},
-										${comment.bucketItem.location.specificLocation},
-										${comment.bucketItem.location.countryCode.countryName}</td>
 									<td>
 										<form action="userDeleteCommentFromUser.do" method=POST
 											id="userDeleteComment${loopComment.index}">
@@ -230,9 +227,6 @@
 									<td>${poll.dateCreated }</td>
 									<td>${poll.dateUpdated }</td>
 									<td>${poll.bucketItem.name}</td>
-									<td>${poll.bucketItem.location.cityArea},
-										${poll.bucketItem.location.specificLocation},
-										${poll.bucketItem.location.countryCode.countryName}</td>
 									<td>
 										<form action="userDeletePollFromUser.do" method=POST
 											id="userDeletePoll${loopPoll.index}">

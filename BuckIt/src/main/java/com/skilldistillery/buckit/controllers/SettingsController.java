@@ -59,9 +59,12 @@ public class SettingsController {
 	@RequestMapping(path = "userDeleteCommentFromUser.do", method=RequestMethod.POST)
 	public String userDeleteCommentReturnToItem(HttpSession session, Model model, int idToDelete, int userId) {
 		if (((User) session.getAttribute("loggedInUser")) != null) {
-			commentDao.deleteComment(idToDelete);
-//			BucketItem itemToEdit = bucketItemDao.findBucketItemById(itemId);
-//			model.addAttribute("item", itemToEdit);
+			boolean commentDeleted;
+			commentDeleted = commentDao.deleteComment(idToDelete);
+			if(commentDeleted ) {
+				model.addAttribute("updateResult", commentDeleted);
+			}
+			
 			User user = null;
 			user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
 			model.addAttribute("user", user);
@@ -74,9 +77,12 @@ public class SettingsController {
 	public String userDeletePollReturnToItem(HttpSession session, Model model, int idToDelete, int userId) {
 		if (((User) session.getAttribute("loggedInUser")) != null) {
 			Poll pollToDelete = pollDao.findById(idToDelete);
-			pollDao.deletePoll(pollToDelete);
-//			BucketItem itemToEdit = bucketItemDao.findBucketItemById(userId);
-//			model.addAttribute("item", itemToEdit);
+			boolean pollDeleted;
+			pollDeleted = pollDao.deletePoll(pollToDelete);
+			if(pollDeleted) {
+				model.addAttribute("updateResult", pollDeleted);
+			}
+			
 			User user = null;
 			user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
 			model.addAttribute("user", user);
