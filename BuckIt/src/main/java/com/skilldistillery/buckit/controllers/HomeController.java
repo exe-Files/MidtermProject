@@ -18,9 +18,13 @@ public class HomeController {
 	private UserDAO userDao;
 
 	@RequestMapping(path = { "/", "home.do" })
-	public String home(Model model) {
-		model.addAttribute("DEBUG", userDao.findById(1));
-		return "home";
+	public String home(HttpSession session, Model model) {
+		if (session.getAttribute("loggedInUser") != null) {
+			return "redirect:getUserBucket.do";
+		} else {
+//			model.addAttribute("DEBUG", userDao.findById(1));
+			return "home";
+		}
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
