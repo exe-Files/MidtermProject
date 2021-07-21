@@ -19,69 +19,91 @@
 <title>Admin Dashboard</title>
 </head>
 <body class="homebg">
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
-			<a class="navbar-brand" href="home.do">BuckIt List</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<!-- NavBar Start -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+		<a class="navbar-brand" href="home.do">BuckIt List</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active"><a class="nav-link"
-						href="navi.do?userSelect=home"> Home <span class="sr-only">(current)</span>
-					</a></li>
-					<li class="nav-item"><a class="nav-link"
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link"
 						href="navi.do?userSelect=explore">Explore</a></li>
+				<li class="nav-item">
+					<div class="dropdown">
+						<c:if test='${not empty loggedInUser}'>
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+								role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="false"> My Bucket </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="navi.do?userSelect=userBucket">My
+									Bucket List</a>
+								<a class="dropdown-item" href="newbucketitem.do"> Add New
+									Bucket List Item </a>
+							</div>
+						</c:if>
+					</div>
+				</li>
+			</ul>
+			<c:if test='${not empty loggedInUser}'>
+				<div class=justify-content: flex-end>
+					<div class="dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+							<img src="${sessionScope.loggedInUser.imageUrl}"
+								alt="Profile Picture" class="avatar" class="nav-item dropdown">
+						</a>
 
-					<li class="nav-item"><a class="nav-link"
-						href="navi.do?userSelect=userBucket">My BuckIt</a></li>
-					<li class="nav-item"><a class="nav-link"
-						href="navi.do?userSelect=settings">Settings</a></li>
-
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> </a>
-						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="#">Action</a> <a
-								class="dropdown-item" href="#">Another action</a>
+						<div class="dropdown-menu dropdown-menu-right"
+							aria-labelledby="navbarDropdown">
+							<c:if test='${loggedInUser.role == "admin"}'>
+								<a class="dropdown-item" href="adminHome.do">Admin Home</a>
+							</c:if>
+							<a class="dropdown-item" href="navi.do?userSelect=settings">Settings</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
-						</div></li>
-				</ul>
-				<!-- <form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" type="search"
-						placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-				</form> -->
-			</div>
-		</nav>
-	</div>
+							<a class="dropdown-item" href="logout.do">Log out</a>
+						</div>
+					</div>
+				</div>
+			</c:if>
+		</div>
+
+	</nav>
+<!-- NavBar End -->
 	<div class="container-fluid">
 		<h4>Admin Dashboard</h4>
-		
-		<!-- TODO: Put this div into a tab -->
-			
-		 
 		
 		<div class="adminTabs">
 			<nav>
 			
-			<c:if test="${returnToItemTab != true}">
+			<c:if test="${returnToTab == null}">
 				<c:set var="navUsersClass" value="active"/>
 				<c:set var="usersTabClass" value="show active"/>
 				<c:set var="navItemClass" value=""/>
 				<c:set var="itemTabClass" value=""/>
+				<c:set var="navSiteClass" value=""/>
+				<c:set var="SitewideTabClass" value=""/>
 			</c:if>
-			<c:if test="${returnToItemTab == true}">
+			<c:if test="${returnToTab == 'item'}">
 				<c:set var="navUsersClass" value=""/>
 				<c:set var="usersTabClass" value=""/>
 				<c:set var="navItemClass" value="active"/>
 				<c:set var="itemTabClass" value="show active"/>
+				<c:set var="navSiteClass" value=""/>
+				<c:set var="SitewideTabClass" value=""/>
+			</c:if>
+			<c:if test="${returnToTab == 'sitewide'}">
+				<c:set var="navUsersClass" value=""/>
+				<c:set var="usersTabClass" value=""/>
+				<c:set var="navItemClass" value=""/>
+				<c:set var="itemTabClass" value=""/>
+				<c:set var="navSiteClass" value="active"/>
+				<c:set var="SitewideTabClass" value="show active"/>
 			</c:if>
 			
 			
@@ -201,7 +223,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div class="tab-pane fade" id="nav-sitewide" role="tabpanel" aria-labelledby="nav-sitewide-tab">
+				<div class="tab-pane fade ${SitewideTabClass}" id="nav-sitewide" role="tabpanel" aria-labelledby="nav-sitewide-tab">
 								<div class="row">
 		<div class="column">
 			

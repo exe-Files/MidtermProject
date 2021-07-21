@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.buckit.dao.BucketItemDAO;
 import com.skilldistillery.buckit.dao.CategoryDAO;
@@ -20,7 +20,6 @@ import com.skilldistillery.buckit.dao.UserBucketItemDAO;
 import com.skilldistillery.buckit.dao.UserDAO;
 import com.skilldistillery.buckit.entities.BucketItem;
 import com.skilldistillery.buckit.entities.Category;
-import com.skilldistillery.buckit.entities.Country;
 import com.skilldistillery.buckit.entities.Poll;
 import com.skilldistillery.buckit.entities.User;
 
@@ -41,24 +40,28 @@ public class AdminController {
 	private CategoryDAO categoryDao;
 	
 	@RequestMapping(path = "addCategory")
-	public ModelAndView addCategory(Category category) {
+	public ModelAndView addCategory(Category category, Model model) {
 		ModelAndView mv = new ModelAndView();		
-		mv.addObject("category", categoryDao.addCategory(category));	
+		mv.addObject("category", categoryDao.addCategory(category));
+		mv.addObject("returnToTab", "sitewide");
+//		ra.addAttribute("returnToTab", "sitewide");
 		mv.setViewName("redirect:adminHome.do");		
+//		return "redirect:adminHome.do";
 		return mv;
 	}
 	
 	@RequestMapping(path = "deleteCategory")
-	public ModelAndView deleteCategory(Category category) {
+	public ModelAndView deleteCategory(Category category, Model model) {
 		ModelAndView mv = new ModelAndView();		
 		mv.addObject("category", categoryDao.deleteCategory(category.getId()));	
+		mv.addObject("returnToTab", "sitewide");
 		mv.setViewName("redirect:adminHome.do");		
 		return mv;
 	}
 	
 
 	@RequestMapping(path = "adminHome.do")
-	public String goToAdminHomeView(HttpSession session, Model model) {
+	public String goToAdminHomeView(HttpSession session, Model model, String returnToTab) {
 		if (((User) session.getAttribute("loggedInUser")).getRole().equals("admin")) {
 			List<User> allUsers = userDao.getAllUsers();
 			model.addAttribute("allUsers", allUsers);
@@ -66,6 +69,9 @@ public class AdminController {
 			model.addAttribute("allBucketItems", allBucketItems);
 			List<Category> allCategories = categoryDao.getAllCategories();
 			model.addAttribute("allCategories", allCategories);
+			if (returnToTab != null && !returnToTab.equals("")) {
+				model.addAttribute("returnToTab", returnToTab);
+			}
 			return "adminHome";
 		}
 		return "redirect:getUserBucket";
@@ -143,7 +149,7 @@ public class AdminController {
 			model.addAttribute("allUsers", allUsers);
 			List<BucketItem> allBucketItems = bucketItemDao.getAllBucketItems();
 			model.addAttribute("allBucketItems", allBucketItems);
-			model.addAttribute("returnToItemTab", true);
+			model.addAttribute("returnToTab", "item");
 			return "adminHome";
 		}
 		return "redirect:getUserBucket";
@@ -185,7 +191,7 @@ public class AdminController {
 				List<BucketItem> allBucketItems = bucketItemDao.getFilteredByUserBucketItems(userToFilterBy);
 				model.addAttribute("allBucketItems", allBucketItems);
 			}
-			model.addAttribute("returnToItemTab", true);
+			model.addAttribute("returnToTab", "item");
 			return "adminHome";
 		}
 		return "redirect:getUserBucket";
