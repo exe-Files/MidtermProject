@@ -34,8 +34,9 @@
 					<li class="nav-item">
 						<div class="dropdown">
 							<c:if test='${not empty loggedInUser}'>
-								<a class="nav-link dropdown-toggle active active-underline" href="#" id="navbarDropdown"
-									role="button" data-toggle="dropdown" aria-haspopup="true"
+								<a class="nav-link dropdown-toggle active active-underline"
+									href="#" id="navbarDropdown" role="button"
+									data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false"> My Bucket </a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="navi.do?userSelect=userBucket">My
@@ -76,9 +77,20 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-8 offset-1">
+			<div class="col-7">
 				<img src="${userBucketItem.bucketItem.imageUrl }" />
 				<!-- How to incorporate Map? -->
+			</div>
+			<div class="col-5">
+				<h5>
+					Date Added: &nbsp; ${userBucketItem.dateAdded }
+					<br>
+					Date Completed: &nbsp; ${userBucketItem.dateCompleted }
+					<br>
+					Target Date: &nbsp; ${userBucketItem.targetDate }
+					<br>
+					Location: &nbsp; ${userBucketItem.bucketItem.location.cityArea }, &nbsp; ${userBucketItem.bucketItem.location.countryCode.countryName }
+				</h5>
 			</div>
 		</div>
 	</div>
@@ -89,6 +101,12 @@
 		</div>
 	</div>
 	<br>
+	<div class="btn-group offset-7">
+		<button type="submit" class="btn btn-sm btn-warning"
+			form="editUserItem" value="Edit">Edit My Bucket Item</button>
+		<button type="submit" class="btn btn-sm btn-danger"
+			form="deleteUserItem" value="Delete">Delete My Bucket Item</button>
+	</div>
 	<div class="container">
 		<div class="col-10 offset-1">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -317,12 +335,6 @@
 				method="post">
 				<input type="hidden" value="${userBucketItem.id }" name="id">
 			</form>
-			<div class="btn-group">
-				<button type="submit" class="btn btn-sm btn-warning"
-					form="editUserItem" value="Edit">Edit</button>
-				<button type="submit" class="btn btn-sm btn-danger"
-					form="deleteUserItem" value="Delete">Delete</button>
-			</div>
 		</div>
 	</div>
 
