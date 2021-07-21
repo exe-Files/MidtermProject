@@ -50,6 +50,9 @@ public class UserBucketItemController {
 
 		daoUBI.updateBucketItem(userBucketItem);
 		model.addAttribute("userBucketItem", userBucketItem);
+		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
+		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
+		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
 
 //		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-DD-YYYY");
 //		LocalDate completedDate = LocalDate.parse(dateCompleted, formatter);
