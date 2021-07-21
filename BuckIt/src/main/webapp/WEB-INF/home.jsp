@@ -59,11 +59,9 @@
 
 						<div class="dropdown-menu dropdown-menu-right"
 							aria-labelledby="navbarDropdown">
-							<c:if test='${not empty loggedInUser.role}'>
+							<c:if test='${loggedInUser.role == "admin"}'>
 								<a class="dropdown-item" href="adminHome.do">Admin Home</a>
 							</c:if>
-							<a class="dropdown-item" href="#">User Polls</a>
-							<a class="dropdown-item" href="#">User Comments</a>
 							<a class="dropdown-item" href="navi.do?userSelect=settings">Settings</a>
 							<div class="dropdown-divider"></div>
 							<a class="dropdown-item" href="logout.do">Log out</a>
