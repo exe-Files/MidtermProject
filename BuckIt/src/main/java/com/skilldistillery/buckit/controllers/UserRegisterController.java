@@ -25,6 +25,8 @@ public class UserRegisterController {
 	@RequestMapping(path = "registrationinfo.do", method = RequestMethod.POST)
 	public ModelAndView registerUser(User user) {
 		ModelAndView mv = new ModelAndView();	
+		user.setActive(true);
+		System.out.println("From controller: " + user.getIsActive());
 		
 //		TODO validate username is unique, else redirect
 		mv.addObject("user", userDao.createUser(user));
