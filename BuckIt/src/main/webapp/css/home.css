@@ -13,6 +13,11 @@
 	background-size: 1920 1080;
 }
 
+.dropdown-toggle::after{
+	content:none;
+}
+
+
 #content{
 	display: flex;
   	flex-direction: column;
@@ -37,6 +42,7 @@
 	padding: 20px;
 	text-align: center;
 	align-items:flex-end;
+	border-radius: 25px;
 	}
 
 .sign-in-card {
@@ -52,6 +58,7 @@
 	width: 400px;
 	border: 3px solid #f1f1f1;
 	background-color: rgba(0, 0, 0, 0.6);
+	border-radius: 25px;
 }
 
 .card-header h3 {
