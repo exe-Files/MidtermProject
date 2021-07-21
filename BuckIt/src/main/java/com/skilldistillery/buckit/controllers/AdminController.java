@@ -10,13 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.buckit.dao.BucketItemDAO;
+import com.skilldistillery.buckit.dao.CategoryDAO;
 import com.skilldistillery.buckit.dao.CommentDAO;
 import com.skilldistillery.buckit.dao.PollDAO;
 import com.skilldistillery.buckit.dao.UserBucketItemDAO;
 import com.skilldistillery.buckit.dao.UserDAO;
 import com.skilldistillery.buckit.entities.BucketItem;
+import com.skilldistillery.buckit.entities.Category;
+import com.skilldistillery.buckit.entities.Country;
 import com.skilldistillery.buckit.entities.Poll;
 import com.skilldistillery.buckit.entities.User;
 
@@ -33,6 +37,25 @@ public class AdminController {
 	private CommentDAO commentDao;
 	@Autowired
 	private PollDAO pollDao;
+	@Autowired
+	private CategoryDAO categoryDao;
+	
+	@RequestMapping(path = "addCategory")
+	public ModelAndView addCategory(Category category) {
+		ModelAndView mv = new ModelAndView();		
+		mv.addObject("category", categoryDao.addCategory(category));	
+		mv.setViewName("redirect:adminHome.do");		
+		return mv;
+	}
+	
+	@RequestMapping(path = "deleteCategory")
+	public ModelAndView deleteCategory(Category category) {
+		ModelAndView mv = new ModelAndView();		
+		mv.addObject("category", categoryDao.deleteCategory(category.getId()));	
+		mv.setViewName("redirect:adminHome.do");		
+		return mv;
+	}
+	
 
 	@RequestMapping(path = "adminHome.do")
 	public String goToAdminHomeView(HttpSession session, Model model) {
@@ -41,6 +64,8 @@ public class AdminController {
 			model.addAttribute("allUsers", allUsers);
 			List<BucketItem> allBucketItems = bucketItemDao.getAllBucketItems();
 			model.addAttribute("allBucketItems", allBucketItems);
+			List<Category> allCategories = categoryDao.getAllCategories();
+			model.addAttribute("allCategories", allCategories);
 			return "adminHome";
 		}
 		return "redirect:getUserBucket";

@@ -138,10 +138,24 @@
 			<div class="form-row">
 				<div class="col-md-4 mb-3">
 				
+				<!-- TODO Turn this into a dropdown with all categories available in Category -->
+					<div class="form-group">
+    				<label for="addCat">Category</label>
+  				
+  				<select class="selectpicker" data-live-search="true" name="categoryId">
+					<option selected value="-1" style="display:none"> -- select a category -- </option>
+						<c:forEach var="category" items="${categories}">
+						<option value="${ category.id }"> ${category.categoryName }</option>
+						</c:forEach>	
+					</select>
+  				</div>	
+					<br>
+				
 					<label for="place">Place</label> <input type="text"
 						class="form-control" id="place" name="cityArea"
 						placeholder="Where the magic happens" >
 					<div class="valid-feedback">Looks good!</div>
+					
 					<select class="selectpicker" data-live-search="true" name="countryId">
 					<option selected value="blank" style="display:none"> -- select a country -- </option>
 						<c:forEach var="country" items="${countries}">

@@ -63,6 +63,11 @@
 	</div>
 	<div class="container-fluid">
 		<h4>Admin Dashboard</h4>
+		
+		<!-- TODO: Put this div into a tab -->
+			
+		 
+		
 		<div class="adminTabs">
 			<nav>
 			
@@ -83,16 +88,21 @@
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
 					<a class="nav-item nav-link ${navUsersClass}" id="nav-users-tab"
 						data-toggle="tab" href="#nav-users" role="tab"
-						aria-controls="nav-users" aria-selected="true">Users</a> <a
-						class="nav-item nav-link ${navItemClass}" id="nav-bucketitem-tab"
+						aria-controls="nav-users" aria-selected="true">Users</a> 
+
+					<a class="nav-item nav-link ${navItemClass}" id="nav-bucketitem-tab"
 						data-toggle="tab" href="#nav-bucketitem" role="tab"
 						aria-controls="nav-bucketitem" aria-selected="false">All
 						Bucket Items</a>
+						
+					<a class="nav-item nav-link ${navSiteClass}" id="nav-sitewide-tab"
+						data-toggle="tab" href="#nav-sitewide" role="tab"
+						aria-controls="nav-sitewide" aria-selected="false">Sitewide</a>
 				</div>
 			</nav>
+			
 			<div class="tab-content" id="nav-tabContent">
-				<div class="tab-pane fade ${usersTabClass}" id="nav-users"
-					role="tabpanel" aria-labelledby="nav-users-tab">
+				<div class="tab-pane fade ${usersTabClass}" id="nav-users" role="tabpanel" aria-labelledby="nav-users-tab">
 					<table class="table">
 						<thead>
 							<tr>
@@ -131,6 +141,7 @@
 						</tbody>
 					</table>
 				</div>
+				
 				<div class="tab-pane fade ${itemTabClass}" id="nav-bucketitem" role="tabpanel"
 					aria-labelledby="nav-bucketitem-tab">
 					<div class="row">
@@ -189,6 +200,38 @@
 							</c:forEach>
 						</tbody>
 					</table>
+				</div>
+				<div class="tab-pane fade" id="nav-sitewide" role="tabpanel" aria-labelledby="nav-sitewide-tab">
+								<div class="row">
+		<div class="column">
+			
+			<label>Categories</label>
+			<form action="addCategory">
+				<div class="form-group">
+    				<label for="newCat">New Category Name</label>
+    				<input type="text" class="form-control" id="newCat" name="categoryName" placeholder="category">
+  				</div>	
+			  <button type="submit" class="btn btn-primary">Add Category</button>
+			</form>
+		</div>
+		<div class="column">
+			<form action="deleteCategory">
+		
+				<div class="form-group">
+    				<label for="delCat">Category to Remove</label>
+  				</div>	
+  				
+  				<select class="selectpicker" data-live-search="true" name="id">
+					<option selected value="blank" style="display:none"> -- select a category -- </option>
+						<c:forEach var="category" items="${allCategories}">
+						<option value="${ category.id }"> ${category.categoryName }</option>
+						</c:forEach>	
+					</select>
+  					
+			  <button type="submit" class="btn btn-warning">Delete Category</button>
+			</form>
+		</div>
+		</div>
 				</div>
 			</div>
 

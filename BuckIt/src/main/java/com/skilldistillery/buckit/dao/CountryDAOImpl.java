@@ -18,8 +18,8 @@ public class CountryDAOImpl implements CountryDAO {
 	private EntityManager em;
 	
 	@Override
-	public Country findById(int id) {
-		return em.find(Country.class, id);
+	public Country findByCountryCode(String countryCode) {
+		return em.find(Country.class, countryCode);
 	}
 
 	@Override
