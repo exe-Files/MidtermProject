@@ -19,7 +19,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	
 <link rel="stylesheet" href="../css/utility.css">
-<link href="../css/home.css" rel="stylesheet" id="bootstrap-css">
+<link href="css/home.css" rel="stylesheet" id="bootstrap-css">
 
 <title>Create new bucket item</title>
 </head>
