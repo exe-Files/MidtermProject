@@ -71,7 +71,7 @@
 		</div>
 	</nav>
 	<!-- NavBar End -->
-
+<div id="content-settings">
 	<div class="container-fluid">
 		<h4>User Settings - Edit User</h4>
 		<div class="userTabs">
@@ -292,7 +292,7 @@
 
 		</div>
 	</div>
-
+</div>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
