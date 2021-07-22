@@ -85,7 +85,7 @@
 							id="detailed-card-img" />
 						<!-- How to incorporate Map? -->
 						<div class="col-8 offset-2">
-						<iframe width="50%" style="border:3px solid black" loading="lazy" allowfullscreen src="${map }"></iframe>
+						<iframe width="100%" style="border:3px solid black" loading="lazy" allowfullscreen src="${map }"></iframe>
 					</div>
 					</div>
 					<div class="col-sm-6">
