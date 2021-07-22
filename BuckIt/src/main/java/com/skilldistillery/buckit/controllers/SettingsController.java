@@ -67,6 +67,7 @@ public class SettingsController {
 			
 			User user = null;
 			user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
+			model.addAttribute("returnToTab", "comment");
 			model.addAttribute("user", user);
 			return "settings";
 		}
@@ -85,6 +86,7 @@ public class SettingsController {
 			
 			User user = null;
 			user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
+			model.addAttribute("returnToTab", "poll");
 			model.addAttribute("user", user);
 			return "settings";
 		}
