@@ -72,7 +72,7 @@
 
 
 
-	<div class="container-fluid">
+	<div class="container-fluid" id="editBucketItemContent">
 		<div class="row">
 			<div class="col-8 offset-2">
 				<form action="updateUserBucketItem.do" class="form-group"
