@@ -92,8 +92,10 @@
 		<div class="row">
 			<div class="col-7">
 				<img src="${userBucketItem.bucketItem.imageUrl }" />
-				<!-- How to incorporate Map? -->
-			</div>
+<!-- How to incorporate Map? -->
+				<div class="col-8 offset-2">		
+				<iframe width="50%" style="border:3px solid black" loading="lazy" allowfullscreen src="${map }"></iframe> 
+			</div>			</div>
 			<div class="col-5">
 				<h5>
 					Date Added: &nbsp; ${userBucketItem.dateAdded }

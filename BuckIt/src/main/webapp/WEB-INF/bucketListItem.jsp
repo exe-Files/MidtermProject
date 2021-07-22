@@ -77,7 +77,10 @@
 		<div class="row">
 			<div class="col-8 offset-2">
 				<img src="${bucketItem.imageUrl }" />
+				</div>
 				<!-- How to incorporate Map? -->
+				<div class="col-8 offset-2">		
+				<iframe width="50%" style="border:3px solid black" loading="lazy" allowfullscreen src="${map }"></iframe> 
 			</div>
 		</div>
 	</div>
