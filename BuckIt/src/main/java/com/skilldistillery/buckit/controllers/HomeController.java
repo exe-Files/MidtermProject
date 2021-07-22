@@ -55,6 +55,11 @@ public class HomeController {
 				System.out.println(result);
 				model.addAttribute("loginResult", result);
 				return "home";
+			} else if (userToLogin.getIsActive() == false) {
+				String result = "User is not currently active";
+				System.out.println(result);
+				model.addAttribute("loginResult", result);
+				return "home";
 			} else {
 				session.setAttribute("loggedInUser", userToLogin);
 				String result = "Successfully Logged In";
