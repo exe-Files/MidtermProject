@@ -29,10 +29,13 @@ public class SettingsController {
 	private PollDAO pollDao;
 	
 	@RequestMapping(path = "settings.do", method = RequestMethod.GET)
-	public String getUserSettings(Model model, HttpSession session) {
+	public String getUserSettings(Model model, HttpSession session, String returnToTab) {
 		User user = null;
 		user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
 		model.addAttribute("user", user);
+		if (returnToTab != null && !returnToTab.equals("")) {
+			model.addAttribute("returnToTab", returnToTab);
+		}
 		return "settings";
 	}
 	

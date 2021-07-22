@@ -76,7 +76,8 @@
 		<h4>User Settings - Edit User</h4>
 		<div class="userTabs">
 			<nav>
-			<c:if test="${returnToTab == null}">
+			
+			<c:if test="${returnToTab == null }">
 				<c:set var="navUsersClass" value="active"/>
 				<c:set var="usersTabClass" value="show active"/>
 				<c:set var="navCommentClass" value=""/>
@@ -107,17 +108,18 @@
 						data-toggle="tab" href="#nav-userDetails" role="tab"
 						aria-controls="nav-userDetails" aria-selected="true">User
 						Details</a>
+						
 					<a class="nav-item nav-link ${navCommentClass}" id="nav-userComments-tab"
 						data-toggle="tab" href="#nav-userComments" role="tab"
 						aria-controls="nav-userComments" aria-selected="false">Comments</a>
+						
 					<a class="nav-item nav-link ${navPollClass}" id="nav-userPolls-tab"
 						data-toggle="tab" href="#nav-userPolls" role="tab"
 						aria-controls="nav-userPolls" aria-selected="false">Polls</a>
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				
-				<div class="tab-pane fade ${userTabClass}" id="nav-userDetails"
+				<div class="tab-pane fade ${usersTabClass}" id="nav-userDetails"
 					role="tabpanel" aria-labelledby="nav-userDetails-tab">
 					<div class="settingsForm">
 						<div class="container">
