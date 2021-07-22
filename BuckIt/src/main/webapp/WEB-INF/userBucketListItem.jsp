@@ -107,6 +107,9 @@
 						<img src="${userBucketItem.bucketItem.imageUrl }"
 							class="card-img-top" id="detailed-card-img" />
 						<!-- How to incorporate Map? -->
+						<div class="col-8 offset-2">
+						<iframe width="50%" style="border:3px solid black" loading="lazy" allowfullscreen src="${map }"></iframe>
+					</div>
 					</div>
 					<div class="col-sm-6">
 						<div id="itemTitle">
@@ -157,7 +160,7 @@
 					</div>
 				</div>
 				<!--  -->
-				
+
 				<c:if test="${returnToTab == 'noteAdded' }">
 					<c:set var="navDescClass" value=""/>
 					<c:set var="descTabClass" value=""/>
@@ -385,7 +388,7 @@
 									<div class="form-group">
 										<input type="hidden" name="bucketItemId"
 											value="${userBucketItem.id }" /> <label for="url">Full URL (must include http://www.):</label>
-										<input type="url" class="form-control" id="url" name="url" /> 
+										<input type="url" class="form-control" id="url" name="url" />
 										<input type="submit" class="btn btn-success form-control" value="Add Resource" />
 									</div>
 								</form>
