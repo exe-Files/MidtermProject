@@ -81,7 +81,7 @@
 
 	</nav>
 <!-- NavBar End -->
-<div class="container">
+<div class="container" id="addBucketItemContent">
 
 		<h1>Please fill up your new bucket below:</h1>
 		<!-- Photo upload and map functions -->

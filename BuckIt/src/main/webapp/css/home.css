@@ -46,6 +46,10 @@ a:link.active-underline {
 	padding-top: 100px;
 }
 
+#addBucketItemContent {
+	padding-top: 100px;
+}
+
 .heading {
 	margin-top: 100px;
 	text-align: center;
