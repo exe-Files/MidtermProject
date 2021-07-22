@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `bucket_item` (
   `date_updated` DATETIME NULL,
   `is_public_at_creation` TINYINT NOT NULL DEFAULT 1,
   `is_active` TINYINT NOT NULL DEFAULT 1,
-  `image_url` TEXT NULL,
+  `image_url` MEDIUMTEXT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_location_idx` (`location_id` ASC),
   INDEX `fk_created_by_user_idx` (`created_by_user` ASC),
