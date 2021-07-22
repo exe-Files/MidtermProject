@@ -61,10 +61,6 @@ public class UserBucketItemController {
 			userBucketItem.setTargetDate(dateTargeted);
 		}
 		
-//		if (isCompleted.equals("true")) {
-//		} else {
-//		}
-
 		System.out.println(userBucketItem);
 
 		daoUBI.updateBucketItem(userBucketItem);
