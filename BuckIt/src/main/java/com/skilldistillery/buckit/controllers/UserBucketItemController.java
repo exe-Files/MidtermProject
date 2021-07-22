@@ -50,17 +50,20 @@ public class UserBucketItemController {
 			LocalDate dateComplete = LocalDate.parse(dateCompleted);
 //			DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.parse(targetDate));
 			userBucketItem.setDateCompleted(dateComplete);
+			userBucketItem.setCompleted(true);
+		} else {
+			userBucketItem.setCompleted(false);
 		}
+		
 		if (!targetDate.equals("")) {
 			LocalDate dateTargeted = LocalDate.parse(targetDate);
 //			DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.parse(targetDate));
 			userBucketItem.setTargetDate(dateTargeted);
 		}
-		if (isCompleted.equals("true")) {
-			userBucketItem.setCompleted(true);
-		} else {
-			userBucketItem.setCompleted(false);
-		}
+		
+//		if (isCompleted.equals("true")) {
+//		} else {
+//		}
 
 		System.out.println(userBucketItem);
 
@@ -122,6 +125,9 @@ public class UserBucketItemController {
 		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
 		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
 		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
+
+		model.addAttribute("returnToTab", "noteAdded");
+		
 		return "userBucketListItem";
 	}
 
@@ -132,6 +138,7 @@ public class UserBucketItemController {
 		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
 		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
 		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
+		model.addAttribute("returnToTab", "resourceAdded");
 		return "userBucketListItem";
 	}
 	
