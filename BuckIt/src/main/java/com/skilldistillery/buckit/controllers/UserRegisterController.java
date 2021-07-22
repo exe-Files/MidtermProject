@@ -37,11 +37,16 @@ public class UserRegisterController {
 		}
 
 		user.setActive(true);
+		if (user.getImageUrl() == null || user.getImageUrl().equals("")) {
+			user.setImageUrl("https://i.pinimg.com/236x/a1/66/06/a166064b290b061beb1a048c15b9a180--all-things-buckets.jpg");
+		}
 		System.out.println("From controller: " + user.getIsActive());
 		
-		mv.addObject("user", userDao.createUser(user));
+		User createdUser = userDao.createUser(user);
+		mv.addObject("username", createdUser.getUsername());
+		mv.addObject("password", createdUser.getPassword());
 		
-		mv.setViewName("redirect:home.do");		
+		mv.setViewName("forward:login.do");		
 
 		return mv;
 	}

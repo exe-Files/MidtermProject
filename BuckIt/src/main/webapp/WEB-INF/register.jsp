@@ -86,7 +86,7 @@
 								</button>
 							</div>
 						</c:if>
-<div class="container">
+<div class="container" id="register-content">
 	<h1>Please complete registration information below:</h1>
 		<form class="needs-validation" action="registrationinfo.do" method="POST" novalidate>
 			<input type="hidden" name="role" value="user">
