@@ -76,22 +76,50 @@
 		<h4>User Settings - Edit User</h4>
 		<div class="userTabs">
 			<nav>
+			
+			<c:if test="${returnToTab == null }">
+				<c:set var="navUsersClass" value="active"/>
+				<c:set var="usersTabClass" value="show active"/>
+				<c:set var="navCommentClass" value=""/>
+				<c:set var="commentTabClass" value=""/>
+				<c:set var="navPollClass" value=""/>
+				<c:set var="pollTabClass" value=""/>
+			</c:if>
+			<c:if test="${returnToTab == 'comment'}">
+				<c:set var="navUsersClass" value=""/>
+				<c:set var="usersTabClass" value=""/>
+				<c:set var="navCommentClass" value="active"/>
+				<c:set var="commentTabClass" value="show active"/>
+				<c:set var="navPollClass" value=""/>
+				<c:set var="pollTabClass" value=""/>
+			</c:if>
+			<c:if test="${returnToTab == 'poll'}">
+				<c:set var="navUsersClass" value=""/>
+				<c:set var="usersTabClass" value=""/>
+				<c:set var="navCommentClass" value=""/>
+				<c:set var="commentTabClass" value=""/>
+				<c:set var="navPollClass" value="active"/>
+				<c:set var="pollTabClass" value="show active"/>
+			</c:if>
+			
+			
 				<div class="nav nav-tabs" id="nav-tab" role="tablist">
-					<a class="nav-item nav-link active" id="nav-userDetails-tab"
+					<a class="nav-item nav-link ${navUsersClass}" id="nav-userDetails-tab"
 						data-toggle="tab" href="#nav-userDetails" role="tab"
 						aria-controls="nav-userDetails" aria-selected="true">User
 						Details</a>
-					<a class="nav-item nav-link" id="nav-userComments-tab"
+						
+					<a class="nav-item nav-link ${navCommentClass}" id="nav-userComments-tab"
 						data-toggle="tab" href="#nav-userComments" role="tab"
 						aria-controls="nav-userComments" aria-selected="false">Comments</a>
-					<a class="nav-item nav-link" id="nav-userPolls-tab"
+						
+					<a class="nav-item nav-link ${navPollClass}" id="nav-userPolls-tab"
 						data-toggle="tab" href="#nav-userPolls" role="tab"
 						aria-controls="nav-userPolls" aria-selected="false">Polls</a>
 				</div>
 			</nav>
 			<div class="tab-content" id="nav-tabContent">
-				
-				<div class="tab-pane fade show active" id="nav-userDetails"
+				<div class="tab-pane fade ${usersTabClass}" id="nav-userDetails"
 					role="tabpanel" aria-labelledby="nav-userDetails-tab">
 					<div class="settingsForm">
 						<div class="container">
@@ -152,7 +180,7 @@
 					</div>
 
 				</div>
-				<div class="tab-pane fade" id="nav-userComments" role="tabpanel"
+				<div class="tab-pane fade ${commentTabClass}" id="nav-userComments" role="tabpanel"
 					aria-labelledby="nav-userComments-tab">
 					ALL COMMENTS FROM USER:
 					<c:out value='${user.username}' />
@@ -198,7 +226,7 @@
 					END OF COMMENTS
 				</div>
 
-				<div class="tab-pane fade" id="nav-userPolls" role="tabpanel"
+				<div class="tab-pane fade ${pollTabClass}" id="nav-userPolls" role="tabpanel"
 					aria-labelledby="nav-userPolls-tab">
 					ALL POLLS FROM USER:
 					<c:out value='${user.username}' />
