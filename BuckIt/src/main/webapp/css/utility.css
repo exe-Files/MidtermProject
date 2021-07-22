@@ -48,11 +48,6 @@ body {
     background-color: #eee
 }
 
-div.stars {
-    width: 200px;
-    display: inline-block
-}
-
 .mt-200 {
     margin-top: 200px
 }
@@ -66,7 +61,15 @@ label.star {
     padding: 10px;
     font-size: 24px;
     color: #4A148C;
-    transition: all .2s
+    transition: all .2s;
+}
+
+label.star:first-of-type {
+	margin-right: 50px;
+}
+
+label.cost:first-of-type {
+	margin-right: 60px;
 }
 
 input.star:checked~label.star:before {
@@ -94,10 +97,7 @@ label.star:before {
 }
 
 
-div.cost {
-    width: 200px;
-    display: inline-block
-}
+
 
 input.cost {
     display: none
@@ -135,21 +135,6 @@ label.cost:before {
     font-family: FontAwesome
 }
 
-#vote-btn {
-	width: 80px;
-	padding: 10px;
-}
-
-#besttime {
-	width: 200px; 
-	padding: 10px;
-}
-
-h5 {
-	width: 200px;
-	padding: 10px;
-}
-
 .fa-bitbucket {
 	color: #FE7;
     text-shadow: 0 0 10px #952;
@@ -168,6 +153,10 @@ h5 {
 
 .avg-rating {
 	font-size: 36px;
+}
+
+#rating {
+	text-align: center;
 }
 
 /*

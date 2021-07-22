@@ -29,10 +29,13 @@ public class SettingsController {
 	private PollDAO pollDao;
 	
 	@RequestMapping(path = "settings.do", method = RequestMethod.GET)
-	public String getUserSettings(Model model, HttpSession session) {
+	public String getUserSettings(Model model, HttpSession session, String returnToTab) {
 		User user = null;
 		user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
 		model.addAttribute("user", user);
+		if (returnToTab != null && !returnToTab.equals("")) {
+			model.addAttribute("returnToTab", returnToTab);
+		}
 		return "settings";
 	}
 	
@@ -59,11 +62,15 @@ public class SettingsController {
 	@RequestMapping(path = "userDeleteCommentFromUser.do", method=RequestMethod.POST)
 	public String userDeleteCommentReturnToItem(HttpSession session, Model model, int idToDelete, int userId) {
 		if (((User) session.getAttribute("loggedInUser")) != null) {
-			commentDao.deleteComment(idToDelete);
-//			BucketItem itemToEdit = bucketItemDao.findBucketItemById(itemId);
-//			model.addAttribute("item", itemToEdit);
+			boolean commentDeleted;
+			commentDeleted = commentDao.deleteComment(idToDelete);
+			if(commentDeleted ) {
+				model.addAttribute("updateResult", commentDeleted);
+			}
+			
 			User user = null;
 			user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
+			model.addAttribute("returnToTab", "comment");
 			model.addAttribute("user", user);
 			return "settings";
 		}
@@ -74,11 +81,15 @@ public class SettingsController {
 	public String userDeletePollReturnToItem(HttpSession session, Model model, int idToDelete, int userId) {
 		if (((User) session.getAttribute("loggedInUser")) != null) {
 			Poll pollToDelete = pollDao.findById(idToDelete);
-			pollDao.deletePoll(pollToDelete);
-//			BucketItem itemToEdit = bucketItemDao.findBucketItemById(userId);
-//			model.addAttribute("item", itemToEdit);
+			boolean pollDeleted;
+			pollDeleted = pollDao.deletePoll(pollToDelete);
+			if(pollDeleted) {
+				model.addAttribute("updateResult", pollDeleted);
+			}
+			
 			User user = null;
 			user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
+			model.addAttribute("returnToTab", "poll");
 			model.addAttribute("user", user);
 			return "settings";
 		}

@@ -74,7 +74,6 @@
 
 	</nav>
 <!-- NavBar End -->
-	
 	<div class="container">
 		<div class="card-deck">
 			<div class="card" id="explore-item-card">

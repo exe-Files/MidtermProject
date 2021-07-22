@@ -45,7 +45,13 @@ public class ExploreController {
 	}
 	
 	@RequestMapping(path = "viewDetailed.do")
-	public String viewDetailedBucketItem(Model model, Integer bucketItemIdToView) {
+	public String viewDetailedBucketItem(Model model, Integer bucketItemIdToView, HttpSession session) {
+		if (session.getAttribute("loggedInUser") != null) {
+			User user = (User)session.getAttribute("loggedInUser");
+			List<UserBucketItem> allUserBucketItems = null;
+			allUserBucketItems = userBucketItemDao.getAllUserBucketItemsForLoggedInUser(user);
+			model.addAttribute("allUserItems", allUserBucketItems);
+		}
 		BucketItem itemToView = bucketItemDao.findBucketItemById(bucketItemIdToView);
 		model.addAttribute("bucketItem", itemToView);
 		model.addAttribute("avgStarRating", itemToView.getAverageStarRating());
