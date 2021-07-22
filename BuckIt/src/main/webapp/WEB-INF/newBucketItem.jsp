@@ -90,6 +90,7 @@
 			<div class="column">
 				<img src="../media/emptyBucket.png" alt="An empty bucket"
 					width="20%"> <br> <br>
+					
 				<!-- Upload image input-->
 				<div
 					class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
@@ -112,7 +113,8 @@
 				<div class="image-area mt-4">
 					<img id="imageResult" src="#" alt=""
 						class="img-fluid rounded shadow-sm mx-auto d-block">
-				</div>
+<!-- 						<input hidden type="text" name="imageURL" value="#"></input>
+ -->				</div>
 			</div>
 
 			<!-- Right column where the google maps functionality goes -->
@@ -148,6 +150,7 @@
 			<!-- Any hidden attributes to be passed to controller go here -->
 			<input type="hidden" name="isActive" value="true">
 			<!-- TODO add hidden url for default photo -->
+						<input hidden="true" type="text" name="imageUrl" id="imageResultURL" value="#"></input>
 
 
 			<!-- First row -->

@@ -97,6 +97,18 @@
 								</button>
 							</div>
 						</c:if>
+						<c:if
+							test='${loginResult == "User is not currently active"}'>
+							<div class="alert alert-danger alert-dismissible fade show"
+								role="alert">
+								This account is currently locked.
+								Please contact support.
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</c:if>
 
 					</div>
 					<div class="card-body">
