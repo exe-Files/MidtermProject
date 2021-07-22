@@ -50,18 +50,17 @@ public class UserBucketItemController {
 			LocalDate dateComplete = LocalDate.parse(dateCompleted);
 //			DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.parse(targetDate));
 			userBucketItem.setDateCompleted(dateComplete);
+			userBucketItem.setCompleted(true);
+		} else {
+			userBucketItem.setCompleted(false);
 		}
+		
 		if (!targetDate.equals("")) {
 			LocalDate dateTargeted = LocalDate.parse(targetDate);
 //			DateTimeFormatter.ISO_LOCAL_DATE.format(LocalDate.parse(targetDate));
 			userBucketItem.setTargetDate(dateTargeted);
 		}
-		if (isCompleted.equals("true")) {
-			userBucketItem.setCompleted(true);
-		} else {
-			userBucketItem.setCompleted(false);
-		}
-
+		
 		System.out.println(userBucketItem);
 
 		daoUBI.updateBucketItem(userBucketItem);
@@ -95,6 +94,22 @@ public class UserBucketItemController {
 		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
 		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
 		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
+		// Check if bucketItem has a location or country associated and assign to map, if not assign world map
+				String mapSearch = "";
+				String iFrame = "";
+				if (userBucketItem.getBucketItem().getLocation() != null && !userBucketItem.getBucketItem().getLocation().getCityArea().isEmpty() && !userBucketItem.getBucketItem().getLocation().getCityArea().equals("")) {	
+					mapSearch = userBucketItem.getBucketItem().getLocation().getCityArea();
+					iFrame = "https://www.google.com/maps/embed/v1/search?q=" + mapSearch + "&key=AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U";
+				} 
+				
+				else if (userBucketItem.getBucketItem().getLocation() != null && userBucketItem.getBucketItem().getLocation().getCountryCode() != null) {
+					mapSearch = userBucketItem.getBucketItem().getLocation().getCountryCode().getCountryName();
+					iFrame = "https://www.google.com/maps/embed/v1/search?q=" + mapSearch + "&key=AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U";
+				}	
+				else {
+					iFrame = "https://www.google.com/maps/embed/v1/view?key=AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U&center=0,0&zoom=1";
+				}
+				model.addAttribute("map", iFrame);
 		if (addSuccessful != null && !addSuccessful.equals("")) {
 			model.addAttribute("addSuccessful", addSuccessful);
 		}
@@ -122,6 +137,9 @@ public class UserBucketItemController {
 		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
 		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
 		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
+
+		model.addAttribute("returnToTab", "noteAdded");
+		
 		return "userBucketListItem";
 	}
 
@@ -132,6 +150,7 @@ public class UserBucketItemController {
 		model.addAttribute("avgStarRating", userBucketItem.getBucketItem().getAverageStarRating());
 		model.addAttribute("avgCostRating", userBucketItem.getBucketItem().getAverageCostRating());
 		model.addAttribute("bestTimeToDo", userBucketItem.getBucketItem().getMostFrequentBestTime());
+		model.addAttribute("returnToTab", "resourceAdded");
 		return "userBucketListItem";
 	}
 	

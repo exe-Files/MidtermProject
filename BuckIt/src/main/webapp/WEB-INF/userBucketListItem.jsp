@@ -107,6 +107,9 @@
 						<img src="${userBucketItem.bucketItem.imageUrl }"
 							class="card-img-top" id="detailed-card-img" />
 						<!-- How to incorporate Map? -->
+						<div class="col-8 offset-2">
+						<iframe width="50%" style="border:3px solid black" loading="lazy" allowfullscreen src="${map }"></iframe>
+					</div>
 					</div>
 					<div class="col-sm-6">
 						<div id="itemTitle">
@@ -139,7 +142,7 @@
 							<br> <br> <strong>Date Completed:</strong>
 							<c:choose>
 								<c:when test='${userBucketItem.dateCompleted == null}'> Whats taking so long?</c:when>
-								<c:otherwise>${userBucketItem.dateCompleted}'</c:otherwise>
+								<c:otherwise>${userBucketItem.dateCompleted}</c:otherwise>
 							</c:choose>
 						</h5>
 						<br> <br>
@@ -158,34 +161,71 @@
 				</div>
 				<!--  -->
 
+				<c:if test="${returnToTab == 'noteAdded' }">
+					<c:set var="navDescClass" value=""/>
+					<c:set var="descTabClass" value=""/>
+					<c:set var="navCommentClass" value=""/>
+					<c:set var="commentTabClass" value=""/>
+					<c:set var="navRatingClass" value=""/>
+					<c:set var="ratingTabClass" value=""/>
+					<c:set var="navNotesClass" value="active"/>
+					<c:set var="notesTabClass" value="show active"/>
+					<c:set var="navResourcesClass" value=""/>
+					<c:set var="resourcesTabClass" value=""/>
+				</c:if>
+				<c:if test="${returnToTab == 'resourceAdded' }">
+					<c:set var="navDescClass" value=""/>
+					<c:set var="descTabClass" value=""/>
+					<c:set var="navCommentClass" value=""/>
+					<c:set var="commentTabClass" value=""/>
+					<c:set var="navRatingClass" value=""/>
+					<c:set var="ratingTabClass" value=""/>
+					<c:set var="navNotesClass" value=""/>
+					<c:set var="notesTabClass" value=""/>
+					<c:set var="navResourcesClass" value="active"/>
+					<c:set var="resourcesTabClass" value="show active"/>
+				</c:if>
+				<c:if test="${returnToTab == null }">
+					<c:set var="navDescClass" value="active"/>
+					<c:set var="descTabClass" value="show active"/>
+					<c:set var="navCommentClass" value=""/>
+					<c:set var="commentTabClass" value=""/>
+					<c:set var="navRatingClass" value=""/>
+					<c:set var="ratingTabClass" value=""/>
+					<c:set var="navNotesClass" value=""/>
+					<c:set var="notesTabClass" value=""/>
+					<c:set var="navResourcesClass" value=""/>
+					<c:set var="resourcesTabClass" value=""/>
+				</c:if>
+
 
 				<div class="container">
 					<div class="col-10 offset-1">
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
-							<li class="nav-item active"><a class="nav-link active"
+							<li class="nav-item active"><a class="nav-link ${navDescClass }"
 								href="#desc" data-toggle="tab" id="description-tab" role="tab"
 								aria-controls="description" aria-selected="true">Description</a></li>
-							<li class="nav-item"><a class="nav-link" href="#comment"
+							<li class="nav-item"><a class="nav-link ${navCommentClass }" href="#comment"
 								data-toggle="tab" id="comment-tab" role="tab"
 								aria-controls="comment" aria-selected="false">Comments</a></li>
-							<li class="nav-item"><a class="nav-link" href="#rating"
+							<li class="nav-item"><a class="nav-link ${navRatingClass }" href="#rating"
 								data-toggle="tab" id="rating-tab" role="tab"
 								aria-controls="rating" aria-selected="false">Ratings</a></li>
-							<li class="nav-item"><a class="nav-link" href="#notes"
+							<li class="nav-item"><a class="nav-link ${navNotesClass }" href="#notes"
 								data-toggle="tab" id="note-tab" role="tab" aria-controls="note"
 								aria-selected="false">Notes</a></li>
-							<li class="nav-item"><a class="nav-link" href="#resources"
+							<li class="nav-item"><a class="nav-link ${navResourcesClass }" href="#resources"
 								data-toggle="tab" id="resource-tab" role="tab"
 								aria-controls="resource" aria-selected="false">Resources</a></li>
 						</ul>
 						<!-- Tab Content Goes Here -->
 						<div class="tab-content" id="myTabContent">
-							<div class="tab-pane fade show active" id="desc" role="tabpanel"
+							<div class="tab-pane fade ${descTabClass }" id="desc" role="tabpanel"
 								aria-labelledby="desc-tab">
 								<br>
 								<p>${userBucketItem.bucketItem.description }</p>
 							</div>
-							<div class="tab-pane fade" id="comment" role="tabpanel"
+							<div class="tab-pane fade ${commentTabClass }" id="comment" role="tabpanel"
 								aria-labelledby="comment-tab">
 								<c:forEach var="comment"
 									items="${userBucketItem.bucketItem.comments }">
@@ -216,7 +256,7 @@
 								</div>
 							</div>
 
-							<div class="tab-pane fade" id="rating" role="tabpanel"
+							<div class="tab-pane fade ${ratingTabClass }" id="rating" role="tabpanel"
 								aria-labelledby="rating-tab">
 								<form action="addPoleFromUserItem.do">
 									<div class="form-row">
@@ -303,7 +343,7 @@
 								</div>
 							</div>
 
-							<div class="tab-pane fade" id="notes" role="tabpanel"
+							<div class="tab-pane fade ${notesTabClass }" id="notes" role="tabpanel"
 								aria-labelledby="notes-tab">
 								<div class="col-12">
 									<table class="table">
@@ -337,7 +377,7 @@
 									</form>
 								</div>
 							</div>
-							<div class="tab-pane fade" id="resources" role="tabpanel"
+							<div class="tab-pane fade ${resourcesTabClass }" id="resources" role="tabpanel"
 								aria-labelledby="resource-tab">
 								<ul>
 									<c:forEach var="resource" items="${userBucketItem.resources }">
@@ -347,10 +387,9 @@
 								<form action="addResource.do" method="post" id="addResource">
 									<div class="form-group">
 										<input type="hidden" name="bucketItemId"
-											value="${userBucketItem.id }" /> <label for="url">URL:</label>
-										<input type="text" class="form-control" id="url" name="url"
-											value="${resource.url }" /> <input type="submit"
-											class="btn btn-success form-control" value="Add Resource" />
+											value="${userBucketItem.id }" /> <label for="url">Full URL (must include http://www.):</label>
+										<input type="url" class="form-control" id="url" name="url" />
+										<input type="submit" class="btn btn-success form-control" value="Add Resource" />
 									</div>
 								</form>
 							</div>

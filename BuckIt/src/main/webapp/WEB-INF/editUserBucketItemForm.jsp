@@ -85,14 +85,13 @@
 					<label for="targetDate">Target Date:</label>
 					<input class="form-control" type="date" name="targetDate"
 						id="targetDate" value="${userBucketItem.targetDate }">
-					<label for="isCompleted">Complete:</label> &emsp;
-					<input class="form-control-sm" type="radio" name="isCompleted"
-						id="isCompleted" value="true" required>
-					Yes &emsp;
-					<input class="form-control-sm" type="radio" name="isCompleted"
-						id="isCompleted" value="false">
-					No <br>
+					<br>
 					<input type="submit" class="btn btn-success" value="Save Changes" />
+				</form>
+				<form action="viewUserBucketItem.do">
+					<input type="hidden" name="itemId" value="${userBucketItem.id }" />
+					<input type="hidden" name="addSuccessful" value="" />
+					<input type="submit" class="btn btn-info" value="Go Back">
 				</form>
 				<div class="col-10 offset-1">
 					<div class="col-6">

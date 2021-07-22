@@ -84,6 +84,9 @@
 						<img src="${bucketItem.imageUrl }" class="card-img-top"
 							id="detailed-card-img" />
 						<!-- How to incorporate Map? -->
+						<div class="col-8 offset-2">
+						<iframe width="50%" style="border:3px solid black" loading="lazy" allowfullscreen src="${map }"></iframe>
+					</div>
 					</div>
 					<div class="col-sm-6">
 						<div id="itemTitle">
@@ -174,7 +177,7 @@
 										<br>
 										<form class="form" action="addComment.do" id=addComment>
 											<input type="hidden" value="${bucketItem.id }"
-												name="bucketItemId" /> 
+												name="bucketItemId" />
 											<textarea class="form-control" form="addComment" rows="3"
 												cols="40" name="commentText"></textarea>
 											<input type="submit" class="btn btn-primary form-control"

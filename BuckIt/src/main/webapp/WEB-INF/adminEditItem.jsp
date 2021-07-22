@@ -73,6 +73,7 @@
 
 	</nav>
 <!-- NavBar End -->
+<div id="content">
 	<div class="container-fluid">
 		<h4>Admin Dashboard - Edit Item</h4>
 		<div class="adminTabs">
@@ -228,7 +229,7 @@
 		</div>
 	</div>
 
-
+</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
