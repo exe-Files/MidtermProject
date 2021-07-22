@@ -37,6 +37,6 @@ public interface UserBucketItemDAO {
 	
 	UserBucketItem removeResourceFromUserBucketItem(int bucketId, int resourceId);
 
-	List<UserBucketItem> getUserBucketItemsWithCategory(Category category);
+	List<UserBucketItem> getUserBucketItemsWithCategory(Category category, User user);
 	
 }

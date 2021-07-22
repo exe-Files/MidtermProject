@@ -97,7 +97,7 @@ public class BucketItemDAOImpl implements BucketItemDAO {
 	@Override
 	public List<BucketItem> getAllBucketItemsWithCategory(Category category) {
 		List<BucketItem> filteredBucketItemList = null;
-		String jpqlQuery = "SELECT bi FROM BucketItem bi WHERE :category MEMBER OF categories";
+		String jpqlQuery = "SELECT bi FROM BucketItem bi WHERE :category MEMBER OF categories AND isPublicAtCreation != 0";
 		filteredBucketItemList = em.createQuery(jpqlQuery, BucketItem.class).setParameter("category", category).getResultList();
 		return filteredBucketItemList;
 	}

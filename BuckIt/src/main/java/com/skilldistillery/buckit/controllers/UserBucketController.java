@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.skilldistillery.buckit.dao.CategoryDAO;
 import com.skilldistillery.buckit.dao.UserBucketItemDAO;
-import com.skilldistillery.buckit.entities.BucketItem;
 import com.skilldistillery.buckit.entities.Category;
 import com.skilldistillery.buckit.entities.User;
 import com.skilldistillery.buckit.entities.UserBucketItem;
@@ -36,13 +35,14 @@ public class UserBucketController {
 	}
 	
 	@RequestMapping(path = "filterByCategoryUserBucket.do")
-	public String filterUserBucketByCategory(Model model, int categoryId) {
+	public String filterUserBucketByCategory(Model model, int categoryId, HttpSession session) {
 		if (categoryId == -1) {
 			return "redirect:getUserBucket.do";
 		}
+		User loggedInUser = (User)session.getAttribute("loggedInUser");
 		Category categoryToFilterBy = categoryDao.findCategoryById(categoryId);
 		List<UserBucketItem> filteredUserBucketItems = null;
-		filteredUserBucketItems = userBucketItemDao.getUserBucketItemsWithCategory(categoryToFilterBy);
+		filteredUserBucketItems = userBucketItemDao.getUserBucketItemsWithCategory(categoryToFilterBy, loggedInUser);
 		model.addAttribute("allUserBucketItems", filteredUserBucketItems);
 		List<Category> allCategories = null;
 		allCategories = categoryDao.getAllCategories();

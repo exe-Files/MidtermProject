@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.buckit.entities.BucketItem;
@@ -135,10 +134,10 @@ public class UserBucketItemDAOImpl implements UserBucketItemDAO {
 	}
 	
 	@Override
-	public List<UserBucketItem> getUserBucketItemsWithCategory(Category category) {
+	public List<UserBucketItem> getUserBucketItemsWithCategory(Category category, User user) {
 		List<UserBucketItem> filteredBucketItemList = null;
-		String jpqlQuery = "SELECT ubi FROM UserBucketItem ubi WHERE :category MEMBER OF bucketItem.categories";
-		filteredBucketItemList = em.createQuery(jpqlQuery, UserBucketItem.class).setParameter("category", category).getResultList();
+		String jpqlQuery = "SELECT ubi FROM UserBucketItem ubi WHERE :category MEMBER OF bucketItem.categories AND user = :user";
+		filteredBucketItemList = em.createQuery(jpqlQuery, UserBucketItem.class).setParameter("category", category).setParameter("user", user).getResultList();
 		return filteredBucketItemList;
 	}
 	
