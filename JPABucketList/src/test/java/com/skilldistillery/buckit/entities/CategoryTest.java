@@ -44,7 +44,7 @@ class CategoryTest {
 	@Test
 	void test_category_mappings() {
 		assertNotNull(category);
-		assertEquals("Adrenaline Rush", category.getCategoryName());
+		assertEquals("Just For Fun", category.getCategoryName());
 	}
 	
 	@Test

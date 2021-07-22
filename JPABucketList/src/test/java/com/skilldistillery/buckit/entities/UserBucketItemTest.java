@@ -54,7 +54,7 @@ class UserBucketItemTest {
 	@Test
 	void test_userBucketItem_to_user_mappings() {
 		assertNotNull(userBucketItem);
-		assertEquals("steven", userBucketItem.getUser().getUsername());
+		assertEquals("brandon-f", userBucketItem.getUser().getUsername());
 	}
 	
 	@Test

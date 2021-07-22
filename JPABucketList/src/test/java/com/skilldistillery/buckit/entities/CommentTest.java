@@ -54,7 +54,7 @@ class CommentTest {
 	void test_comment_to_user_mappings() {
 		assertNotNull(comment);
 		assertEquals("admin", comment.getUser().getUsername());
-		assertEquals("adminbucketpass", comment.getUser().getPassword());
+		assertEquals("adminpass", comment.getUser().getPassword());
 	}
 	
 	@Test
