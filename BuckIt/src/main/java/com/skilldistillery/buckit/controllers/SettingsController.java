@@ -42,6 +42,7 @@ public class SettingsController {
 	@RequestMapping(path = "updatedSettings.do", method = RequestMethod.POST)
 	public String postUserSettings(Model model, HttpSession session, User user) {
 		User userUpdate = null;
+		user.setActive(true);
 		userUpdate = userDao.updateUser(user);
 		boolean result;
 		System.out.println(userUpdate);
@@ -53,6 +54,7 @@ public class SettingsController {
 			// userUpdate = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
 			// TODO update current HttpSession to reflect changes
 			result = true;
+//			userUpdate.setActive(true);
 			session.setAttribute("loggedInUser", userUpdate);
 			model.addAttribute("updateResult", result);
 			model.addAttribute("user", userUpdate);
