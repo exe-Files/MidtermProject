@@ -18,7 +18,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
 	
-<link rel="stylesheet" href="../css/utility.css">
+<link rel="stylesheet" href="css/utility.css">
 <link href="css/home.css" rel="stylesheet" id="bootstrap-css">
 
 <title>Create new bucket item</title>
@@ -296,8 +296,8 @@
 		async defer></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 		
-	<script src="../javascript/picpicker.js"></script>
-	<script src="../javascript/googlemaps.js"></script>
+	<script src="javascript/picpicker.js"></script>
+	<script src="javascript/googlemaps.js"></script>
 
 
 </body>
