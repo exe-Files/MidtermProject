@@ -19,6 +19,7 @@
 <title>Admin Dashboard</title>
 </head>
 <body class="homebg">
+	<div>
 	<!-- NavBar Start -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		<a class="navbar-brand" href="home.do">BuckIt List</a>
@@ -74,7 +75,9 @@
 		</div>
 
 	</nav>
+	</div>
 <!-- NavBar End -->
+<div id="content">
 	<div class="container-fluid">
 		<h4>Admin Dashboard</h4>
 		
@@ -260,7 +263,7 @@
 		</div>
 	</div>
 
-
+</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

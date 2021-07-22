@@ -31,6 +31,12 @@ a:link.active-underline {
   	padding-top: 170px;
 
 }
+#content-settings{
+	display: flex;
+  	flex-direction: column;
+  	padding-top: 100px;
+
+}
 .heading {
 	margin-top: 100px;
 	text-align: center;
