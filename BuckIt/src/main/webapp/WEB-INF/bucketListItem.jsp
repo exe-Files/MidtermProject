@@ -13,8 +13,8 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="../css/utility.css" rel="stylesheet" id="bootstrap-css">
-<link href="../css/home.css" rel="stylesheet" id="bootstrap-css">
+<link href="css/utility.css" rel="stylesheet" id="bootstrap-css">
+<link href="css/home.css" rel="stylesheet" id="bootstrap-css">
 <title>Bucket Item</title>
 </head>
 <body class="homebg">
