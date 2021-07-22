@@ -55,6 +55,7 @@ public class SettingsController {
 			result = true;
 			session.setAttribute("loggedInUser", userUpdate);
 			model.addAttribute("updateResult", result);
+			model.addAttribute("user", userUpdate);
 			return "settings";
 		}
 	}
@@ -65,9 +66,8 @@ public class SettingsController {
 			boolean commentDeleted;
 			commentDeleted = commentDao.deleteComment(idToDelete);
 			if(commentDeleted ) {
-				model.addAttribute("updateResult", commentDeleted);
+				model.addAttribute("commentResult", commentDeleted);
 			}
-			
 			User user = null;
 			user = userDao.findById(((User)session.getAttribute("loggedInUser")).getId());
 			model.addAttribute("returnToTab", "comment");
@@ -84,7 +84,7 @@ public class SettingsController {
 			boolean pollDeleted;
 			pollDeleted = pollDao.deletePoll(pollToDelete);
 			if(pollDeleted) {
-				model.addAttribute("updateResult", pollDeleted);
+				model.addAttribute("pollResult", pollDeleted);
 			}
 			
 			User user = null;

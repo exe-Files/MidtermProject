@@ -81,6 +81,7 @@
 
 	</nav>
 <!-- NavBar End -->
+<div class="container">
 
 		<h1>Please fill up your new bucket below:</h1>
 		<!-- Photo upload and map functions -->
@@ -196,7 +197,7 @@
 				</div>
 
 				<div class="col-md-12">
-					<div class="stars">
+					<!-- <div class="stars">
 						<input class="star star-5" value="5" id="star-5" type="radio"
 							name="ratingStars" /> <label class="star star-5" for="star-5"></label>
 						<input class="star star-4" value="4" id="star-4" type="radio"
@@ -207,7 +208,7 @@
 							name="ratingStars" /> <label class="star star-2" for="star-2"></label>
 						<input class="star star-1" value="1" id="star-1" type="radio"
 							name="ratingStars" /> <label class="star star-1" for="star-1"></label>
-					</div>
+					</div> -->
 				</div>
 			</div>
 
@@ -227,15 +228,11 @@
 				</div>
 			</div>
 			<br>
-			<hr>
 			<br>
-
-
-
-
 			<button class="btn btn-primary" type="submit">Submit form</button>
 		</form>
-
+		<br>
+</div>
 
 
 		<script>

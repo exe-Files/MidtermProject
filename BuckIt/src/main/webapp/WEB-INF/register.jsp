@@ -86,7 +86,7 @@
 								</button>
 							</div>
 						</c:if>
-
+<div class="container">
 	<h1>Please complete registration information below:</h1>
 		<form class="needs-validation" action="registrationinfo.do" method="POST" novalidate>
 			<input type="hidden" name="role" value="user">
@@ -161,6 +161,7 @@
     <button class="btn btn-primary" type="submit">Submit form</button>
   </form>
 
+</div>
   <script>
   
   // Example starter JavaScript for disabling form submissions if there are invalid fields

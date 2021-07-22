@@ -57,6 +57,23 @@ public class ExploreController {
 		model.addAttribute("avgStarRating", itemToView.getAverageStarRating());
 		model.addAttribute("avgCostRating", itemToView.getAverageCostRating());
 		model.addAttribute("bestTimeToDo", itemToView.getMostFrequentBestTime());
+		// Check if bucketItem has a location or country associated and assign to map, if not assign world map
+		String mapSearch = "";
+		String iFrame = "";
+		if (itemToView.getLocation() != null && !itemToView.getLocation().getCityArea().isEmpty() && !itemToView.getLocation().getCityArea().equals("")) {	
+			mapSearch = itemToView.getLocation().getCityArea();
+			iFrame = "https://www.google.com/maps/embed/v1/search?q=" + mapSearch + "&key=AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U";
+		} 
+		
+		else if (itemToView.getLocation() != null && itemToView.getLocation().getCountryCode() != null) {
+			mapSearch = itemToView.getLocation().getCountryCode().getCountryName();
+			iFrame = "https://www.google.com/maps/embed/v1/search?q=" + mapSearch + "&key=AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U";
+		}	
+		else {
+			iFrame = "https://www.google.com/maps/embed/v1/view?key=AIzaSyBf2VmxfBNxs1HkJpnNGHwYL36EM3V9R_U&center=0,0&zoom=1";
+		}
+		model.addAttribute("map", iFrame);
+		
 		return "bucketListItem";
 	}
 	
