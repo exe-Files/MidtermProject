@@ -71,225 +71,242 @@
 		</div>
 	</nav>
 	<!-- NavBar End -->
-<div id="content-settings">
-	<div class="container-fluid">
-		<h4>User Settings - Edit User</h4>
-		<div class="userTabs">
-			<nav>
+	<div id="content-settings">
+		<div class="container-fluid">
+			<h4>User Settings - Edit User</h4>
+			<div class="userTabs">
+				<nav>
 
-				<c:if test="${returnToTab == null }">
-					<c:set var="navUsersClass" value="active" />
-					<c:set var="usersTabClass" value="show active" />
-					<c:set var="navCommentClass" value="" />
-					<c:set var="commentTabClass" value="" />
-					<c:set var="navPollClass" value="" />
-					<c:set var="pollTabClass" value="" />
-				</c:if>
-				<c:if test="${returnToTab == 'comment'}">
-					<c:set var="navUsersClass" value="" />
-					<c:set var="usersTabClass" value="" />
-					<c:set var="navCommentClass" value="active" />
-					<c:set var="commentTabClass" value="show active" />
-					<c:set var="navPollClass" value="" />
-					<c:set var="pollTabClass" value="" />
-				</c:if>
-				<c:if test="${returnToTab == 'poll'}">
-					<c:set var="navUsersClass" value="" />
-					<c:set var="usersTabClass" value="" />
-					<c:set var="navCommentClass" value="" />
-					<c:set var="commentTabClass" value="" />
-					<c:set var="navPollClass" value="active" />
-					<c:set var="pollTabClass" value="show active" />
-				</c:if>
+					<c:if test="${returnToTab == null }">
+						<c:set var="navUsersClass" value="active" />
+						<c:set var="usersTabClass" value="show active" />
+						<c:set var="navCommentClass" value="" />
+						<c:set var="commentTabClass" value="" />
+						<c:set var="navPollClass" value="" />
+						<c:set var="pollTabClass" value="" />
+					</c:if>
+					<c:if test="${returnToTab == 'comment'}">
+						<c:set var="navUsersClass" value="" />
+						<c:set var="usersTabClass" value="" />
+						<c:set var="navCommentClass" value="active" />
+						<c:set var="commentTabClass" value="show active" />
+						<c:set var="navPollClass" value="" />
+						<c:set var="pollTabClass" value="" />
+					</c:if>
+					<c:if test="${returnToTab == 'poll'}">
+						<c:set var="navUsersClass" value="" />
+						<c:set var="usersTabClass" value="" />
+						<c:set var="navCommentClass" value="" />
+						<c:set var="commentTabClass" value="" />
+						<c:set var="navPollClass" value="active" />
+						<c:set var="pollTabClass" value="show active" />
+					</c:if>
 
 
-				<div class="nav nav-tabs" id="nav-tab" role="tablist">
-					<a class="nav-item nav-link ${navUsersClass}"
-						id="nav-userDetails-tab" data-toggle="tab" href="#nav-userDetails"
-						role="tab" aria-controls="nav-userDetails" aria-selected="true">User
-						Details</a>
+					<div class="nav nav-tabs" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link ${navUsersClass}"
+							id="nav-userDetails-tab" data-toggle="tab"
+							href="#nav-userDetails" role="tab"
+							aria-controls="nav-userDetails" aria-selected="true">User
+							Details</a>
 
-					<a class="nav-item nav-link ${navCommentClass}"
-						id="nav-userComments-tab" data-toggle="tab"
-						href="#nav-userComments" role="tab"
-						aria-controls="nav-userComments" aria-selected="false">Comments</a>
+						<a class="nav-item nav-link ${navCommentClass}"
+							id="nav-userComments-tab" data-toggle="tab"
+							href="#nav-userComments" role="tab"
+							aria-controls="nav-userComments" aria-selected="false">Comments</a>
 
-					<a class="nav-item nav-link ${navPollClass}" id="nav-userPolls-tab"
-						data-toggle="tab" href="#nav-userPolls" role="tab"
-						aria-controls="nav-userPolls" aria-selected="false">Polls</a>
-				</div>
-			</nav>
-			<div class="tab-content" id="nav-tabContent">
-				<div class="tab-pane fade ${usersTabClass}" id="nav-userDetails"
-					role="tabpanel" aria-labelledby="nav-userDetails-tab">
-					<div class="settingsForm">
-						<div class="container">
-							<div class="row">
-								<div class="col"></div>
-								<div class="col-8">
-									<h3>User Settings</h3>
-									<c:if test='${updateResult}'>
-										<div class="alert alert-success" role="alert">Settings
-											Updated Successfully!</div>
-									</c:if>
-									<form action="updatedSettings.do?id=${user.id}" method="POST">
-										<div class="mb-auto">
-											<div>
-												<label for="imageUrl">Profile Image: </label> <img
-													src="${user.imageUrl}" alt="Profile Picture" class="avatar">
-												<input name="imageUrl" class="form-control"
-													placeholder="Profile Picture URL" value="${user.imageUrl}">
+						<a class="nav-item nav-link ${navPollClass}"
+							id="nav-userPolls-tab" data-toggle="tab" href="#nav-userPolls"
+							role="tab" aria-controls="nav-userPolls" aria-selected="false">Polls</a>
+					</div>
+				</nav>
+				<div class="tab-content" id="nav-tabContent">
+					<div class="tab-pane fade ${usersTabClass}" id="nav-userDetails"
+						role="tabpanel" aria-labelledby="nav-userDetails-tab">
+						<div class="settingsForm">
+							<div class="container">
+								<div class="row">
+									<div class="col"></div>
+									<div class="col-8">
+										<h3>User Settings</h3>
+										<c:if test='${updateResult}'>
+											<div class="alert alert-success" role="alert">
+												Settings Updated Successfully!
+												<button type="button" class="close" data-dismiss="alert"
+													aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
 											</div>
-											<br>
-											<div>
-												<label for="username">User Name: </label>
-												<input name="username" class="form-control"
-													placeholder="User Name" value="${user.username}" required>
+										</c:if>
+										<form action="updatedSettings.do?id=${user.id}" method="POST">
+											<div class="mb-auto">
+												<div>
+													<label for="imageUrl">Profile Image: </label> <img
+														src="${user.imageUrl}" alt="Profile Picture"
+														class="avatar">
+													<input name="imageUrl" class="form-control"
+														placeholder="Profile Picture URL" value="${user.imageUrl}">
+												</div>
+												<br>
+												<div>
+													<label for="username">User Name: </label>
+													<input name="username" class="form-control"
+														placeholder="User Name" value="${user.username}" required>
+												</div>
+												<div>
+													<label for="firstName">First Name: </label>
+													<input name="firstName" class="form-control input-sm"
+														placeholder="First Name" value="${user.firstName}">
+												</div>
+												<div>
+													<label for="lastName">Last Name: </label>
+													<input name="lastName" class="form-control input-sm"
+														placeholder="Last Name" value="${user.lastName}">
+												</div>
+												<div>
+													<label for="email">Email: </label>
+													<input name="email" class="form-control input-sm"
+														placeholder="Email" value="${user.email}" required>
+												</div>
+												<div>
+													<label for="password">Password: </label>
+													<input name="password" type="password"
+														class="form-control input-sm" placeholder="Password"
+														value="${user.password}" required>
+												</div>
+												<div class="text-center">
+													<button type='submit' id="saveChanges"
+														class="btn btn-sm btn-success btn-outline-dark w-75 mt-3"
+														value="Update">Save Changes</button>
+												</div>
 											</div>
-											<div>
-												<label for="firstName">First Name: </label>
-												<input name="firstName" class="form-control input-sm"
-													placeholder="First Name" value="${user.firstName}">
-											</div>
-											<div>
-												<label for="lastName">Last Name: </label>
-												<input name="lastName" class="form-control input-sm"
-													placeholder="Last Name" value="${user.lastName}">
-											</div>
-											<div>
-												<label for="email">Email: </label>
-												<input name="email" class="form-control input-sm"
-													placeholder="Email" value="${user.email}" required>
-											</div>
-											<div>
-												<label for="password">Password: </label>
-												<input name="password" type="password"
-													class="form-control input-sm" placeholder="Password"
-													value="${user.password}" required>
-											</div>
-											<div class="text-center">
-												<button type='submit' id="saveChanges"
-													class="btn btn-sm btn-success btn-outline-dark w-75 mt-3"
-													value="Update">Save Changes</button>
-											</div>
-										</div>
 
-									</form>
+										</form>
+									</div>
+									<div class="col"></div>
 								</div>
-								<div class="col"></div>
 							</div>
 						</div>
+
+					</div>
+					<div class="tab-pane fade ${commentTabClass}" id="nav-userComments"
+						role="tabpanel" aria-labelledby="nav-userComments-tab">
+						ALL COMMENTS FROM USER:
+						<c:out value='${user.username}' />
+						<c:if test='${commentResult}'>
+							<div class="alert alert-success" role="alert">
+								Comment Deleted Successfully!
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</c:if>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>ID #</th>
+									<th>Comment</th>
+									<th>Date Created</th>
+									<th>Date Updated</th>
+									<th>Image Url</th>
+									<th>Bucket List Item</th>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var='comment' items='${user.userComments}'
+									varStatus='loopComment'>
+									<tr>
+										<td>${comment.id}</td>
+										<td>${comment.commentText }</td>
+										<td>${comment.dateCreated }</td>
+										<td>${comment.dateUpdated }</td>
+										<td>${comment.imageUrl }</td>
+										<td>${comment.bucketItem.name}</td>
+										<td>
+											<form action="userDeleteCommentFromUser.do" method=POST
+												id="userDeleteComment${loopComment.index}">
+												<input type="number" class="form-control" id="idToDelete"
+													name="idToDelete" value="${comment.id}" hidden='true'>
+												<input type="number" class="form-control" id="userId"
+													name="userId" value="${user.id}" hidden='true'>
+												<button type='submit'
+													form="userDeleteComment${loopComment.index}"
+													id="deleteComment" class="btn btn-sm btn-danger">Delete</button>
+											</form>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						END OF COMMENTS
+					</div>
+
+					<div class="tab-pane fade ${pollTabClass}" id="nav-userPolls"
+						role="tabpanel" aria-labelledby="nav-userPolls-tab">
+						ALL POLLS FROM USER:
+						<c:out value='${user.username}' />
+						<c:if test='${pollResult}'>
+							<div class="alert alert-success" role="alert">
+								Poll Deleted Successfully!
+								<button type="button" class="close" data-dismiss="alert"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</c:if>
+						<table class="table">
+							<thead>
+								<tr>
+									<th>ID #</th>
+									<th>Rating</th>
+									<th>Cost</th>
+									<th>Best Time of Year</th>
+									<th>Date Created</th>
+									<th>Date Updated</th>
+									<th>Bucket List Item</th>
+									<th></th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach var='poll' items='${user.userPolls}'
+									varStatus='loopPoll'>
+									<tr>
+										<td>${poll.id}</td>
+										<td>${poll.ratingStars }</td>
+										<td>${poll.costDollarSigns }</td>
+										<td>${poll.bestTimeToDo }</td>
+										<td>${poll.dateCreated }</td>
+										<td>${poll.dateUpdated }</td>
+										<td>${poll.bucketItem.name}</td>
+										<td>
+											<form action="userDeletePollFromUser.do" method=POST
+												id="userDeletePoll${loopPoll.index}">
+												<input type="number" class="form-control" id="idToDelete"
+													name="idToDelete" value="${poll.id}" hidden='true'>
+												<input type="number" class="form-control" id="userId"
+													name="userId" value="${user.id}" hidden='true'>
+												<button type='submit' form="userDeletePoll${loopPoll.index}"
+													id="deletePoll" class="btn btn-sm btn-danger">Delete</button>
+											</form>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						END OF POLLS
 					</div>
 
 				</div>
-				<div class="tab-pane fade ${commentTabClass}" id="nav-userComments"
-					role="tabpanel" aria-labelledby="nav-userComments-tab">
-					ALL COMMENTS FROM USER:
-					<c:out value='${user.username}' />
-					<c:if test='${commentResult}'>
-						<div class="alert alert-success" role="alert">Comment
-							Deleted Successfully!</div>
-					</c:if>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID #</th>
-								<th>Comment</th>
-								<th>Date Created</th>
-								<th>Date Updated</th>
-								<th>Image Url</th>
-								<th>Bucket List Item</th>
-								<th></th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var='comment' items='${user.userComments}'
-								varStatus='loopComment'>
-								<tr>
-									<td>${comment.id}</td>
-									<td>${comment.commentText }</td>
-									<td>${comment.dateCreated }</td>
-									<td>${comment.dateUpdated }</td>
-									<td>${comment.imageUrl }</td>
-									<td>${comment.bucketItem.name}</td>
-									<td>
-										<form action="userDeleteCommentFromUser.do" method=POST
-											id="userDeleteComment${loopComment.index}">
-											<input type="number" class="form-control" id="idToDelete"
-												name="idToDelete" value="${comment.id}" hidden='true'>
-											<input type="number" class="form-control" id="userId"
-												name="userId" value="${user.id}" hidden='true'>
-											<button type='submit'
-												form="userDeleteComment${loopComment.index}"
-												id="deleteComment" class="btn btn-sm btn-danger">Delete</button>
-										</form>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					END OF COMMENTS
-				</div>
-
-				<div class="tab-pane fade ${pollTabClass}" id="nav-userPolls"
-					role="tabpanel" aria-labelledby="nav-userPolls-tab">
-					ALL POLLS FROM USER:
-					<c:out value='${user.username}' />
-					<c:if test='${pollResult}'>
-						<div class="alert alert-success" role="alert">Poll
-							Deleted Successfully!</div>
-					</c:if>
-					<table class="table">
-						<thead>
-							<tr>
-								<th>ID #</th>
-								<th>Rating</th>
-								<th>Cost</th>
-								<th>Best Time of Year</th>
-								<th>Date Created</th>
-								<th>Date Updated</th>
-								<th>Bucket List Item</th>
-								<th></th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var='poll' items='${user.userPolls}'
-								varStatus='loopPoll'>
-								<tr>
-									<td>${poll.id}</td>
-									<td>${poll.ratingStars }</td>
-									<td>${poll.costDollarSigns }</td>
-									<td>${poll.bestTimeToDo }</td>
-									<td>${poll.dateCreated }</td>
-									<td>${poll.dateUpdated }</td>
-									<td>${poll.bucketItem.name}</td>
-									<td>
-										<form action="userDeletePollFromUser.do" method=POST
-											id="userDeletePoll${loopPoll.index}">
-											<input type="number" class="form-control" id="idToDelete"
-												name="idToDelete" value="${poll.id}" hidden='true'>
-											<input type="number" class="form-control" id="userId"
-												name="userId" value="${user.id}" hidden='true'>
-											<button type='submit' form="userDeletePoll${loopPoll.index}"
-												id="deletePoll" class="btn btn-sm btn-danger">Delete</button>
-										</form>
-									</td>
-								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					END OF POLLS
-				</div>
-
 			</div>
 		</div>
-	</div>
 
-	<div>
 		<div>
-			<!-- <c:if test='${updateResult == "false"}'>
+			<div>
+				<!-- <c:if test='${updateResult == "false"}'>
 				<div class="alert alert-danger alert-dismissible fade show"
 					role="alert">
 					No changes made to user settings. Please try again.
@@ -300,9 +317,9 @@
 				</div>
 			</c:if> -->
 
+			</div>
 		</div>
 	</div>
-</div>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
