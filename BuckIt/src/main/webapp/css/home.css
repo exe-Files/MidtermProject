@@ -91,6 +91,62 @@ a:link.active-underline {
 	max-height: 10rem;
 }
 
+#detailed-item-card {
+	height: auto;
+	margin-left: auto;
+	margin-right: auto;
+	width: auto;
+	background-color: rgba(255,255,255, 0.9);
+}
+
+#detailed-card-img {
+	object-fit: contain;
+	padding-top: 10px;
+	padding-left:10px;
+	margin: auto;
+	max-height: 20rem;
+}
+
+#addItemFromDetailedBtn {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+.tab-panel {
+	padding-top: 30px;
+}
+
+.addComment {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+#location-details {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+#itemTitle {
+	padding-top: 5px;
+	display: flex;
+	justify-content: center;
+}
+
+#itemDates {
+	width: auto;
+}
+
+.mt-0 {
+	margin: 0px;
+	padding: 0px;
+}
+
+.left-by-user {
+	font-size: 12px;
+}
+
 .btn-round {
 	border-radius: 50%;
 }
@@ -98,6 +154,16 @@ a:link.active-underline {
 
 #detailedViewBtn {
 	float: right;
+}
+
+.table {
+	border-collapse:collapse;
+	table-layout:fixed;
+}
+
+.edit-delete-group {
+	display: flex;
+	justify-content: center;
 }
 
 
