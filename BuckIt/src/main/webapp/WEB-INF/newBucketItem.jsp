@@ -189,10 +189,10 @@
 					<div class="valid-feedback">Looks good!</div>
 
 					<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  						<label class="btn btn-primary active">
+  						<label class="btn btn-outline-primary active">
    						 <input type="radio" value="true" name="isPublicAtCreation" id="option1" checked> Public
   						</label>
-  						<label class="btn btn-secondary">
+  						<label class="btn btn-outline-primary">
     					 <input type="radio" value="false" name="isPublicAtCreation" id="option2"> Private
   						</label>
 					</div>
