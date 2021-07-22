@@ -14,7 +14,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-<link href="../css/admin.css" rel="stylesheet" id="bootstrap-css">
+<link href="css/admin.css" rel="stylesheet" id="bootstrap-css">
 
 <title>Admin Dashboard</title>
 </head>
