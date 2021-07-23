@@ -26,6 +26,7 @@ public class UserRegisterController {
 
 	@RequestMapping(path = "registrationinfo.do", method = RequestMethod.POST)
 	public ModelAndView registerUser(User user, Model model) {
+		
 		ModelAndView mv = new ModelAndView();	
 		List<User> allUsers = userDao.getAllUsers();
 		for (User user2 : allUsers) {
@@ -35,6 +36,7 @@ public class UserRegisterController {
 				return mv;
 			}
 		}
+		System.out.println(user.getImageUrl());
 
 		user.setActive(true);
 		if (user.getImageUrl() == null || user.getImageUrl().equals("")) {
