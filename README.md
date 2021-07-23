@@ -69,7 +69,10 @@ If logged into an admin account, you are also able to use the navigation bar to 
 Working with the Google Maps API I learned that there's more than one way to put yourself on the map, or rather, the map on your site. The simplest solution is often the way to go but in our case it was the second simplest, embedding and using our controller to modify the query string in the URL, that worked the best. We also managed to serendipitously find a way to upload actual photos to our MySQL database by using the image preview function (which was our original plan, just to showcase a future function that wasn't fully implemented) of a <a href="https://bootstrapious.com/p/bootstrap-image-upload">ready-built</a> solution and redirecting the output URL to a hidden field in the form using JavaScript. Overall though, I'd say working with a team of curious and intelligent folks was the best learning experience. I look forward to doing it again!
 
 ###### Gabriel A
-
+* Learned to better understand protocol errors for debugging
+* Gained more experience in bootstrap
+* Gained a better understanding for how to use different input types on html forms
+* Learned a few creative solutions to feature issues from my teammates 
 ###### Brandon F:
 
 #### Stretch Goals
