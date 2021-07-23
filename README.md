@@ -43,11 +43,12 @@ The premise of this project is a bucket-list website that allows users to create
 
 <Link to deployed application>
 
-## How to login, username/password, etc.
+#### How to login, username/password, etc.
 
-A user can register for a new account and use it to navigate the website. The admin page can be accessed with the username and password of : which has the ability to remove bucket items, comments, polls, or even individual users.
+A user can register for a new account and use it to navigate the website or use credentials from prior. 
+The admin page can be accessed with the username and password of : which has the ability to edit and remove bucket items, comments, polls, and even individual users.
 
-## How it works, what the user can do
+#### How it works, what the user can do
 
 The user is presented with a login screen when they first visit the website.
 They can choose to register for a new account or to use the credentials of an account they created previously.
@@ -71,12 +72,12 @@ If logged into an admin account, you are also able to use the navigation bar to 
 
 ###### Brandon F:
 
-### Stretch Goals
+#### Stretch Goals
 
 While building out the site, we had multiple stretch goals we wanted to accomplish within the timeframe, such as a friends list feature, bug fixes,
 
-### How a developer would download and set up, install DB, etc.
+#### How a developer would download and set up, install DB, etc.
 
 In order to install, you will need to be running Java 8.
 
-### How to Download and Run
+#### How to Download and Run
