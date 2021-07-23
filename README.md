@@ -44,12 +44,10 @@ The premise of this project is a bucket-list website that allows users to create
 <Link to deployed application>
 
 #### How to login, username/password, etc.
-
-A user can register for a new account and use it to navigate the website or use credentials from prior.
-The admin page can be accessed with the username and password of : which has the ability to edit and remove bucket items, comments, polls, and even individual users.
+A user can register for a new account and use it to navigate the website or use credentials from prior. 
+The admin page can be accessed with the username and password of admin:adminpass which has the ability to edit and remove bucket items, comments, polls, and even individual users.
 
 #### How it works, what the user can do
-
 The user is presented with a login screen when they first visit the website.
 They can choose to register for a new account or to use the credentials of an account they created previously.
 From there, they will be brought to their personal homepage which consists of bucket-list items that they have saved or created.
@@ -69,19 +67,10 @@ If logged into an admin account, you are also able to use the navigation bar to 
 ###### Mick L:
 
 ###### Gabriel A
-* Learned to better understand protocol errors for debugging
-* Gained more experience in bootstrap
-* Gained a better understanding for how to use different input types on html forms
-* Learned a few creative solutions to feature issues from my teammates 
 
 ###### Brandon F:
 
 #### Stretch Goals
+During our planning phase and thoughout our stint building out the site, we had multiple stretch goals we wanted to accomplish within the given timeframe, such as a map feature, image upload, a friends-list feature, a word cloud search, geocaching, main attractions nearby, and various other user additions and restrictions, as well as bug fixes. 
+Although some of those features would be nice to have, we understood that given the timeframe of this project, we would have to focus on only a few of those ideas if we were able to meet all the requirements that were set from the start. At a later date, we would love to come back and work on adding more functionality to the site.
 
-While building out the site, we had multiple stretch goals we wanted to accomplish within the timeframe, such as a friends list feature, bug fixes,
-
-#### How a developer would download and set up, install DB, etc.
-
-In order to install, you will need to be running Java 8.
-
-#### How to Download and Run
