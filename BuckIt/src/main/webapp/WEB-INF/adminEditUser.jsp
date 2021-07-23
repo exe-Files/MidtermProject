@@ -99,7 +99,7 @@
 							readonly> <label for="username"> Username: </label> <input
 							type="text" class="form-control" id="username" name="username"
 							value="${user.username}"> <label for="password">
-							Password: </label> <input type="text" class="form-control" id="password"
+							Password: </label> <input type="password" class="form-control" id="password"
 							name="password" value="${user.password}"> <label
 							for="email"> Email: </label> <input type="text"
 							class="form-control" id="email" name="email"

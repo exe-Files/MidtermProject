@@ -154,7 +154,7 @@
 										<button type='submit' form='adminEditUser${loopUser.index }'
 											id="adminEditBtn" class="btn btn-sm btn-secondary">${user.id }</button></td>
 									<td>${user.username }</td>
-									<td>${user.password }</td>
+									<td>**********</td>
 									<td>${user.email }</td>
 									<td>${user.firstName }</td>
 									<td>${user.lastName }</td>
