@@ -46,10 +46,9 @@ The premise of this project is a bucket-list website that allows users to create
 #### How to login, username/password, etc.
 
 A user can register for a new account and use it to navigate the website or use credentials from prior.
-The admin page can be accessed with the username and password of : which has the ability to edit and remove bucket items, comments, polls, and even individual users.
+The admin page can be accessed with a username and password, which grants the ability to edit and remove bucket items, comments, polls, and even individual users.
 
 #### How it works, what the user can do
-
 The user is presented with a login screen when they first visit the website.
 They can choose to register for a new account or to use the credentials of an account they created previously.
 From there, they will be brought to their personal homepage which consists of bucket-list items that they have saved or created.
@@ -74,17 +73,15 @@ I believe this project really made the saying that "Code is read more often than
 I felt that our team worked extremely well together and when one person was stuck, others were there to lend insight, ideas, and troubleshooting tactics. Every member had ideas that were unique and some of those ideas really pushed us to implement features we might have though would not have been possible in our short timeframe. Taking on some of these tasks and features as a team, combined with the opportunity to work on code in all areas of the project, really taught me some useful coding techniques and opened my eyes to the fact that there are always multiple methods to accomplish one task or feature. Overall, this project was a fantastic learning experience and growth opportunity for me and I have our team to thank for that.
 
 ###### Mick L:
+Working with the Google Maps API I learned that there's more than one way to put yourself on the map, or rather, the map on your site. The simplest solution is often the way to go but in our case it was the second simplest, embedding and using our controller to modify the query string in the URL, that worked the best. We also managed to serendipitously find a way to upload actual photos to our MySQL database by using the image preview function (which was our original plan, just to showcase a future function that wasn't fully implemented) of a <a href="https://bootstrapious.com/p/bootstrap-image-upload">ready-built</a> solution and redirecting the output URL to a hidden field in the form using JavaScript. Overall though, I'd say working with a team of curious and intelligent folks was the best learning experience. I look forward to doing it again!
 
 ###### Gabriel A
-
+* Learned to better understand protocol errors for debugging
+* Gained more experience in bootstrap
+* Gained a better understanding for how to use different input types on html forms
+* Learned a few creative solutions to feature issues from my teammates
 ###### Brandon F:
 
 #### Stretch Goals
-
-While building out the site, we had multiple stretch goals we wanted to accomplish within the timeframe, such as a friends list feature, bug fixes,
-
-#### How a developer would download and set up, install DB, etc.
-
-In order to install, you will need to be running Java 8.
-
-#### How to Download and Run
+During our planning phase and throughout our stint building out the site, we had multiple stretch goals we wanted to accomplish within the given timeframe, such as a map feature, image upload, a friends-list feature, a word cloud search, geocaching, main attractions nearby, and various other user additions and restrictions, as well as bug fixes.
+Although some of those features would be nice to have, we understood that given the timeframe of this project, we would have to focus on only a few of those ideas if we were able to meet all the requirements that were set from the start. At a later date, we would love to come back and work on adding more functionality to the site.
