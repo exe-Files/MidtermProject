@@ -80,7 +80,9 @@ Working with the Google Maps API I learned that there's more than one way to put
 * Gained more experience in bootstrap
 * Gained a better understanding for how to use different input types on html forms
 * Learned a few creative solutions to feature issues from my teammates
+
 ###### Brandon F:
+Greatness is found in the agency of others, and this time was no exception. Working on this team has been an incredible experience. I'm grateful for having been placed on a team of insightful and driven individuals like this one. From the planning phase, to wireframing, dividing roles and tasks, and the actual implementation all the way through the end, we collaborated seemlessly towards a final product. By taking the time to propose new ideas to eachother, and helping one another form those thoughts into actual code, we were able to get far more done together than any of us could have done individually. This was my first major coding project working within a group setting, and it really stands as a testament of how important proper planning and communication is throughout the process. I've struggled in the past with asking for help when getting stuck, but I've learned that I can rely on others when I need a hand for the things that I don't know or understand. I really enjoyed my time working in this sprint, and I look forward to many more to come. 
 
 #### Stretch Goals
 During our planning phase and throughout our stint building out the site, we had multiple stretch goals we wanted to accomplish within the given timeframe, such as a map feature, image upload, a friends-list feature, a word cloud search, geocaching, main attractions nearby, and various other user additions and restrictions, as well as bug fixes.
