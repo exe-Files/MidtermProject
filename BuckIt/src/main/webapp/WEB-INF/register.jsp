@@ -12,6 +12,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
+	<link rel="stylesheet" href="css/utility.css">
+	
 	<link href="css/home.css" rel="stylesheet" id="bootstrap-css">
 	
 
@@ -90,10 +92,16 @@
 	<h1>Please complete registration information below:</h1>
 		<form class="needs-validation" action="registrationinfo.do" method="POST" novalidate>
 			<input type="hidden" name="role" value="user">
+			<input hidden="true" type="text" name="imageUrl" id="imageResultURL" value="#"></input>
+			
 		
 		
           <!-- First row -->
     <div class="form-row">
+    
+  
+    
+    
       <div class="col-md-4 mb-3">
         <label for="validationCustom01">First name</label>
         <input type="text" class="form-control" id="validationCustom01" name="firstName" placeholder="First name" required>
@@ -109,6 +117,35 @@
         </div>
       </div>
     </div>
+    
+    <!-- The left column where the photo upload buttons go -->
+			<div class="column">
+					
+				<!-- Upload image input-->
+				<div
+					class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+					<input id="upload" type="file" onchange="readURL(this);"
+						class="form-control border-0"> <label id="upload-label"
+						for="upload" class="font-weight-light text-muted">Upload
+						your photo</label>
+					<div class="input-group-append">
+						<label for="upload" class="btn btn-light m-0 rounded-pill px-4">
+							<i class="fa fa-cloud-upload mr-2 text-muted"></i><small
+							class="text-uppercase font-weight-bold text-muted">Choose
+								file</small>
+						</label>
+					</div>
+				</div>
+
+				<!-- Uploaded image area-->
+				<p class="font-italic text-black text-center">Your image will
+					appear here.</p>
+				<div class="image-area mt-4">
+					<img id="imageResult" src="#" alt=""
+						class="img-fluid rounded shadow-sm mx-auto d-block">
+<!-- 						<input hidden type="text" name="imageURL" value="#"></input>
+ -->				</div>
+			</div>
 
     <!-- Second row -->
     <div class="form-row">
@@ -200,5 +237,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
+			<script src="javascript/picpicker.js"></script>
+		
 </body>
 </html>

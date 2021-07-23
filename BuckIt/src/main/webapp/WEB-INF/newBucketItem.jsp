@@ -88,7 +88,7 @@
 		<div class="row">
 			<!-- The left column where the photo upload buttons go -->
 			<div class="column">
-				<img src="../media/emptyBucket.png" alt="An empty bucket"
+				<img src="media/emptyBucket.png" alt="An empty bucket"
 					width="20%"> <br> <br>
 					
 				<!-- Upload image input-->
