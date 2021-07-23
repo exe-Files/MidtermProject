@@ -67,7 +67,10 @@ If logged into an admin account, you are also able to use the navigation bar to 
 ###### Mick L:
 
 ###### Gabriel A
-
+* Learned to better understand protocol errors for debugging
+* Gained more experience in bootstrap
+* Gained a better understanding for how to use different input types on html forms
+* Learned a few creative solutions to feature issues from my teammates 
 ###### Brandon F:
 
 #### Stretch Goals
