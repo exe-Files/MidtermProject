@@ -45,7 +45,7 @@ The premise of this project is a bucket-list website that allows users to create
 
 #### How to login, username/password, etc.
 
-A user can register for a new account and use it to navigate the website or use credentials from prior. 
+A user can register for a new account and use it to navigate the website or use credentials from prior.
 The admin page can be accessed with the username and password of : which has the ability to edit and remove bucket items, comments, polls, and even individual users.
 
 #### How it works, what the user can do
@@ -67,6 +67,7 @@ If logged into an admin account, you are also able to use the navigation bar to 
 ###### Steven L:
 
 ###### Mick L:
+Working with the Google Maps API I learned that there's more than one way to put yourself on the map, or rather, the map on your site. The simplest solution is often the way to go but in our case it was the second simplest, embedding and using our controller to modify the query string in the URL, that worked the best. We also managed to serendipitously find a way to upload actual photos to our MySQL database by using the image preview function (which was our original plan, just to showcase a future function that wasn't fully implemented) of a <a href="https://bootstrapious.com/p/bootstrap-image-upload">ready-built</a> solution and redirecting the output URL to a hidden field in the form using JavaScript. Overall though, I'd say working with a team of curious and intelligent folks was the best learning experience. I look forward to doing it again!
 
 ###### Gabriel A
 

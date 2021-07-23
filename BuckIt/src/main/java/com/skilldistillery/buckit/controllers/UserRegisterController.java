@@ -36,7 +36,6 @@ public class UserRegisterController {
 				return mv;
 			}
 		}
-		System.out.println(user.getImageUrl());
 
 		user.setActive(true);
 		if (user.getImageUrl() == null || user.getImageUrl().equals("")) {
