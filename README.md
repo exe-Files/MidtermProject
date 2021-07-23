@@ -44,7 +44,7 @@ The premise of this project is a bucket-list website that allows users to create
 <Link to deployed application>
 
 #### How to login, username/password, etc.
-
+The website can be accessed <a href="http://18.189.91.96:8080/BuckIt/">here</a>
 A user can register for a new account and use it to navigate the website or use credentials from prior.
 The admin page can be accessed with a username and password, which grants the ability to edit and remove bucket items, comments, polls, and even individual users.
 
