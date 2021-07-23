@@ -45,7 +45,7 @@ The premise of this project is a bucket-list website that allows users to create
 
 #### How to login, username/password, etc.
 
-A user can register for a new account and use it to navigate the website or use credentials from prior. 
+A user can register for a new account and use it to navigate the website or use credentials from prior.
 The admin page can be accessed with the username and password of : which has the ability to edit and remove bucket items, comments, polls, and even individual users.
 
 #### How it works, what the user can do
@@ -69,6 +69,10 @@ If logged into an admin account, you are also able to use the navigation bar to 
 ###### Mick L:
 
 ###### Gabriel A
+* Learned to better understand protocol errors for debugging
+* Gained more experience in bootstrap
+* Gained a better understanding for how to use different input types on html forms
+* Learned a few creative solutions to feature issues from my teammates 
 
 ###### Brandon F:
 
