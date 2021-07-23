@@ -4,7 +4,7 @@
 
 ### Team members and roles:
 
--   <a href="https://www.linkedin.com/in/stevenlaupan/"> Steven Laupaun (Developer, DBA) </a>
+-   <a href="https://www.linkedin.com/in/stevenlaupan/"> Steven Laupan (Developer, DBA) </a>
 -   <a href="https://www.linkedin.com/in/gabriel-avila-2a4a7113a/"> Gabriel Avila (Developer)  </a>
 -   <a href="https://www.linkedin.com/in/michael-lagassey/"> Mick Lagassey (Developer, Repo Owner) </a>
 -   <a href="https://www.linkedin.com/in/bfiles/"> Brandon Files (Developer, Scrum Master) </a>
@@ -45,7 +45,7 @@ The premise of this project is a bucket-list website that allows users to create
 
 #### How to login, username/password, etc.
 
-A user can register for a new account and use it to navigate the website or use credentials from prior. 
+A user can register for a new account and use it to navigate the website or use credentials from prior.
 The admin page can be accessed with the username and password of : which has the ability to edit and remove bucket items, comments, polls, and even individual users.
 
 #### How it works, what the user can do
@@ -65,6 +65,13 @@ If logged into an admin account, you are also able to use the navigation bar to 
 ### Lessons Learned
 
 ###### Steven L:
+
+Working as a team was what I found to be the greatest learning experience on this project.
+To this point, all of my coding experience has been of an individual effort or with a partner. This makes
+thought processes and conveyance of ideas relatively simple. However, working as a group of four
+introduces a new level of planning, organization, and communication required to accomplish a task.
+I believe this project really made the saying that "Code is read more often than written" hit home.
+I felt that our team worked extremely well together and when one person was stuck, others were there to lend insight, ideas, and troubleshooting tactics. Every member had ideas that were unique and some of those ideas really pushed us to implement features we might have though would not have been possible in our short timeframe. Taking on some of these tasks and features as a team, combined with the opportunity to work on code in all areas of the project, really taught me some useful coding techniques and opened my eyes to the fact that there are always multiple methods to accomplish one task or feature. Overall, this project was a fantastic learning experience and growth opportunity for me and I have our team to thank for that.
 
 ###### Mick L:
 
