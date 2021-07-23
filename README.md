@@ -54,11 +54,11 @@ They can choose to register for a new account or to use the credentials of an ac
 From there, they will be brought to their personal homepage which consists of bucket-list items that they have saved or created.
 The user can choose to view the details of those items, as well as edit, delete, leave comments, ratings, notes and other resources that they see fit, allowing more personalization for their idea.
 In the navigation bar, there is an option to explore, which brings the user to a gallery of other bucket-list ideas that they can view, vote on, comment on, or even add to their own personal bucket-list.
-If logged into an admin account, you are also able to use the navigation bar to access an admin dashboard. The admin dashboard allows moderators to edit user accounts, delete comments, polls, and even lockout or delete users
+If logged into an admin account, you are also able to use the navigation bar to access an admin dashboard. The admin dashboard allows moderators to edit user accounts, delete comments, polls, and even deactivate user accounts.
 
 ### Overall project structure
 <img src="https://user-images.githubusercontent.com/23006320/126818019-01bd3339-42f3-4706-858f-7e647b49c16e.png">
-  
+
 ### Lessons Learned
 
 ###### Steven L:
